@@ -17,8 +17,10 @@
     <%= yield %>
 
     <p class="alert"><%= alert %></p>
-    <footer class="mt-auto">
-      <%= render "shared/footer" %>
-    </footer>
+    <% if user_signed_in? %>
+      <footer class="mt-auto">
+        <%= render "shared/footer" %>
+      </footer>
+    <% end %>
   </body>
 </html>
