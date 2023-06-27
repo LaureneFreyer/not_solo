@@ -51,7 +51,7 @@ Activity.create!(
   title: "Test Activity",
   price_person: 50.0,
   content: "This is a test activity.",
-  address: "rennes",
+  address: "Chantepie, france",
   start_date: DateTime.now + 7.days,
   end_date: DateTime.now + 14.days,
   user: User.first

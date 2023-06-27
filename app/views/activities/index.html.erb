@@ -5,12 +5,18 @@
 
 <div class="search-form-container">
   <%= form_with url: activities_path, method: 'get', class: "d-flex" do |form| %>
-    <%= form.text_field :query, class: "input-search", placeholder: "Chercher une activité" %>
+    <%= form.text_field :query, class: "input-search", placeholder: "Une activité, un lieu, ..." %>
     <%= form.submit "Chercher", class: "btn-search" %> <!-- Modification ici -->
     <%# <%= form.text_field :city, class: "input-search", placeholder: "Choisir une ville" %>
   <% end %>
 </div>
 
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-map-user-coordinates-value="<%= @user_coordinates.to_json %>">
+</div>
 
 <div class="page-container">
   <div class="cards-container">
