@@ -4,6 +4,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name, label: "Prénom" %>
+    <%= f.input :last_name, label: "Nom" %>
+    <%= f.input :nickname, label: "Pseudo" %>
+    <%= f.input :address, label: "Adresse" %>
+    <%= f.input :birthday, label: "Date de naissance" %>
+    <%= f.input :description, label: "Description" %>
+    <%= f.input :interest, label: "Centres d'intérêts" %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,

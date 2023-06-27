@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Not Solo</h1>
+
+<h3>Nos activités</h3>
+<%= @activities.sample(3).each do |activity| %>
+  <p><%= activity.title %></p>
+  <p><%= activity.start_date %></p>
+<% end %>
