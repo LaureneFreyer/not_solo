@@ -6,7 +6,7 @@ class Activity < ApplicationRecord
   has_many :reservations
   has_many :likes
 
-  #has_one_attached :photo
+  has_one_attached :photo
 
   validates :category, presence: true, inclusion: { in: ["Match de sport", "Activité physique", "Concert", "Sortie en ville", "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma", "Restaurant"] }
   validates :address, presence: true
