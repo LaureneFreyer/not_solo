@@ -5,6 +5,7 @@ class Activity < ApplicationRecord
   belongs_to :user
   has_many :reservations
   has_many :likes
+  has_many :users, through: :reservations
 
   has_one_attached :photo
 

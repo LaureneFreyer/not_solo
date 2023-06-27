@@ -1,7 +1,7 @@
 
   <h1><%= @user.nickname %></h1>
 
-  <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : "#" %>" alt="<%= @user.nickname %>" class="avatar">
+  <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar">
 
   <p><%= @user.points %>points</p>
 
@@ -14,4 +14,4 @@
   <p><%= @user.interest %></p>
   <p><%= @user.description %></p>
 
-  <%= link_to " Se déconnecter", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message' %>
+  <%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message' %>

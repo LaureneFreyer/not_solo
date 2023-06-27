@@ -5,14 +5,12 @@ Rails.application.routes.draw do
   get 'profile', to: 'profiles#show', as: 'profile'
 
   resources :activities, except: [:destroy] do
-    # get 'requests', to: 'reservations#requests', as: 'requests'
     resources :reservations, only: [:new, :create]
+    post "reservations/incoming", to: 'reservations#accept_or_reject', as: "incoming"
     resources :likes, only: [:new, :create]
   end
 
   resources :reservations, only: [:index, :edit, :update] do
-    # patch :accept, on: :member
-    # patch :reject, on: :member
     resources :ratings, only: [:new, :create]
   end
 
