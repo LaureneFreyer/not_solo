@@ -1,14 +1,17 @@
-<h1><%= @user.nickname %></h1>
+
+  <h1><%= @user.nickname %></h1>
+
+  <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar">
+
+  <p><%= @user.points %>points</p>
 
 
-<p><%= @user.points %>points</p>
+  <%= link_to 'edit', edit_user_registration_path %><i class="fa-solid fa-pencil"></i>
 
+  <p><%= @user.birthday %></p>
+  <p><%= @user.address %></p>
+  <p><%= @user.genre %></p>
+  <p><%= @user.interest %></p>
+  <p><%= @user.description %></p>
 
-<%= link_to 'edit', edit_user_registration_path %><i class="fa-solid fa-pencil"></i>
-
-<p><%= @user.birthday %></p>
-<p><%= @user.address %></p>
-<p><%= @user.genre %></p>
-<p><%= @user.points %></p>
-<p><%= @user.description %></p>
-<p><%= @user.interest %></p>
+  <%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message' %>

@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1>Modifier mon compte</h1>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -10,26 +10,38 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :first_name, label: "Prénom" %>
+    <%= f.input :last_name, label: "Nom" %>
+    <%= f.input :nickname, label: "Pseudonyme" %>
+    <%= f.input :address, label: "Adresse" %>
+    <%= f.input :birthday, label: "Date de naissance" %>
+    <%= f.input :description, label: "Description" %>
+    <%= f.input :interest, label: "Centres d'intérêts", collection: ["Cuisine", "Sport", "Danse", "Voyage", "Art", "Cinéma", "Musique", "Animaux", "Technologie", "Méditation", "Jeux de société", "Jeux vidéo", "Nature", "Photographie", "Bricolage", "Lecture", "Mode", "Sciences", "Sorties", "Automobile", "Jardinage", "Services", "Randonnées", "Découvertes", "Séries", "Nourriture", "Autres"] %>
+    <%# <%= f.input :type, label: "Type", collection: ["Organisateur", "Participant"] %>
+    <%= f.input :photo, as: :file, label: "Photo de profil" %>
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Ignorer si vous ne voulez pas le changer",
                 required: false,
+                label: "Mot de passe",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
+                label: "Confirmation mot de passe",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "Nous avons besoin de votre mot de passe actuel pour valider le changement",
                 required: true,
+                label: "Mot de passe actuel",
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Modifier" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div>Unhappy? <%= button_to "Supprimer mon compte", profile_path(resource_name), data: { confirm: "Êtes-vous sûr?", turbo_confirm: "Êtes-vous sûr?" }, method: :delete %></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "Retour", :back %>

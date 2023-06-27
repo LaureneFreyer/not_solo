@@ -1,20 +1,20 @@
 <% if user_signed_in? %>
 
-
   <div class="home-user">
+    <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar">
     <p><%= current_user.nickname %></p>
     <p><%= current_user.points %> points</p>
   </div>
 
-  <div class="home-likes">
-    <h3>Mes activités likés</h3>
-  </div>
-
   <div class="home-suggests">
-    <h3>Suggestions selon vos centres d'intérêts</h3>
+    <h3>Suggestions d'activités</h3>
     <% @activities.sample(3).each do |activity| %>
       <p><%= activity.title %></p>
     <% end %>
+  </div>
+
+  <div class="home-likes">
+    <h3>Mes activités likés</h3>
   </div>
 
 <% else %>
@@ -23,9 +23,4 @@
   <button><%= link_to "Se connecter", new_user_session_path %></button>
   <button><%= link_to "Créer un compte", new_user_registration_path %></button>
 
-  <h3>Nos activités</h3>
-
-  <% @activities.sample(3).each do |activity| %>
-    <p><%= activity.title %></p>
-  <% end %>
 <% end %>
