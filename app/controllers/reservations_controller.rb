@@ -1,50 +1,58 @@
 class ReservationsController < ApplicationController
-  before_action :find_reservation, only: [:edit, :update, :accept, :reject]
+  before_action :find_reservation, only: [:edit, :update, :accept_or_reject]
 
   def index
     @reservations = current_user.reservations
   end
 
-  def requests
-    @reservations = current_user.activities.map { |activity| activity.reservations }.flatten
+  def new
+    @reservation = Reservation.new
   end
 
-  def accept
-    @reservation.update(status: 'Confirmée')
-    redirect_to requests_path
-  end
+  # def create
+  #   @activity = Activity.find(params[:reservation][:activity_id])
+  #   @reservation = @activity.reservations.create(reservation_params)
 
-  def reject
-    @reservation.update(status: 'Refusée')
-    redirec_to requests_path
-  end
+  #   if @reservation.save!
+  #     flash[:notice] = "Demande de participation envoyée."
+  #     @reservation.notify_host
+  #     redirect_to @activity
+  #   else
+  #     flash[:danger] = @reservation.errors
+  #   end
+  # end
 
+  # def accept_or_reject
+  #   incoming = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+  #   message_input = params[:Body].downcase
+  #   begin
+  #     @host = User.find_by(nickname: incoming)
+  #     @reservation = @host.pending_reservation
 
-  def create
-    @reservation = Reservation.new(reservation_params)
-    @reservation.user = current_user
-    @reservation.status = "En attente"
-    @reservation.activity = Activity.find(params[:activity_id])
-    if @reservation.save!
-      redirect_to reservations_path
-    else
-      render 'activities/show', status: :unprocessable_entity
-    end
-  end
+  #     if message_input == "accepter" || message_input == "Accepter"
+  #       @reservation.confirm!
+  #     else
+  #       @reservation.reject!
+  #     end
 
-  def edit
-  end
+  #     @host.check_for_reservations_pending
 
-  def update
-    if reservation_params[:status] == 'Confirmée'
-      @reservation.update(status: 'Confirmée')
-    elsif reservation_params[:status] == 'Refusée'
-      @reservation.update(status: 'Refusée')
-    end
-    redirect_to requests_path
-  end
+  #     message_response = "Vous avez #{@reservation.status} la réservation."
+  #     respond(message_response)
+  #   rescue
+  #     message_response = "Vous n'avez pas de demande de réservation."
+  #     respond(message_response)
+  #   end
+  # end
 
   private
+
+  # def respond(message)
+  #   response = Twilio::TwiML::Response.new do |r|
+  #     r.Message message
+  #   end
+  #   render text: response.text
+  # end
 
   def reservation_params
     params.require(:reservation).permit(:status)
