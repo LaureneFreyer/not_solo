@@ -1,0 +1,14 @@
+<h1>Mes demandes de participation</h1>
+
+<%= @reservations.each do |reservation| %>
+  <h3><%= reservation.activity.title %></h3>
+  <p><%= reservation.activity.start_date %></p>
+
+  <p><%= link_to reservation.user.nickname, profile_path(reservation.user) %></p>
+
+<% if reservation.status == 'En attente' %>
+  <%= link_to 'Confirmer', accept_reservation_path(reservation), method: :patch %>
+  <%= link_to 'Refuser', reject_reservation_path(reservation), method: :patch %>
+<% else %>
+  <p><%= reservation.status %></p>
+<% end %>
