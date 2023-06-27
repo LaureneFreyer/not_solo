@@ -1,5 +1,27 @@
-<h1>Activités</h1>
+<h1>Liste des activités</h1>
 
-<%= @activities.each do |activity| %>
-  <p><%= activity.title %></p>
-<% end %>
+<h3>Vous voyez actuellement les activités pour votre ville : <%= @user_address %></h3>
+
+<div class="search-form-container">
+  <%= form_with url: activities_path, method: 'get', class: "d-flex" do |form| %>
+    <%= form.text_field :query, class: "input-search", placeholder: "Chercher une activité" %>
+    <%= form.submit "Chercher", class: "btn-search" %> <!-- Modification ici -->
+    <%# <%= form.text_field :city, class: "input-search", placeholder: "Choisir une ville" %>
+  <% end %>
+</div>
+
+
+<div class="page-container">
+  <div class="cards-container">
+
+    <div id="suggestions">
+      <div class="card-container">
+        <% @activities.each do |activity| %>
+          <p><%= activity.title %></p>
+          <p><%= activity.category %></p>
+          <p><%= activity.address %></p>
+          <p><%= activity.start_date %></p>
+          <% end %>
+      </div>
+    </div>
+  </div>

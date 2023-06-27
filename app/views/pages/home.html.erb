@@ -1,7 +1,7 @@
 <h1>Not Solo</h1>
 
 <h3>Nos activités</h3>
-<%= @activities.sample(3).each do |activity| %>
+<% @activities.sample(3).each do |activity| %>
   <p><%= activity.title %></p>
   <p><%= activity.start_date %></p>
 <% end %>
