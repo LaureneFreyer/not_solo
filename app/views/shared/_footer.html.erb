@@ -1,25 +1,25 @@
   <div class="container2">
     <ul class="footer-links justify-content-evenly">
       <li>
-        <%= link_to controller: 'pages', action: 'home', class: "footer-link" do %>
+        <%= link_to root_path, action: 'home', class: "footer-link" do %>
           <i class="fa-solid fa-house"></i>
         <% end %>
       </li>
       <li>
-        <%= link_to controller: 'activities', action: 'index', class: "footer-link" do %>
+        <%= link_to activities_path action: 'index', class: "footer-link" do %>
           <i class="fa-solid fa-magnifying-glass"></i>
         <% end %>
       </li>
       <li>
-        <%= link_to controller: 'activities', action: 'new', class: "footer-link" do %>
+        <%= link_to new_activity_path, action: 'new', class: "footer-link" do %>
           <i class="fa-solid fa-plus"></i>
         <% end %>
       </li>
+      <li><%= link_to "", '#', class: "footer-link" %><i class="fa-regular fa-comments"></i></li>
       <li>
-        <%= link_to controller: 'profiles', action: 'show', class: 'footer-link' do %>
-          <i class="fa-regular fa-user"></i>
+        <%= link_to profile_path, action: 'show', class: 'footer-link' do %>
+          <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "#" %>" alt="<%= current_user.nickname %>" class="avatar-footer">
         <% end %>
       </li>
-      <li><%= link_to "", '#', class: "footer-link" %><i class="fa-regular fa-comments"></i></li>
     </ul>
   </div>

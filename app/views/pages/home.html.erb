@@ -2,6 +2,7 @@
 
 
   <div class="home-user">
+    <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "#" %>" alt="<%= current_user.nickname %>" class="avatar">
     <p><%= current_user.nickname %></p>
     <p><%= current_user.points %> points</p>
   </div>
