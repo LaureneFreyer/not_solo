@@ -1,8 +1,30 @@
-<h1>Not Solo</h1>
+<% if user_signed_in? %>
 
-<h3>Nos activités</h3>
+  <div class="home-user">
+    <p><%= current_user.nickname %></p>
+    <p><%= current_user.points %> points</p>
+  </div>
 
-<% @activities.sample(3).each do |activity| %>
-  <p><%= activity.title %></p>
-  <p><%= activity.start_date %></p>
+  <div class="home-likes">
+    <h3>Mes activités likés</h3>
+  </div>
+
+  <div class="home-suggests">
+    <h3>Suggestions selon vos centres d'intérêts</h3>
+    <% @activities.sample(3).each do |activity| %>
+      <p><%= activity.title %></p>
+    <% end %>
+  </div>
+
+<% else %>
+  <h1>Not Solo</h1>
+
+  <button><%= link_to "Se connecter", new_user_session_path %></button>
+  <button><%= link_to "Créer un compte", new_user_registration_path %></button>
+
+  <h3>Nos activités</h3>
+
+  <% @activities.sample(3).each do |activity| %>
+    <p><%= activity.title %></p>
+  <% end %>
 <% end %>
