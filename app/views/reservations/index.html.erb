@@ -1,0 +1,6 @@
+<h1>Mes activités réservées</h1>
+
+<%= @reservations.each do |reservation| %>
+  <p><%= reservation.activity.title %></p>
+  <p>le <%= I18n.l(reservation.activity.start_date, format: "%d %b %Y") %></p>
+<% end %>
