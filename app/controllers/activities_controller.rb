@@ -71,6 +71,19 @@ class ActivitiesController < ApplicationController
     }
   end
 
+  def categories
+    @categories = Activity.distinct.pluck(:category)
+  end
+
+  def by_category
+    @category = params[:category]
+    @activities = Activity.where(category: @category)
+  end
+
+  def my_activities
+    @activities = current_user.activities
+  end
+
 
 
   private

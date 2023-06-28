@@ -1,0 +1,8 @@
+<h1>Activités dans la catégorie : <%= @category %></h1>
+<% @activities.each do |activity| %>
+  <p><%= link_to activity.title, activity_path(activity) %></p>
+  <p><%= activity.address %></p>
+  <p><%= activity.start_date %></p>
+<% end %>
+
+<%= link_to "Retour aux catégories", activity_categories_path, class: 'btn btn-primary' %>
