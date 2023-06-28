@@ -23,5 +23,7 @@ Rails.application.routes.draw do
 
   get 'cherche', to: 'pages#cherche'
   get 'my_activities', to: 'activities#my_activities', as: 'my_activities'
+  post 'activities/:activity_id/like', to: 'likes#create', as: 'like_activity'
+  get 'profile/favorites', to: 'profiles#favorites', as: 'profile_favorites'
 
 end
