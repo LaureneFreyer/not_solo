@@ -38,9 +38,16 @@ footer::after {
   margin-right: 20px;
 }
 .footer-link {
-  color: #555;
+  color: $primary-color;
   text-decoration: none;
 }
 .footer-link:hover {
   text-decoration: underline;
+}
+.icon-footer {
+  color: $primary-color;
+  font-size: 25px;
+}
+.icon-footer-size-plus {
+  font-size: 32px;
 }
