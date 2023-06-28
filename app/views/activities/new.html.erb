@@ -2,8 +2,8 @@
 <%= simple_form_for @activity do |f| %>
   <%= f.input :title, label: 'Nommez votre activité', placeholder: "Bowling" %>
   <%= f.label :category, label: "Dans quelle catégorie s'inclue-t-elle?" %>
-  <%= f.select :category, ["Match de sport", "Activité physique", "Concert", "Sortie en ville", "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma", "Restaurant"] %>
-  <%= f.input :content, label: "Prenez le temps de décrire votre activité", placeholder: "20 caractères min." %>
+  <%= f.select :category, ["Evénement sportif", "Sport/Fitness", "Concert", "Sortie en ville", "Randonnée", "Gastronomie", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Bénévolat", "Vie quotidienne", "Cinéma", "Plein air", "Atelier"] %>
+  <%= f.input :content, label: "Prenez le temps de décrire votre activité en précisant le lieu de rendez-vous", placeholder: "20 caractères min." %>
   <%= f.input :address, label: "Quel est le lieu de rendez-vous?", input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"}, wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
   <%= f.input :start_date, label: 'Date de début', as: :string, input_html: { data: { controller: "datepicker" } }, placeholder: "28/03/2055" %>
   <%= f.input :end_date, label: 'Date de fin (si il y en a une)', as: :string, input_html: { data: { controller: "datepicker" } } %>

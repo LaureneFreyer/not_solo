@@ -46,17 +46,15 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user = current_user # suppose que l'utilisateur est connecté
 
-    if @activity.address.present?
-      coordinates = Geocoder.coordinates(@activity.address)
-      @activity.latitude = coordinates.first
-      @activity.longitude = coordinates.last
-    end
+    coordinates = Geocoder.coordinates(@activity.address)
+    @activity.latitude = coordinates.first
+    @activity.longitude = coordinates.last
 
     if @activity.save
       redirect_to activity_path(@activity)
     else
       flash.now[:alert] = "Veuillez corriger les erreurs dans le formulaire."
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
