@@ -1,6 +1,9 @@
 <% @categories.each do |category| %>
-  <%= link_to activities_by_category_path(category), class: 'btn btn-primary' do  %>
+  <button class='btn-categorie'><%= link_to activities_by_category_path(category), class: 'btn-text' do  %>
   <%= category %>
   <i class="<%= Activity::CATEGORY_ICONS[category] %>"></i>
-  <% end %>
+  <% end %></button>
 <% end %>
+
+
+
