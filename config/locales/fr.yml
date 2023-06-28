@@ -1,0 +1,9 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        activity:
+          attributes:
+            content:
+              blank: "La description ne peut pas être vide."
+              too_short: "La description doit comporter au moins 20 caractères."

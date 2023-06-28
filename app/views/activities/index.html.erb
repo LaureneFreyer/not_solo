@@ -1,6 +1,5 @@
 <h1>Liste des activités</h1>
 
-
 <h3>Vous voyez actuellement les activités pour votre ville : <%= @user_address %></h3>
 
 <div class="search-form-container">
@@ -24,11 +23,14 @@
     <div id="suggestions">
       <div class="card-container">
         <% @activities.each do |activity| %>
-          <p><%= activity.title %></p>
+          <%= link_to activity_path(activity) do %>
+            <p><%= activity.title %></p>
+          <% end %>
           <p><%= activity.category %></p>
           <p><%= activity.address %></p>
           <p><%= activity.start_date %></p>
-          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
