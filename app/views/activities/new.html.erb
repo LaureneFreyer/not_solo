@@ -1,47 +1,48 @@
-<%= form_for @activity, html: { class: "needs-validation", novalidate: "" } do |f| %>
+<%= form_with model: @activity, url: activities_path, class: "needs-validation", novalidate: true, id: "new-activity-form" do |f| %>
   <% if @activity.errors.any? %>
     <div class="alert alert-danger">
-      <ul>
       <% @activity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p><%= message %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
 
   <div class="form-group">
     <%= f.label :category %>
-    <%= f.select :category, ["Match de sport", "Activité physique", "Concert", "Sortie en ville", "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma", "Restaurant"], {}, { class: "form-control", required: "" } %>
+    <%= f.select :category, ["Match de sport", "Activité physique", "Concert", "Sortie en ville", "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma", "Restaurant"], class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control", required: "" %>
+    <%= f.text_field :title, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= f.label :content %>
-    <%= f.text_area :content, class: "form-control", rows: "5", required: "" %>
+    <%= f.text_area :content, class: "form-control", rows: 5, required: true, minlength: 20 %>
+    <% if @activity.errors[:content].any? %>
+      <p class="text-danger">La description doit contenir au moins 20 caractères.</p>
+    <% end %>
   </div>
 
   <div class="form-group">
     <%= f.label :address %>
-    <%= f.text_field :address, class: "form-control", required: "" %>
+    <%= f.text_field :address, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= f.label :start_date %>
-    <%= f.datetime_select :start_date, {}, { class: "form-control", required: "" } %>
+    <%= f.datetime_select :start_date, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= f.label :end_date %>
-    <%= f.datetime_select :end_date, {}, { class: "form-control", required: "" } %>
+    <%= f.datetime_select :end_date, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= f.label :price_person %>
-    <%= f.number_field :price_person, step: 0.01, class: "form-control", required: "" %>
+    <%= f.number_field :price_person, step: 0.01, class: "form-control", required: true %>
   </div>
 
   <div class="actions">

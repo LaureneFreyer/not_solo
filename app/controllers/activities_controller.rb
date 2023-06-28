@@ -46,7 +46,6 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user = current_user # suppose que l'utilisateur est connecté
 
-    # Ajoutez ces lignes pour obtenir les coordonnées
     if @activity.address.present?
       coordinates = Geocoder.coordinates(@activity.address)
       @activity.latitude = coordinates.first
@@ -56,9 +55,23 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to activity_path(@activity)
     else
+      flash.now[:alert] = "Veuillez corriger les erreurs dans le formulaire."
       render :new
     end
   end
+
+
+  def show
+    @activity = Activity.find(params[:id])
+    @marker = {
+      lat: @activity.latitude,
+      lng: @activity.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: { activity: @activity }),
+      marker_html: render_to_string(partial: "marker", locals: { activity: @activity })
+    }
+  end
+
+
 
   private
 
