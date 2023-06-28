@@ -46,9 +46,11 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user = current_user # suppose que l'utilisateur est connecté
 
-    coordinates = Geocoder.coordinates(@activity.address)
-    @activity.latitude = coordinates.first
-    @activity.longitude = coordinates.last
+    unless @activity.geocoded?
+      coordinates = Geocoder.coordinates(@activity.address.gsub(/\A([^,]+,)/, '')) # le gsub retire tous ce qu'il y avant la première virgule dans l'addresse, "unless" permet que ça ne s'exécute que si l'adresse ne s'est pas géocodée toute seule
+      @activity.latitude = coordinates.first
+      @activity.longitude = coordinates.last
+    end
 
     if @activity.save
       redirect_to activity_path(@activity)

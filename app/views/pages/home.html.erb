@@ -10,12 +10,17 @@
     <div class="home-suggests">
       <p class="title-home">Suggestions pour vous</p>
       <% @activities.sample(3).each do |activity| %>
-        <p><%= activity.title %></p>
+        <p><%= link_to activity.title, activity_path(activity) %></p>
       <% end %>
     </div>
 
     <div class="home-likes">
       <p class="title-home">Vos favoris</p>
+      <% @likes.each do |like| %>
+        <%= link_to activity_path(like.activity) do %>
+            <p><%= like.activity.title %></p>
+          <% end %>
+        <% end %>
     </div>
 
   <% else %>
