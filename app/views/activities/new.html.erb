@@ -1,51 +1,12 @@
-<%= form_with model: @activity, url: activities_path, class: "needs-validation", novalidate: true, id: "new-activity-form" do |f| %>
-  <% if @activity.errors.any? %>
-    <div class="alert alert-danger">
-      <% @activity.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :category %>
-    <%= f.select :category, ["Match de sport", "Activité physique", "Concert", "Sortie en ville", "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma", "Restaurant"], class: "form-control", required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control", required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_area :content, class: "form-control", rows: 5, required: true, minlength: 20 %>
-    <% if @activity.errors[:content].any? %>
-      <p class="text-danger">La description doit contenir au moins 20 caractères.</p>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :address %>
-    <%= f.text_field :address, class: "form-control", required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :start_date %>
-    <%= f.datetime_select :start_date, class: "form-control", required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :end_date %>
-    <%= f.datetime_select :end_date, class: "form-control", required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :price_person %>
-    <%= f.number_field :price_person, step: 0.01, class: "form-control", required: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  </div>
+<h1>Programmer votre activité</h1>
+<%= simple_form_for @activity do |f| %>
+  <%= f.input :title, label: 'Nommez votre activité', placeholder: "Bowling" %>
+  <%= f.label :category, label: "Dans quelle catégorie s'inclue-t-elle?" %>
+  <%= f.select :category, ["Match de sport", "Activité physique", "Concert", "Sortie en ville", "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma", "Restaurant"] %>
+  <%= f.input :content, label: "Prenez le temps de décrire votre activité", placeholder: "20 caractères min." %>
+  <%= f.input :address, label: "Quel est le lieu de rendez-vous?", input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"}, wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+  <%= f.input :start_date, label: 'Date de début', as: :string, input_html: { data: { controller: "datepicker" } }, placeholder: "28/03/2055" %>
+  <%= f.input :end_date, label: 'Date de fin (si il y en a une)', as: :string, input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :price_person, label: 'Prix/personne', placeholder: "5€" %>
+  <%= f.submit "Créer l'activité" %>
 <% end %>

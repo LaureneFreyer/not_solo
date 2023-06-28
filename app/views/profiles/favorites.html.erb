@@ -1,0 +1,10 @@
+<h1>Mes Favoris</h1>
+
+<% @favorites.each do |activity| %>
+  <%= link_to activity_path(activity) do %>
+            <p><%= activity.title %></p>
+          <% end %>
+          <p><%= activity.category %></p>
+          <p><%= activity.address %></p>
+          <p><%= activity.start_date %></p>
+        <% end %>

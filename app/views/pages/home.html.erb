@@ -1,26 +1,30 @@
-<% if user_signed_in? %>
+<div class="home">
 
-  <div class="home-user">
-    <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar">
-    <p><%= current_user.nickname %></p>
-    <p><%= current_user.points %> points</p>
+  <% if user_signed_in? %>
+
+    <div class="home-user">
+      <h3 class="nickname-home"><%= current_user.nickname %></h3>
+      <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar-bordered">
+    </div>
+
+    <div class="home-suggests">
+      <p class="title-home">Suggestions pour vous</p>
+      <% @activities.sample(3).each do |activity| %>
+        <p><%= activity.title %></p>
+      <% end %>
+    </div>
+
+    <div class="home-likes">
+      <p class="title-home">Vos favoris</p>
+    </div>
+
+  <% else %>
+
+    <h1>Not Solo</h1>
+  <div class="buttons-home d-flex flex-column">
+    <button class="btn-devise-home"><%= link_to "Se connecter", new_user_session_path, class:"link-devise-home" %></button>
+    <button class="btn-devise-home"><%= link_to "Créer un compte", new_user_registration_path, class:"link-devise-home" %></button>
   </div>
+  <% end %>
 
-  <div class="home-suggests">
-    <h3>Suggestions d'activités</h3>
-    <% @activities.sample(3).each do |activity| %>
-      <p><%= activity.title %></p>
-    <% end %>
-  </div>
-
-  <div class="home-likes">
-    <h3>Mes activités likés</h3>
-  </div>
-
-<% else %>
-  <h1>Not Solo</h1>
-
-  <button><%= link_to "Se connecter", new_user_session_path %></button>
-  <button><%= link_to "Créer un compte", new_user_registration_path %></button>
-
-<% end %>
+</div>
