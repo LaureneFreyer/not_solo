@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+.home {
+  margin: 0 auto;
+  color: $primary-color;
+}
 .home-user {
   text-align: center;
   padding: 60px;
@@ -8,4 +12,14 @@
 }
 .home-suggests {
   padding-top: 30px;
+}
+.link-devise-home {
+  text-decoration: none;
+  color: white;
+}
+.nickname-home {
+  font-size: 25px;
+}
+.title-home {
+  font-size: 15px;
 }
