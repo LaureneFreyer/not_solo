@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     @activities = Activity.all
   end
+
+  def cherche
+  end
 end

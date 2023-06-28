@@ -1,0 +1,6 @@
+<h1>Mes activités</h1>
+
+<% @activities.each do |activity| %>
+  <p><%= link_to activity.title, activity_path(activity) %></p>
+  <!-- Any other activity details you want to display -->
+<% end %>
