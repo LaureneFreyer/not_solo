@@ -1,6 +1,10 @@
-<h1>Mes activités réservées</h1>
+<h1>Mes activités réservées / En attente / Refusées</h1>
 
-<%= @reservations.each do |reservation| %>
-  <p><%= reservation.activity.title %></p>
-  <p>le <%= I18n.l(reservation.activity.start_date, format: "%d %b %Y") %></p>
+<% @reservations.each do |reservation| %>
+  <h2><%= link_to reservation.activity.title, activity_path(reservation.activity) %></h2>
+<p>Propriétaire : <%= reservation.activity.user.nickname %></p>
+<p>Statut: <%= reservation.status %></p>
+
 <% end %>
+
+  <%= link_to "retour", message_reservation_path, class: "footer-link"%>

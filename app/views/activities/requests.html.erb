@@ -1,0 +1,11 @@
+<h1>Demandes de réservation pour <%= @activity.title %></h1>
+
+<% @reservations.each do |reservation| %>
+  <p>Réservation de <%= reservation.user.nickname %> - Statut : <%= reservation.status %></p>
+  <% if current_user == @activity.user %>
+    <%= button_to "Accepter", accept_or_reject_activity_reservation_path(@activity, reservation), method: :post, params: { status: "accepter" }, class: "btn btn-success" %>
+    <%= button_to "Refuser", accept_or_reject_activity_reservation_path(@activity, reservation), method: :post, params: { status: "refuser" }, class: "btn btn-danger" %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Retour', activity_path(@activity) %>

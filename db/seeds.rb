@@ -8,8 +8,11 @@
 require_relative 'seeds_data/cities' # Chargement de la liste des villes
 
 # db/seeds.rb
+Reservation.destroy_all
+Like.destroy_all
 User.destroy_all
 Activity.destroy_all
+
 
 ACTIVITY_CATEGORIES = [
   "Match de sport", "Activité physique", "Concert", "Sortie en ville",

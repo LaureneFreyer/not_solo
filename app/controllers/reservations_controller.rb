@@ -1,58 +1,68 @@
 class ReservationsController < ApplicationController
-  before_action :find_reservation, only: [:edit, :update, :accept_or_reject]
+  before_action :find_reservation, only: [:edit, :update, :accept, :reject]
+
+  def new
+    @activity = Activity.find(params[:activity_id])
+    @reservation = @activity.reservations.build
+  end
+
+  def create
+    @activity = Activity.find(params[:activity_id])
+    @reservation = @activity.reservations.build(user: current_user)
+    @reservation.status = 'pending'
+    if @reservation.save
+      redirect_to reservations_path, notice: 'Votre demande de réservation a été soumise.'
+    else
+      redirect_to activity_path(@activity), alert: 'Il y a eu un problème avec votre demande de réservation.'
+    end
+  end
+
 
   def index
     @reservations = current_user.reservations
   end
 
-  def new
-    @reservation = Reservation.new
+  def requests
+    @requests = Reservation.joins(:activity).where(activities: { user_id: current_user.id })
   end
 
-  # def create
-  #   @activity = Activity.find(params[:reservation][:activity_id])
-  #   @reservation = @activity.reservations.create(reservation_params)
+  def accept
+    @reservation.status = 'accepted'
+    if @reservation.save
+      respond_to do |format|
+        format.html { redirect_to reservations_requests_path }
+        format.js
+      end
+    else
+      # handle error
+    end
+  end
 
-  #   if @reservation.save!
-  #     flash[:notice] = "Demande de participation envoyée."
-  #     @reservation.notify_host
-  #     redirect_to @activity
-  #   else
-  #     flash[:danger] = @reservation.errors
-  #   end
-  # end
+  def reject
+    @reservation.status = 'rejected'
+    if @reservation.save
+      respond_to do |format|
+        format.html { redirect_to reservations_requests_path }
+        format.js
+      end
+    else
+      # handle error
+    end
+  end
 
-  # def accept_or_reject
-  #   incoming = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
-  #   message_input = params[:Body].downcase
-  #   begin
-  #     @host = User.find_by(nickname: incoming)
-  #     @reservation = @host.pending_reservation
 
-  #     if message_input == "accepter" || message_input == "Accepter"
-  #       @reservation.confirm!
-  #     else
-  #       @reservation.reject!
-  #     end
 
-  #     @host.check_for_reservations_pending
 
-  #     message_response = "Vous avez #{@reservation.status} la réservation."
-  #     respond(message_response)
-  #   rescue
-  #     message_response = "Vous n'avez pas de demande de réservation."
-  #     respond(message_response)
-  #   end
-  # end
+
+  def update
+    if @reservation.update(reservation_params)
+      redirect_to reservations_requests_path, notice: 'Le statut de la réservation a été mis à jour.'
+    else
+      render :edit
+    end
+  end
 
   private
-
-  # def respond(message)
-  #   response = Twilio::TwiML::Response.new do |r|
-  #     r.Message message
-  #   end
-  #   render text: response.text
-  # end
 
   def reservation_params
     params.require(:reservation).permit(:status)

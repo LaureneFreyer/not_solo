@@ -15,7 +15,11 @@
           <i class="fa-solid fa-plus icon-footer icon-footer-size-plus"></i>
         <% end %>
       </li>
-      <li><%= link_to "", '#', class: "footer-link" %><i class="fa-regular fa-envelope icon-footer icon-footer-size-plus"></i></li>
+<li>
+  <%= link_to message_reservation_path, class: "footer-link" do %>
+    <i class="fa-regular fa-envelope icon-footer icon-footer-size-plus"></i>
+  <% end %>
+</li>
       <li>
         <%= link_to profile_path, action: 'show', class: 'footer-link' do %>
           <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar-footer">

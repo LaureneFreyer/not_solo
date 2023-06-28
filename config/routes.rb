@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create]
     post "reservations/incoming", to: 'reservations#accept_or_reject', as: "incoming"
     resources :likes, only: [:new, :create]
+    get "requests", to: 'activities#requests', as: "requests"
+
   end
 
   get 'activities/categories', to: 'activities#categories', as: :activity_categories
@@ -16,7 +18,13 @@ Rails.application.routes.draw do
 
   resources :reservations, only: [:index, :edit, :update] do
     resources :ratings, only: [:new, :create]
+    member do
+      patch :accept
+      patch :reject
+    end
   end
+
+
 
   resources :chatrooms, only: [:show]
   resources :likes, only: [:destroy]
@@ -25,5 +33,9 @@ Rails.application.routes.draw do
   get 'my_activities', to: 'activities#my_activities', as: 'my_activities'
   post 'activities/:activity_id/like', to: 'likes#create', as: 'like_activity'
   get 'profile/favorites', to: 'profiles#favorites', as: 'profile_favorites'
+
+  get 'reservations/message', to: 'reservations#message_reservation', as: 'message_reservation'
+  get 'reservations/requests', to: 'reservations#requests', as: 'reservations_requests'
+
 
 end
