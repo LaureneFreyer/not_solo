@@ -3,55 +3,44 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
-.content {
-  flex: 1;
-  margin-bottom: 20px;
-}
-
 footer {
   width: 100%;
-  background-color: white;
+  // background: rgb(207,202,202);
+  background: linear-gradient(180deg, rgba(207,202,202,0.3) 0%, rgba(210,205,187,0.3) 30%, rgba(214,209,167,0.3) 100%);
   padding: 10px 0;
+  padding-bottom: 0;
   text-align: center;
   position: relative;
   bottom: 0;
   left: 0;
 }
-
 footer .container2 {
   text-align: center;
   max-width: 100%;
 }
-
 footer::after {
   content: "";
   display: block;
   clear: both;
 }
-
 .footer-links {
   display: flex;
   justify-content: center;
   list-style: none;
   padding: 0;
 }
-
 .footer-links li:not(:last-child) {
   margin-right: 20px;
 }
-
 .footer-link {
   color: #555;
   text-decoration: none;
 }
-
 .footer-link:hover {
   text-decoration: underline;
 }
