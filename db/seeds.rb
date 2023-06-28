@@ -11,12 +11,7 @@ require_relative 'seeds_data/cities' # Chargement de la liste des villes
 User.destroy_all
 Activity.destroy_all
 
-ACTIVITY_CATEGORIES = [
-  "Match de sport", "Activité physique", "Concert", "Sortie en ville",
-  "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux",
-  "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma",
-  "Restaurant"
-]
+ACTIVITY_CATEGORIES = Activity::CATEGORIES
 
 USER_INTERESTS = [
   "Cuisine", "Sport", "Danse", "Voyage", "Art", "Cinéma", "Musique", "Animaux",

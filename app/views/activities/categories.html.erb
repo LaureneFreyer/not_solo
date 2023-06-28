@@ -1,19 +1,6 @@
 <% @categories.each do |category| %>
-  <%= link_to category, activities_by_category_path(category), class: 'btn btn-primary' %>
+  <%= link_to activities_by_category_path(category), class: 'btn btn-primary' do  %>
+  <%= category %>
+  <i class="<%= Activity::CATEGORY_ICONS[category] %>"></i>
+  <% end %>
 <% end %>
-
-<i class="fa-solid fa-medal"></i> - évenement sportif
-<i class="fa-solid fa-baseball-bat-ball"></i> - sport/fitness
-<i class="fa-solid fa-music"></i> - concert
-<i class="fa-solid fa-city"></i> - sortie en ville
-<i class="fa-solid fa-person-hiking"></i> - randonnée
-<i class="fa-solid fa-utensils"></i> - gastronomie
-<i class="fa-solid fa-plane"></i> - voyage
-<i class="fa-solid fa-camera"></i> - visite
-<i class="fa-solid fa-dice"></i> - jeux
-<i class="fa-solid fa-masks-theater"></i> - sortie culturelle
-<i class="fa-solid fa-hand-holding-heart"></i> - bénévolat
-<i class="fa-solid fa-cart-shopping"></i> - vie quotidienne
-<i class="fa-solid fa-film"></i> - cinéma
-<i class="fa-solid fa-mountain-sun"></i> - plein air
-<i class="fa-solid fa-palette"></i> - atelier
