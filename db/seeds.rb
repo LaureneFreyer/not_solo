@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require 'faker'
 require_relative 'seeds_data/cities' # Chargement de la liste des villes
 
 # db/seeds.rb
