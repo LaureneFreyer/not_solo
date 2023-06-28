@@ -9,7 +9,7 @@ class Activity < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :category, presence: true, inclusion: { in: ["Match de sport", "Activité physique", "Concert", "Sortie en ville", "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma", "Restaurant"] }
+  validates :category, presence: true, inclusion: { in: ["Evénement sportif", "Sport/Fitness", "Concert", "Sortie en ville", "Randonnée", "Gastronomie", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Bénévolat", "Vie quotidienne", "Cinéma", "Plein air", "Atelier"] }
   validates :address, presence: true
   validates :title, presence: true
   validates :content, presence: true, length: { minimum: 20 }
