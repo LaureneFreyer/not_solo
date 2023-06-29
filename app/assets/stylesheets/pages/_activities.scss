@@ -1,0 +1,39 @@
+.activities-container{
+  text-align: center;
+  color: $primary-color;
+}
+
+.map-container{
+margin: 20px;
+border-radius: 10px;
+width: 350px;
+height: 350px;
+}
+
+.input-search{
+  width: 310px;
+  border: 1px solid #c2c2c2;
+  border-right: none;
+  padding: 5px;
+  height: 45px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+.search-button {
+  width: 40px;
+  height: 45px;
+  border: 1px solid #c2c2c2;
+  background: #ffffff;
+  border-left: none;
+  text-align: center;
+  border-radius: 0 5px 5px 0;
+  font-size: 20px;
+}
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
