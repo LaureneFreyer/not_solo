@@ -1,7 +1,6 @@
 
 <div class="activities-container">
   <div class="wrap-search">
-    <div class="search-form">
       <%= form_with url: activities_path, method: 'get', class: "d-flex" do |form| %>
         <%= form.text_field :query, class: "input-search", placeholder: "Adresse" %>
         <%= button_tag( :class => "search-button") do %>
@@ -9,7 +8,6 @@
         <% end %>
         <%# <%= form.text_field :city, class: "input-search", placeholder: "Choisir une ville" %>
       <% end %>
-    </div>
   </div>
   <div class="map-container">
     <div style="width: 100%; height: 100%; border-radius: 10px;"
@@ -19,14 +17,14 @@
       data-map-user-coordinates-value="<%= @user_coordinates.to_json %>">
     </div>
   </div>
-  <div class="resum-annonce-card">
-          <% @activities.each do |activity| %>
-            <%= link_to activity_path(activity) do %>
-              <p><%= activity.title %></p>
-            <% end %>
-            <p><%= activity.category %></p>
-            <p><%= activity.address %></p>
-            <p><%= activity.start_date %></p>
+    <div class="cards-container">
+      <% @activities.each do |activity| %>
+        <div class="resum-annonce-card">
+          <%= link_to activity_path(activity) do %>
+            <p><%= activity.title %></p>
           <% end %>
-  </div>
+            <p><i class="fa-solid fa-calendar-days"></i><%= activity.start_date %></p>
+          </div>
+          <% end %>
+    </div>
 </div>
