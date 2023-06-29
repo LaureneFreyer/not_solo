@@ -78,6 +78,7 @@
 }
 
 //----------------------------------------------------------------------------//
+// ------------------- Annonces cards css (show.html.erb) -----------------------//
 //----------------------------------------------------------------------------//
 
 .resum-annonce-card{
@@ -85,7 +86,7 @@
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
   border-radius: 10px;
-  width: 360px;
+  width: 350px;
   height: 90px;
   color: $primary-color;
   margin: 20px;
@@ -102,4 +103,83 @@
   width: 360px;
   height: 90px;
   color: $primary-color;
+}
+
+
+//----------------------------------------------------------------------------//
+//----------------------------------------------------------------------------//
+
+.annonce-card{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgba($color: white, $alpha: 0.5);
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
+  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+  width: 360px;
+  height: 90%;
+  color: $primary-color;
+  position: fixed;
+  bottom: 0px;
+  margin-left: 15px;// à changer pour center le container
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.annonce-card h1{
+  font-family: sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+}
+
+
+.annonce-card .annonce-content{
+  text-align: left;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+.annonce-card .annonce-content .first-row {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+}
+.annonce-card .annonce-content .first-row p {
+  margin-right: 10px;
+}
+
+
+.annonce-card .annonce-content .second-row {
+  flex-basis: 100%;
+}
+
+.annonce-card .annonce-content .annonce-description{
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  min-height: 200px;
+  border-radius: 10px;
+  border-color: $primary-color;
+  border: 1px solid;
+}
+
+.annonce-card .annonce-btn-container{
+margin-left: 20px;
+margin-right: 20px;
+display: flex;
+justify-content: space-between;
+}
+
+.fav-btn{
+  position: absolute;
+  margin-left: 88%;
+  margin-top: 150px;
+}
+.btn-fav{
+  background-color: transparent;
+  border: none;
 }
