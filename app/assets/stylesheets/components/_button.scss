@@ -49,9 +49,14 @@
   margin-left: 10px;
   margin-right: 10px;
 
+
+
+// !!!!!!!! Très important !!!!!! Ne pas toucher à ce code !!!!!//
+
+
   .btn-categorie {
     margin: 10px;
-    flex: 0 0 calc(45% - 5px); /*45% de la largeur avec une marge de 10px */
+    flex: 0 0 calc(45% - 5px); /*45% de la largeur(écran) avec une marge de 10px */
     max-width: calc(45% - 5px); /* largeur max des boutons */
     height: 100px;
 
