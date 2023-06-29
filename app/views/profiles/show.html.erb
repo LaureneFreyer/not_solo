@@ -8,11 +8,19 @@
 
   <%= link_to 'edit', edit_user_registration_path %><i class="fa-solid fa-pencil"></i>
     <div class= "profil-content">
-      <p><%= @user.birthday %></p>
-      <p><%= @user.address %></p>
-      <p><%= @user.genre %></p>
-      <p><%= @user.interest %></p>
+      <div class="first-row">
+        <p><i class="fa-solid fa-cake-candles"style="margin-right: 15px;"></i><%= @user.birthday %></p>
+        <p><i class="fa-solid fa-user"style="margin-right: 15px;"></i><%= @user.genre %></p>
+      </div>
+      <div class="second-row">
+        <span><p><i class="fa-solid fa-location-pin"style="margin-right: 15px;"></i><%= @user.address %></p></span>
+      </div>
+      <div class="third-row">
+        <span><p><i class="fa-regular fa-face-smile-beam"style="margin-right: 15px;"></i><%= @user.interest %></p></span>
+      </div>
+      <div class="profil-description">
       <p><%= @user.description %></p>
+      </div>
     </div>
-  <%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message' %>
+  <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message btn-categorie-menu btn-text' %>
 </div>
