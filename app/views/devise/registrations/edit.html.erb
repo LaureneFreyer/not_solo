@@ -13,7 +13,7 @@
     <%= f.input :first_name, label: "Prénom" %>
     <%= f.input :last_name, label: "Nom" %>
     <%= f.input :nickname, label: "Pseudonyme" %>
-    <%= f.input :nickname, label: "Genre" %>
+    <%= f.input :nickname, label: "Genre", collection: ["Féminin", "Masculin"] %>
     <%= f.input :address, label: "Adresse" %>
     <%= f.input :birthday, label: "Date de naissance" %>
     <%= f.input :description, label: "Description" %>

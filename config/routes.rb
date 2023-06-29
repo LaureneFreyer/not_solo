@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :activities, only: [:show]
 
   resources :reservations, only: [:index, :edit, :update] do
+    resources :chatrooms, only: [:show]
     resources :ratings, only: [:new, :create]
     member do
       patch :accept
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :chatrooms, only: [:show]
   resources :likes, only: [:destroy]
 
   get 'cherche', to: 'pages#cherche'

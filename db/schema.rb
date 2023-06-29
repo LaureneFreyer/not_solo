@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_143342) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_091102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_143342) do
     t.bigint "reservation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["reservation_id"], name: "index_chatrooms_on_reservation_id"
   end
 
@@ -121,9 +122,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_143342) do
     t.date "birthday"
     t.text "description"
     t.string "interest"
-    t.string "genre"
     t.float "longitude"
     t.float "latitude"
+    t.string "genre", default: "Féminin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
