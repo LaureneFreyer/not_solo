@@ -1,14 +1,14 @@
-<h1>Mes demandes de participation</h1>
+<h1>Mes demandes de réservation</h1>
 
-<%= @reservations.each do |reservation| %>
-  <h3><%= reservation.activity.title %></h3>
-  <p><%= reservation.activity.start_date %></p>
+<% @requests.each do |request| %>
+  <h2><%= link_to request.activity.title, activity_path(request.activity) %></h2>
+  <p>Utilisateur : <%= request.user.nickname %></p>
+  <p>Statut: <%= request.status %></p>
 
-  <p><%= link_to reservation.user.nickname, profile_path(reservation.user) %></p>
-
-<% if reservation.status == 'En attente' %>
-  <%= link_to 'Confirmer', accept_reservation_path(reservation), method: :patch %>
-  <%= link_to 'Refuser', reject_reservation_path(reservation), method: :patch %>
-<% else %>
-  <p><%= reservation.status %></p>
+  <% if request.status == "pending" %>
+    <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-success' %>
+    <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-danger' %>
+  <% end %>
 <% end %>
+
+<%= link_to "retour", message_reservation_path, class: "footer-link" %>

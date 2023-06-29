@@ -1,0 +1,6 @@
+<%= form_for @reservation, url: activity_reservations_path(@activity), method: :post do |f| %>
+  <!-- Ajoutez les champs du formulaire pour la réservation ici -->
+  <!-- Par exemple, vous pouvez ajouter des champs pour le nom, l'e-mail, etc. -->
+
+  <%= f.submit "Envoyer la demande de réservation", class: "btn btn-primary" %>
+<% end %>

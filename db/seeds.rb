@@ -8,6 +8,8 @@
 require_relative 'seeds_data/cities' # Chargement de la liste des villes
 
 # db/seeds.rb
+Reservation.destroy_all
+Like.destroy_all
 User.destroy_all
 Activity.destroy_all
 
@@ -28,7 +30,7 @@ User.create!(
   email: "lolodu35@gmail.com",
   password: "123456",
   nickname: "LoloDu35",
-  first_name: "Lauréne",
+  first_name: "Laurène",
   last_name: "Freyer",
   address: "Rennes",
   points: 55,

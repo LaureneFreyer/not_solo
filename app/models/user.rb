@@ -3,10 +3,10 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   has_many :activities, dependent: :destroy
-  has_many :likes
-  has_many :reservations
-  has_many :ratings
-  has_many :messages
+  has_many :likes, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  has_many :ratings, dependent: :destroy
+  has_many :messages,  dependent: :destroy
   has_many :chatrooms, through: :messages
 
   has_one_attached :photo

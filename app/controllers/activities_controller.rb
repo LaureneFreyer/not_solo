@@ -84,6 +84,13 @@ class ActivitiesController < ApplicationController
     @activities = current_user.activities
   end
 
+  def requests
+    @activity = Activity.find(params[:id])
+    @reservations = @activity.reservations.pending
+    @requests = Reservation.where(status: 'requested')
+  end
+
+
 
 
   private
