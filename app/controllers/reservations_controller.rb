@@ -9,9 +9,8 @@ class ReservationsController < ApplicationController
   def create
     @activity = Activity.find(params[:activity_id])
     @reservation = @activity.reservations.build(user: current_user)
-    @reservation.status = 'pending'
+    @reservation.status = 'en attente'
     if @reservation.save
-
       redirect_to reservations_path, notice: 'Votre demande de réservation a été soumise.'
     else
       redirect_to activity_path(@activity), alert: 'Il y a eu un problème avec votre demande de réservation.'
@@ -27,7 +26,7 @@ class ReservationsController < ApplicationController
   end
 
   def accept
-    @reservation.status = 'accepted'
+    @reservation.status = 'acceptée'
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_requests_path }
@@ -39,7 +38,7 @@ class ReservationsController < ApplicationController
   end
 
   def reject
-    @reservation.status = 'rejected'
+    @reservation.status = 'refusée'
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_requests_path }
