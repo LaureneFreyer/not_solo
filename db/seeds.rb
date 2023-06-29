@@ -36,7 +36,7 @@ User.create!(
   points: 55,
   birthday: Date.new(1990, 1, 1),
   description: "Koukou c'est moi lauréne et je suis trop cool. J'aime les chats et les licornes. Appellé moi Lolo",
-  interest: ["Cuisine", "Sport", "Danse", "Voyage"]
+  interest: "Cuisine"
 )
 
 # Génération d'une activité liée à l'utilisateur de test
