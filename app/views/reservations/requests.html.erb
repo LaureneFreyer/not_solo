@@ -3,8 +3,13 @@
 <% @requests.each do |request| %>
   <h2><%= link_to request.activity.title, activity_path(request.activity) %></h2>
   <p>Utilisateur : <%= request.user.nickname %></p>
-  <p>Statut: <%= request.status %></p>
-
+<p>Statut: <%=
+    if reservation.status == "pending"
+      "en attente"
+    else
+      reservation.status
+    end
+  %></p>
   <% if request.status == "en attente" %>
     <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-success' %>
     <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-danger' %>

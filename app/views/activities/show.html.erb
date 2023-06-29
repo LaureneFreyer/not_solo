@@ -1,6 +1,6 @@
 <h1><%= @activity.title %></h1>
 
-<p>Organisé par: <%= @activity.user.nickname %></p>
+<p>Organisé par: <%= link_to @activity.user.nickname, autres_path(@activity.user) %></p>
 
 <p>Catégorie: <%= @activity.category %></p>
 
@@ -31,7 +31,7 @@
 <% content_for :meta_title, @activity.title %>
 <% content_for :meta_description, @activity.content %>
 <% if @activity.photo.present? %>
-  <% content_for :meta_image, cl_image_path(@activity.photo.path) %>
+  <% content_for :meta_image, url_for(@activity.photo) %>
 <% else %>
   <% content_for :meta_image, 'URL image par défaut' %>
 <% end %>
