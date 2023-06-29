@@ -3,7 +3,6 @@ class Reservation < ApplicationRecord
   belongs_to :activity
   belongs_to :user
 
-  has_many :chatrooms
   has_many :ratings
 
   enum status: { pending: "pending", accepted: "accepted", rejected: "rejected" }
