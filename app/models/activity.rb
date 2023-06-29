@@ -34,4 +34,23 @@ class Activity < ApplicationRecord
     "Plein air" => "fa-solid fa-mountain-sun",
     "Atelier" => "fa-solid fa-palette",
   }
+
+CATEGORY_IMAGES = {
+  "Evénement sportif" => "event-sportif.jpg",
+  "Sport/Fitness" => "sport-fitness.jpg",
+  "Concert" => "concert.jpg",
+  "Sortie en ville" => "sortie.jpg",
+  "Randonnée" => "randonnée.jpg",
+  "Gastronomie" => "Gastronomy.jpg",
+  "Voyage" => "voyage.jpg",
+  "Visite" => "sport-fitness.jpg",
+  "Jeux" => "jeux.jpg",
+  "Sortie culturelle" => "sortie-culturelle.jpg",
+  "Bénévolat" => "sport-fitness.jpg",
+  "Vie quotidienne" => "vie quotidienne.jpg",
+  "Cinéma" => "cinema.jpg",
+  "Plein air" => "randonnée.jpg",
+  "Atelier" => "Atelier.jpg",
+}
+
 end
