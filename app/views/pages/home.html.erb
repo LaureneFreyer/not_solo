@@ -26,10 +26,10 @@
   <% else %>
 
     <h1>Not Solo</h1>
-  <div class="buttons-home d-flex flex-column">
-    <button class="btn-devise-home"><%= link_to "Se connecter", new_user_session_path, class:"link-devise-home" %></button>
-    <button class="btn-devise-home"><%= link_to "Créer un compte", new_user_registration_path, class:"link-devise-home" %></button>
-  </div>
+    <div class="buttons-home d-flex flex-column">
+      <button class="btn-sign"><%= link_to "Se connecter", new_user_session_path, class:"link-devise-home" %></button>
+      <button class="btn-sign"><%= link_to "Créer un compte", new_user_registration_path, class:"link-devise-home" %></button>
+    </div>
   <% end %>
 
 </div>
