@@ -35,8 +35,8 @@ User.create!(
   address: "Rennes",
   points: 55,
   birthday: Date.new(1990, 1, 1),
-  description: "I am a test user.................",
-  interest: "Cuisine"
+  description: "Koukou c'est moi lauréne et je suis trop cool. J'aime les chats et les licornes. Appellé moi Lolo",
+  interest: ["Cuisine", "Sport", "Danse", "Voyage"]
 )
 
 # Génération d'une activité liée à l'utilisateur de test
@@ -44,9 +44,9 @@ User.create!(
 
 Activity.create!(
   category: "Randonnée",
-  title: "Test Activity",
-  price_person: 50.0,
-  content: "This is a test activity.",
+  title: "Randonnée en forêt",
+  price_person: 0,
+  content: "Promenade en forêt de 2h",
   address: "Chantepie, france",
   start_date: DateTime.now + 7.days,
   end_date: DateTime.now + 14.days,
