@@ -27,3 +27,11 @@
 
 
 <%= link_to 'Retour', cherche_path %>
+
+<% content_for :meta_title, @activity.title %>
+<% content_for :meta_description, @activity.description %>
+<% if @activity.photo.present? %>
+  <% content_for :meta_image, cl_image_path(@activity.photo.path) %>
+<% else %>
+  <% content_for :meta_image, 'URL image par défaut' %>
+<% end %>

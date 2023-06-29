@@ -8,6 +8,8 @@ class Activity < ApplicationRecord
   has_many :users, through: :reservations
 
   has_one_attached :photo
+  validate :photo_size_validation
+
 
   CATEGORIES = ["Evénement sportif", "Sport/Fitness", "Concert", "Sortie en ville", "Randonnée", "Gastronomie", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Bénévolat", "Vie quotidienne", "Cinéma", "Plein air", "Atelier"]
   validates :category, presence: true, inclusion: { in: CATEGORIES }
@@ -15,6 +17,7 @@ class Activity < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true, length: { minimum: 20 }
   validates :start_date, presence: true
+
 
   CATEGORY_ICONS =
   {
@@ -53,4 +56,9 @@ CATEGORY_IMAGES = {
   "Atelier" => "Atelier.jpg",
 }
 
+  private
+
+  def photo_size_validation
+    errors[:photo] << "should be less than 1MB" if photo.attached? && photo.blob.byte_size > 1.megabyte
+  end
 end

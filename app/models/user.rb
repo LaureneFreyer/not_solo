@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  serialize :interest, Array
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -10,6 +12,8 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :messages
 
   has_one_attached :photo
+  validate :photo_size_validation
+
 
   validates :nickname, presence: true, uniqueness: true
   validates :first_name, presence: true
@@ -23,4 +27,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  private
+
+  def photo_size_validation
+    errors[:photo] << "should be less than 1MB" if photo.attached? && photo.blob.byte_size > 1.megabyte
+  end
 end
