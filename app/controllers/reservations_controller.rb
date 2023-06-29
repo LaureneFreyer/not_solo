@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
     @reservation = @activity.reservations.build(user: current_user)
     @reservation.status = 'pending'
     if @reservation.save
-      @chatroom = Chatroom.create!(name: @activity.title, reservation: @reservation)
+
       redirect_to reservations_path, notice: 'Votre demande de réservation a été soumise.'
     else
       redirect_to activity_path(@activity), alert: 'Il y a eu un problème avec votre demande de réservation.'
@@ -59,7 +59,7 @@ class ReservationsController < ApplicationController
   end
 
   def message_reservation
-    @reservations = Reservation.includes([:chatrooms]).where(user: current_user)
+    @activities = Activity.includes([:chatroom]).where(user: current_user)
   end
 
   private

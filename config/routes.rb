@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   get 'profile', to: 'profiles#show', as: 'profile'
 
   resources :activities, except: [:show, :destroy] do
+    resources :chatrooms, only: [:show] do
+      resources :messages, only: [:create]
+    end
     resources :reservations, only: [:new, :create]
     post "reservations/incoming", to: 'reservations#accept_or_reject', as: "incoming"
     resources :likes, only: [:new, :create]
     get "requests", to: 'activities#requests', as: "requests"
-
   end
 
   get 'activities/categories', to: 'activities#categories', as: :activity_categories
@@ -17,9 +19,6 @@ Rails.application.routes.draw do
   resources :activities, only: [:show]
 
   resources :reservations, only: [:index, :edit, :update] do
-    resources :chatrooms, only: [:show] do
-      resources :messages, only: [:create]
-    end
     resources :ratings, only: [:new, :create]
     member do
       patch :accept
