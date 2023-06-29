@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :messages,  dependent: :destroy
   has_many :chatrooms, through: :messages
 
+  has_many :user_interests, dependent: :destroy
+  has_many :interests, through: :user_interests, dependent: :destroy
+
   has_one_attached :photo
   validate :photo_size_validation
 
@@ -19,7 +22,8 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :birthday, presence: true
   validates :description, presence: true, length: { minimum: 15 }
-  validates :interest, presence: true, inclusion: { in: ["Cuisine", "Sport", "Danse", "Voyage", "Art", "Cinéma", "Musique", "Animaux", "Technologie", "Méditation", "Jeux de société", "Jeux vidéo", "Nature", "Photographie", "Bricolage", "Lecture", "Mode", "Sciences", "Sorties", "Automobile", "Jardinage", "Services", "Randonnées", "Découvertes", "Séries", "Nourriture", "Autres"] }
+  validates :genre, inclusion: { in: ["Homme", "Femme", "Non binaire", "Autre"],
+    message: "%{value} n'est pas un genre valide" }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
