@@ -88,7 +88,7 @@ class ActivitiesController < ApplicationController
   def requests
     @activity = Activity.find(params[:id])
     @reservations = @activity.reservations.pending
-    @requests = Reservation.where(status: 'requested')
+    @requests = Reservation.where(status: 'envoyée')
   end
 
 

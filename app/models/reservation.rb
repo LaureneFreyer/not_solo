@@ -6,11 +6,11 @@ class Reservation < ApplicationRecord
   has_many :chatrooms
   has_many :ratings
 
-  enum status: { pending: "pending", accepted: "accepted", rejected: "rejected" }
+  enum status: { pending: "en attente", accepted: "confirmée", rejected: "refusée" }
 
   private
 
   def set_status
-    self.status = "pending" if self.status.nil?
+    self.status = "en attente" if self.status.nil?
   end
 end

@@ -5,7 +5,7 @@
   <p>Utilisateur : <%= request.user.nickname %></p>
   <p>Statut: <%= request.status %></p>
 
-  <% if request.status == "pending" %>
+  <% if request.status == "en attente" %>
     <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-success' %>
     <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-danger' %>
   <% end %>

@@ -1,12 +1,12 @@
-<h1>Mes activités réservées / En attente / Refusées</h1>
+<h1>Mes activités</h1>
 
 <% @reservations.each do |reservation| %>
   <h2><%= link_to reservation.activity.title, activity_path(reservation.activity) %></h2>
 <p>Propriétaire : <%= reservation.activity.user.nickname %></p>
 <p>Statut: <%= reservation.status %></p>
-  <% if reservation.status == "accepted" %>
+  <% if reservation.status == "acceptée" %>
     <% unless reservation.activity.chatroom.nil? %>
-      <%= link_to reservation.activity.title, activity_chatroom_path(reservation.activity, reservation.activity.chatroom) %>
+      <%= link_to reservation.activity.title, activity_chatroom_path(reservation.activity, activity.chatroom) %>
     <% end %>
   <% end %>
 <% end %>

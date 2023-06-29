@@ -27,10 +27,12 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+
+    <%# <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script> %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <%= favicon_link_tag %>
   </head>
 
@@ -41,7 +43,7 @@
 
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
-      <footer class="mt-auto">
+      <footer class="mt-auto fixed-bottom">
         <%= render "shared/footer" %>
       </footer>
     <% end %>

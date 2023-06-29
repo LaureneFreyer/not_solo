@@ -7,6 +7,7 @@
   <%= f.input :address, label: "Quel est le lieu de rendez-vous?", input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"}, wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
   <%= f.input :start_date, label: 'Date de début', as: :string, input_html: { data: { controller: "datepicker" } }, placeholder: "28/03/2055" %>
   <%= f.input :end_date, label: 'Date de fin (si il y en a une)', as: :string, input_html: { data: { controller: "datepicker" } } %>
-  <%= f.input :price_person, label: 'Prix/personne', placeholder: "5€" %>
+  <%= f.input :max_participants, label: 'Nombre de personnes invitées', placeholder: "5" %>
+  <%= f.input :photo, as: :file, label: "Photo" %>
   <%= f.submit "Créer l'activité" %>
 <% end %>
