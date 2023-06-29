@@ -17,15 +17,15 @@ Rails.application.routes.draw do
   resources :activities, only: [:show]
 
   resources :reservations, only: [:index, :edit, :update] do
-    resources :chatrooms, only: [:show]
+    resources :chatrooms, only: [:show] do
+      resources :messages, only: [:create]
+    end
     resources :ratings, only: [:new, :create]
     member do
       patch :accept
       patch :reject
     end
   end
-
-
 
   resources :likes, only: [:destroy]
 
@@ -36,6 +36,5 @@ Rails.application.routes.draw do
 
   get 'reservations/message', to: 'reservations#message_reservation', as: 'message_reservation'
   get 'reservations/requests', to: 'reservations#requests', as: 'reservations_requests'
-
 
 end
