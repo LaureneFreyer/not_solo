@@ -1,0 +1,6 @@
+<h1>Donnez une note à l'organisateur</h1>
+
+<%= simple_form_for ([@reservation, @rating, @user]) do |f| %>
+  <%= f.select :rating %>
+  <%= f.submit label 'Envoyer ma note' %>
+<% end %>

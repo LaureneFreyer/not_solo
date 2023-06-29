@@ -1,0 +1,26 @@
+.img-event-large{
+  height: 180px;
+  width: 340px;
+  object-fit: cover;
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
+  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+  border-radius: 10px;
+}
+
+.img-event-medium{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
+  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+  border-radius: 10px;
+}
+
+.img-event-small{
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
+  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+  border-radius: 10px;
+}

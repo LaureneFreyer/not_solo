@@ -46,8 +46,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user = current_user # suppose que l'utilisateur est connecté
 
-    if @activity.address.present?
-      coordinates = Geocoder.coordinates(@activity.address)
+    unless @activity.geocoded?
+      coordinates = Geocoder.coordinates(@activity.address.gsub(/\A([^,]+,)/, '')) # le gsub retire tous ce qu'il y avant la première virgule dans l'addresse, "unless" permet que ça ne s'exécute que si l'adresse ne s'est pas géocodée toute seule
       @activity.latitude = coordinates.first
       @activity.longitude = coordinates.last
     end
@@ -56,7 +56,7 @@ class ActivitiesController < ApplicationController
       redirect_to activity_path(@activity)
     else
       flash.now[:alert] = "Veuillez corriger les erreurs dans le formulaire."
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

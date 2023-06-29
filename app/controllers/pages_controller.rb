@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @activities = Activity.all
+    @likes = Like.where(user: current_user)
   end
 
   def cherche

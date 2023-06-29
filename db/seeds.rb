@@ -13,13 +13,7 @@ Like.destroy_all
 User.destroy_all
 Activity.destroy_all
 
-
-ACTIVITY_CATEGORIES = [
-  "Match de sport", "Activité physique", "Concert", "Sortie en ville",
-  "Randonnée", "Activité culinaire", "Voyage", "Visite", "Jeux",
-  "Sortie culturelle", "Activité artistique", "Vie quotidienne", "Cinéma",
-  "Restaurant"
-]
+ACTIVITY_CATEGORIES = Activity::CATEGORIES
 
 USER_INTERESTS = [
   "Cuisine", "Sport", "Danse", "Voyage", "Art", "Cinéma", "Musique", "Animaux",
@@ -36,7 +30,7 @@ User.create!(
   email: "lolodu35@gmail.com",
   password: "123456",
   nickname: "LoloDu35",
-  first_name: "Lauréne",
+  first_name: "Laurène",
   last_name: "Freyer",
   address: "Rennes",
   points: 55,
