@@ -4,7 +4,11 @@
   <h2><%= link_to reservation.activity.title, activity_path(reservation.activity) %></h2>
 <p>Propriétaire : <%= reservation.activity.user.nickname %></p>
 <p>Statut: <%= reservation.status %></p>
-
+  <% if reservation.status == "accepted" %>
+    <% unless reservation.activity.chatroom.nil? %>
+      <%= link_to reservation.activity.title, activity_chatroom_path(reservation.activity, reservation.activity.chatroom) %>
+    <% end %>
+  <% end %>
 <% end %>
 
   <%= link_to "retour", message_reservation_path, class: "footer-link"%>

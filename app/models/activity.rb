@@ -6,6 +6,7 @@ class Activity < ApplicationRecord
   has_many :reservations
   has_many :likes
   has_many :users, through: :reservations
+  has_one :chatroom
 
   has_one_attached :photo
   validate :photo_size_validation

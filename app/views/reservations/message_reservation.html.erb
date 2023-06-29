@@ -6,8 +6,8 @@
 
 <h1>Mes conversations</h1>
 
-<% @reservations.each do |reservation| %>
-  <% unless reservation.chatrooms.empty? %>
-    <%= link_to 'chatroom', reservation_chatroom_path(reservation, reservation.chatrooms.first) %>
+<% @activities.each do |activity| %>
+  <% unless activity.chatroom.nil? %>
+    <%= link_to activity.title, activity_chatroom_path(activity, activity.chatroom) %>
   <% end %>
 <% end %>

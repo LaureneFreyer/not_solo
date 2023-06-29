@@ -53,6 +53,7 @@ class ActivitiesController < ApplicationController
     end
 
     if @activity.save
+      @chatroom = Chatroom.create!(name: @activity.title, activity: @activity)
       redirect_to activity_path(@activity)
     else
       flash.now[:alert] = "Veuillez corriger les erreurs dans le formulaire."
