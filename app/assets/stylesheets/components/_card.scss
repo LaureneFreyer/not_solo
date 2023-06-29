@@ -38,6 +38,7 @@
   line-height: 26px;
 }
 
+
 .profil-card .profil-content{
   text-align: left;
   padding: 10px;
@@ -46,19 +47,24 @@
   align-items: center;
 }
 
+
 .profil-card .profil-content .first-row {
   display: flex;
   flex-basis: 100%;
   justify-content: space-between;
 }
+.profil-card .profil-content .first-row p {
+  margin-right: 10px;
+}
+
+
 .profil-card .profil-content .second-row {
   flex-basis: 100%;
 }
+
+
 .profil-card .profil-content .third-row {
   flex-basis: 100%;
-}
-.profil-card .profil-content .first-row p {
-  margin-right: 10px;
 }
 
 .profil-card .profil-content .profil-description{
@@ -73,9 +79,6 @@
 
 //----------------------------------------------------------------------------//
 //----------------------------------------------------------------------------//
-
-
-
 
 .resum-annonce-card{
   background-color: rgba($color: white, $alpha: 0.5);
