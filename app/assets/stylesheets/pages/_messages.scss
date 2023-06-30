@@ -1,0 +1,36 @@
+.container-reservations {
+  margin: 0 auto;
+  margin-top: 65px;
+  width: 375px;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  h1 {
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+}
+.messages-btn {
+  margin-top: 40px;
+}
+.chatrooms-container {
+  margin-top: 60px;
+}
+.chatroom-card-link {
+  background-color: rgba(255,255,255,0.8);
+  margin: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid $bg-2rd;
+  padding: 10px;
+  color: $primary-color;
+  font-size: 17px;
+}
+.icon-messages {
+  color: $primary-color;
+  font-size: 40px;
+  padding-right: 20px;
+  padding-left: 5px;
+}

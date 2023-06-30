@@ -16,10 +16,11 @@
 }
 .chatroom {
   background: transparent;
-  margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
+  margin-top: 65px;
+  margin-bottom: 10px;
   justify-content: space-between;
   flex-grow: 1;
   color: $primary-color;
@@ -27,7 +28,6 @@
   h1 {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
     font-weight: lighter;
     font-size: 25px;
   }
@@ -53,6 +53,8 @@
   width: 340px;
 }
 .chatroom-container-activity {
-  background-color: rgba(255,255,255, 0.7);
+  background-color: rgb(255,255,255);
   border-radius: 15px;
+  padding: 10px;
+  border: 2px solid white;
 }

@@ -1,19 +1,28 @@
-<h1>Mes demandes de réservation</h1>
+<div class="container-reservations">
+  <h1>Mes demandes de participation</h1>
 
-<% @requests.each do |request| %>
-  <h2><%= link_to request.activity.title, activity_path(request.activity) %></h2>
-  <p>Utilisateur : <%= request.user.nickname %></p>
-<p>Statut: <%=
-    if request.status == "pending"
-      "en attente"
-    else
-      request.status
-    end
-  %></p>
-  <% if request.status == "pending" %>
-    <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-success' %>
-    <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-danger' %>
+<div class="requests-container">
+  <% @requests.each do |request| %>
+    <div class="requests-card">
+      <div class="requests-infos-user">
+        <img src="<%= request.user.photo.attached? ? cl_image_path(request.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= request.user.nickname %>" class="avatar-footer">
+        <p><%= request.user.nickname %></p>
+      </div>
+      <h2><%= link_to request.activity.title, activity_path(request.activity) %></h2>
+    <p><%=
+        if request.status == "pending"
+          "en attente"
+        else
+          request.status
+        end
+      %></p>
+      <% if request.status == "pending" %>
+        <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-success' %>
+        <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
 
-<%= link_to "retour", message_reservation_path, class: "footer-link" %>
+  <%= link_to "retour", message_reservation_path, class: "footer-link" %>
+  </div>
+</div>
