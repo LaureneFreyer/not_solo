@@ -1,7 +1,21 @@
-<div id="message-<%= message.id %>">
+<% if message.user == current_user %>
+
+<div class="d-flex justify-content-end">
+  <div id="chatroom-message-current-user" >
+          <small>
+            <strong><%= message.user.nickname %></strong>
+            <i><%= message.created_at.strftime("%d/%m/%Y à %lh%M") %></i>
+          </small>
+          <p><%= message.content %></p>
+  </div>
+</div>
+  <% else %>
+
+<div id="chatroom-message-user">
         <small>
           <strong><%= message.user.nickname %></strong>
-          <i><%= message.created_at.strftime("%a %e %b à %l:%M") %></i>
+          <i><%= message.created_at.strftime("%d/%m/%Y à %lh%M") %></i>
         </small>
         <p><%= message.content %></p>
-      </div>
+</div>
+<% end %>

@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
   end
 
   def accept
-    @reservation.status = 'acceptée'
+    @reservation.status = 'confirmée'
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_requests_path }
@@ -38,7 +38,7 @@ class ReservationsController < ApplicationController
   end
 
   def reject
-    @reservation.status = 'refusée'
+    @reservation.status = 'rejetée'
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_requests_path }

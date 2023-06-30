@@ -1,6 +1,17 @@
 <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @chatroom.name %></h1>
 
+  <div class="chatroom-container-activity sticky-top">
+  <div class="btn-back btn-text">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
+    <h1><%= @chatroom.name %></h1>
+    <div class="chatroom-card-activity">
+      <p><i class="fa-solid fa-calendar-days"></i> <%= @chatroom.activity.start_date.strftime("%d/%m/%Y à %lh%M") %></p>
+      <p><i class="fa-solid fa-users"></i> <%= @chatroom.activity.max_participants %></p>
+    </div>
+  </div>
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
       <%= render "messages/message", message: message %>
@@ -8,12 +19,15 @@
   </div>
 </div>
 
-<%= simple_form_for [@activity, @chatroom, @message],
-  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@chatroom.name}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
-<% end %>
+<div class="chatroom-form-message d-flex justify-content-center">
+  <%= simple_form_for [@activity, @chatroom, @message],
+    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+    <%= f.input :content,
+      input_html: { class: "chatroom-input"},
+      label: false,
+      placeholder: "Message au groupe #{@chatroom.name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= button_tag(class: "btn-chatroom") do %><i class="fa-regular fa-paper-plane btn-tag-icon"></i><% end %>
+  <% end %>
+</div>
