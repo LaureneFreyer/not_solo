@@ -17,14 +17,15 @@
       data-map-user-coordinates-value="<%= @user_coordinates.to_json %>">
     </div>
   </div>
-    <div class="cards-container">
+</div>
       <% @activities.each do |activity| %>
         <div class="resum-annonce-card">
           <%= link_to activity_path(activity) do %>
             <p><%= activity.title %></p>
           <% end %>
-            <p><i class="fa-solid fa-calendar-days"></i><%= activity.start_date %></p>
-          </div>
-          <% end %>
-    </div>
+          <div class="first-row">
+            <p><i class="fa-solid fa-calendar-days"></i><%= activity.start_date.strftime("%d/%m/%Y à %lh%M") %></p>
+            <p><i class="fa-solid fa-users"></i><%= activity.max_participants %></p>
 </div>
+</div>
+          <% end %>

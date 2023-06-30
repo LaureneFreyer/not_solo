@@ -279,8 +279,18 @@ puts "Création des activitées..."
     end_date: DateTime.now + rand(31..60).days,
     user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
+
+  Activity.all.each do |activity|
+    Chatroom.create!(
+      activity: activity,
+      name: activity.title
+    )
+  end
+
 end
 puts "Création des likes..."
+
+
 
 # Génération de likes aléatoires pour l'admin
 activities = Activity.all
