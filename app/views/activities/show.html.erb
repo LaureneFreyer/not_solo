@@ -20,8 +20,10 @@
   <div class= "annonce-content">
 
     <div class="first-row">
-      <p><i class="fa-solid fa-calendar-days"></i> du <%= @activity.start_date %></p>
-      <p>au <%= @activity.end_date %></p>
+
+<p><i class="fa-solid fa-calendar-days"></i> du <%= l(@activity.start_date, format: :short) %></p>
+<p>au <%= l(@activity.end_date, format: :short) %></p>
+
       <p><i class="fa-solid fa-users"></i> <%= @activity.max_participants %></p>
     </div>
 
@@ -45,10 +47,11 @@
     </div>
 
   <% content_for :meta_title, @activity.title %>
-  <% content_for :meta_description, @activity.content %>
-  <% if @activity.photo.present? %>
-    <% content_for :meta_image, cl_image_path(@activity.photo) %>
-  <% else %>
-    <% content_for :meta_image, 'URL image par défaut' %>
-  <% end %>
-</div>
+
+<% content_for :meta_description, @activity.content %>
+<% if @activity.photo.attached? %>
+  <% content_for :meta_image, url_for(@activity.photo) %>
+<% else %>
+  <% content_for :meta_image, 'URL image par défaut' %>
+<% end %>
+
