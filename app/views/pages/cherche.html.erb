@@ -1,15 +1,17 @@
   <div class="container-btn-category">
+<h1>Rehercher une annonce</h1>
     <div class= "first-row">
       <button class='btn-categorie-menu'>
         <%= link_to 'Autour de moi', activities_path, class:'btn-text'%>
       </button>
       <button class='btn-categorie-menu'>
-        <%= link_to 'Catégories', activity_categories_path, class: 'btn-text' %>
+        <%= link_to 'Par catégorie', activity_categories_path, class: 'btn-text' %>
       </button>
     </div>
+    <img src= "https://i.gifer.com/YAg6.gif" class="gif">
     <div class= "second-row">
       <button class='btn-categorie-menu'>
-        <%= link_to 'Favoris', profile_favorites_path, class:'btn-text' %>
+        <%= link_to 'Mes favoris', profile_favorites_path, class:'btn-text' %>
       </button>
       <button class='btn-categorie-menu'>
         <%= link_to 'Mes Annonces', my_activities_path, class: 'btn-text' %>
