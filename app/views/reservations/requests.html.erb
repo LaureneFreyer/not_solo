@@ -8,18 +8,27 @@
         <img src="<%= request.user.photo.attached? ? cl_image_path(request.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= request.user.nickname %>" class="avatar-footer">
         <p><%= request.user.nickname %></p>
       </div>
-      <h2><%= link_to request.activity.title, activity_path(request.activity) %></h2>
+      <h2><%= link_to request.activity.title, activity_path(request.activity), class: "btn-text-messages" %></h2>
     <p><%=
         if request.status == "pending"
-          "en attente"
-        else
-          request.status
+          ""
+        elsif
+            request.status == "accepted"
+            "confirmé"
+          else
+            "rejeté"
         end
       %></p>
-      <% if request.status == "pending" %>
-        <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-success' %>
-        <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn btn-danger' %>
-      <% end %>
+      <div class="requests-accept-reject">
+        <% if request.status == "pending" %>
+          <button class='btn-requests'>
+            <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn-text-messages' %>
+          </button>
+          <button class='btn-requests'>
+            <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn-text-messages' %>
+          </button>
+        <% end %>
+      </div>
     </div>
   <% end %>
 

@@ -1,20 +1,35 @@
-<h1>Mes activités</h1>
+<div class="container-reservations">
+  <h1>Mes activités</h1>
 
-<% @reservations.each do |reservation| %>
-  <h2><%= link_to reservation.activity.title, activity_path(reservation.activity) %></h2>
-  <p>Propriétaire : <%= link_to reservation.activity.user.nickname, autres_path(reservation.activity.user) %></p>
-<p>Statut: <%=
-    if reservation.status == "pending"
-      "en attente"
-    else
-      reservation.status
-    end
-  %></p>
+<div class="requests-container">
+  <% @reservations.each do |reservation| %>
+    <div class="requests-card">
+      <div class="requests-infos-user">
+        <img src="<%= reservation.activity.user.photo.attached? ? cl_image_path(reservation.activity.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= reservation.activity.user.nickname %>" class="avatar-footer">
+        <p><%= link_to reservation.activity.user.nickname, autres_path(reservation.activity.user), class:"btn-text-messages" %></p>
+      </div>
+      <div class="requests-infos-activity">
+        <h2><%= link_to reservation.activity.title, activity_path(reservation.activity), class:"btn-text-messages" %></h2>
+        <p><%= reservation.activity.start_date.strftime("%d/%m/%Y à %lh%M") %></p>
+      </div>
+      <p><%=
+          if reservation.status == "pending"
+            "en attente"
+          elsif
+            reservation.status == "accepted"
+            "confirmé"
+          else
+            "rejeté"
+          end
+        %></p>
+      </div>
   <% if reservation.status == "accepted" %>
     <% unless reservation.activity.chatroom.nil? %>
       <%= link_to reservation.activity.title, activity_chatroom_path(reservation.activity, reservation.activity.chatroom) %>
     <% end %>
   <% end %>
 <% end %>
+</div>
 
 <%= link_to "retour", message_reservation_path, class: "footer-link" %>
+</div>
