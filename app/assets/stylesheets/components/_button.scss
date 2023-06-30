@@ -5,6 +5,13 @@
   color: white;
   font-size: 16px;
 }
+.btn-text-messages {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none !important;
+  color: $primary-color;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 .btn-back{
   margin-top: -8px;
@@ -47,7 +54,6 @@
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
 }
-
 .btn-chatroom {
   background-color: transparent;
   border: none;
@@ -56,6 +62,7 @@
   color: $primary-color;
   font-size: 25px;
 }
+
 //---------------------display des boutons------------------------//
 // !!!!!!!! Très important !!!!!! Ne pas toucher à ce code !!!!!//
 

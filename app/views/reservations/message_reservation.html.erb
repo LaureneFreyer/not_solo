@@ -1,13 +1,24 @@
-<h1>Message Reservation</h1>
+<div class="container-reservations">
+  <h1>Mes messages</h1>
 
-<%= link_to 'Mes Reservations', reservations_path, class: 'btn btn-primary' %>
+<div class="messages-btn">
+  <button class='btn-categorie-menu'>
+    <%= link_to 'Mes réservations', reservations_path, class: 'btn-text' %>
+  </button>
 
-<%= link_to 'Mes demandes de reservations', reservations_requests_path, class: 'btn btn-primary' %>
+  <button class='btn-categorie-menu'>
+    <%= link_to 'Mes demandes', reservations_requests_path, class: 'btn-text' %>
+  </button>
+</div>
 
-<h1>Mes conversations</h1>
-
-<% @activities.each do |activity| %>
-  <% unless activity.chatroom.nil? %>
-    <%= link_to activity.title, activity_chatroom_path(activity, activity.chatroom) %>
-  <% end %>
-<% end %>
+<div class="chatrooms-container">
+    <% @activities.each do |activity| %>
+      <% unless activity.chatroom.nil? %>
+        <div class="chatroom-card-link">
+          <i class="fa-regular fa-comments icon-messages"></i>
+          <p>Nouveaux messages dans le groupe <%= link_to activity.title, activity_chatroom_path(activity, activity.chatroom), class:"btn-text-messages" %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
