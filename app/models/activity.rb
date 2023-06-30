@@ -11,6 +11,9 @@ class Activity < ApplicationRecord
   has_one_attached :photo
   validate :photo_size_validation
 
+  def current_participants
+    reservations.where(status: "validée").count
+  end
 
   CATEGORIES = ["Evénement sportif", "Sport/Fitness", "Concert", "Sortie en ville", "Randonnée", "Gastronomie", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Bénévolat", "Vie quotidienne", "Cinéma", "Plein air", "Atelier"]
   validates :category, presence: true, inclusion: { in: CATEGORIES }

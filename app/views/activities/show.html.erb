@@ -26,7 +26,7 @@
     <p>au <%= l(@activity.end_date, format: :short) %></p>
   <% end %>
 
-      <p><i class="fa-solid fa-users"></i> <%= @activity.max_participants %></p>
+  <p><i class="fa-solid fa-users"></i> <%= @activity.current_participants %> / <%= @activity.max_participants %></p>
     </div>
 
     <div class="second-row">

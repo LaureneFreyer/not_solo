@@ -91,6 +91,10 @@ class ActivitiesController < ApplicationController
     @requests = Reservation.where(status: 'envoyée')
   end
 
+  def current_participants
+    reservations.where(status: "validée").count
+  end
+
 
 
 

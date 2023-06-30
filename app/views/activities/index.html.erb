@@ -2,7 +2,7 @@
 <div class="activities-container">
   <div class="wrap-search">
       <%= form_with url: activities_path, method: 'get', class: "d-flex" do |form| %>
-        <%= form.text_field :query, class: "input-search", placeholder: "Adresse" %>
+        <%= form.text_field :query, class: "input-search", placeholder: "Activitée" %>
         <%= button_tag( :class => "search-button") do %>
         <i class="fa-solid fa-magnifying-glass search-icon" style="color: #6A9696;"></i>
         <% end %>
