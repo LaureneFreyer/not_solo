@@ -61,6 +61,7 @@
 
 
 .category-container {
+  color: $primary-color;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -68,6 +69,7 @@
   margin-top: 150px;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 50px;
 
   .btn-categorie {
     margin: 10px;
