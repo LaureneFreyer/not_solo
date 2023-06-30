@@ -11,7 +11,9 @@
   <p><%= @user.points %>points</p>
 
 
-  <%= link_to edit_user_registration_path do %><i class="fa-solid fa-pencil icon"></i><% end %>
+<%= link_to edit_user_registration_path, class: "no-style" do %>
+  <i class="fa-solid fa-pencil"></i>
+<% end %>
     <div class= "profil-content">
       <div class="first-row">
 <p>

@@ -31,3 +31,13 @@ body {
   width: auto;
   background-color: transparent;
 }
+
+a {
+  color: inherit;      /* Change la couleur du lien pour correspondre à la couleur du texte environnant */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+a:hover {
+  color: inherit; /* Change la couleur du lien lorsque la souris est dessus pour correspondre à la couleur du texte environnant */
+  text-decoration: none; /* Supprime le soulignement lorsque la souris est dessus */
+}
