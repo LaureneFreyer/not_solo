@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get 'profile', to: 'profiles#show', as: 'profile'
+  get 'profiles/:id', to: 'profiles#autres', as: 'autres'
+
 
   resources :activities, except: [:show, :destroy] do
     resources :chatrooms, only: [:show] do
