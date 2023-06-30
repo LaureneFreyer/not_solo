@@ -41,20 +41,20 @@ class Activity < ApplicationRecord
 
 CATEGORY_IMAGES = {
   "Evénement sportif" => "event-sportif.jpg",
-  "Sport/Fitness" => "sport-fitness.jpg",
+  "Sport/Fitness" => "sport.jpg",
   "Concert" => "concert.jpg",
   "Sortie en ville" => "sortie.jpg",
-  "Randonnée" => "randonnée.jpg",
-  "Gastronomie" => "Gastronomy.jpg",
+  "Randonnée" => "randonnee.jpg",
+  "Gastronomie" => "gastronomy.jpg",
   "Voyage" => "voyage.jpg",
-  "Visite" => "sport-fitness.jpg",
+  "Visite" => "visite.jpg",
   "Jeux" => "jeux.jpg",
-  "Sortie culturelle" => "sortie-culturelle.jpg",
-  "Bénévolat" => "sport-fitness.jpg",
-  "Vie quotidienne" => "vie quotidienne.jpg",
+  "Sortie culturelle" => "sortie_culturelle.jpg",
+  "Bénévolat" => "sport.jpg",
+  "Vie quotidienne" => "vie.jpg",
   "Cinéma" => "cinema.jpg",
-  "Plein air" => "randonnée.jpg",
-  "Atelier" => "Atelier.jpg",
+  "Plein air" => "randonnee.jpg",
+  "Atelier" => "atelier.jpg",
 }
 
   private

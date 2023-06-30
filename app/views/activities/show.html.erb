@@ -1,37 +1,53 @@
-<h1><%= @activity.title %></h1>
 
-<p>Organisé par: <%= link_to @activity.user.nickname, autres_path(@activity.user) %></p>
+<div class="annonce-card">
+  <div class="btn-back btn-text">
+    <%= link_to cherche_path do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
+  <h1><%= @activity.title %></h1>
 
-<p>Catégorie: <%= @activity.category %></p>
+  <div class="fav-btn">
+    <% unless current_user.likes.exists?(activity: @activity) %>
+      <%= button_to like_activity_path(@activity), method: :post, class: 'btn-text btn-fav' do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+    <% end %>
+  </div>
 
-<p>Description: <%= @activity.content %></p>
+  <img class="img-event-large" src="https://images.unsplash.com/photo-1589652717406-1c69efaf1ff8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">
 
-<p>Adresse: <%= @activity.address %></p>
+  <div class= "annonce-content">
 
-<p>Date de début: <%= @activity.start_date %></p>
+    <div class="first-row">
+      <p><i class="fa-solid fa-calendar-days"></i> du <%= @activity.start_date %></p>
+      <p>au <%= @activity.end_date %></p>
+      <p><i class="fa-solid fa-users"></i> <%= @activity.price_person %></p>
+    </div>
 
-<p>Date de fin: <%= @activity.end_date %></p>
+    <div class="second-row">
+      <p><i class="fa-solid fa-location-pin"style="margin-right: 15px;"></i><%= @activity.address %></p>
+    </div>
 
-<p>Prix par personne: <%= @activity.price_person %></p>
+    <div class="annonce-description">
+      <p><%= @activity.content %></p>
+    </div>
+  </div>
+    <div class="annonce-btn-container">
+      <% unless current_user.likes.exists?(activity: @activity) %>
+        <%= button_to 'Ajouter aux favoris', like_activity_path(@activity), method: :post, class: 'btn-text btn-others' %>
+      <% end %>
 
-<% unless current_user.likes.exists?(activity: @activity) %>
-  <%= button_to 'Ajouter aux favoris', like_activity_path(@activity), method: :post, class: 'btn btn-primary' %>
-<% end %>
+      <% unless current_user == @activity.user %>
+        <%= button_to 'Réserver', activity_reservations_path(@activity), method: :post, class: 'btn-text btn-others' %>
+      <% end %>
+    </div>
 
-<% unless current_user == @activity.user %>
-  <%= button_to 'Réserver', activity_reservations_path(@activity), method: :post, class: 'btn btn-primary' %>
-<% end %>
-
-
-
-
-
-<%= link_to 'Retour', cherche_path %>
-
-<% content_for :meta_title, @activity.title %>
-<% content_for :meta_description, @activity.content %>
-<% if @activity.photo.present? %>
-  <% content_for :meta_image, url_for(@activity.photo) %>
-<% else %>
-  <% content_for :meta_image, 'URL image par défaut' %>
-<% end %>
+  <% content_for :meta_title, @activity.title %>
+  <% content_for :meta_description, @activity.content %>
+  <% if @activity.photo.present? %>
+    <% content_for :meta_image, cl_image_path(@activity.photo.path) %>
+  <% else %>
+    <% content_for :meta_image, 'URL image par défaut' %>
+  <% end %>
+</div>
