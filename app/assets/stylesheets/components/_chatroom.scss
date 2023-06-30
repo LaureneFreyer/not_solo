@@ -1,30 +1,58 @@
+#chatroom-message-user {
+  color: black;
+  border-radius: 15px;
+  background-color : $bg-3rd;
+  padding: 8px;
+  margin: 5px;
+  width: 225px;
+}
+#chatroom-message-current-user {
+  color: white;
+  border-radius: 15px;
+  background-image: $blue-gradient;
+  padding: 8px;
+  margin: 5px;
+  width: 225px;
+}
 .chatroom {
-  background: white;
+  background: transparent;
   margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-
+  color: $primary-color;
+  overflow: scroll;
   h1 {
-    border-bottom: 1px solid $gray-200;
-    margin-bottom: 0;
-    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    font-weight: lighter;
+    font-size: 25px;
   }
-
   .messages {
     height: 100%;
-    overflow: scroll;
     padding: 1rem;
   }
-
-  #new_message {
-    border-top: 1px solid $gray-200;
-    padding: 1rem;
-
-    .form-group {
-      margin-bottom: 0;
-    }
-  }
+}
+.chatroom-card-activity {
+  border-radius: 10px;
+  background-color: white;
+  border: 0.5px solid lightgrey;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+.chatroom-form-message {
+  padding-bottom: 50px;
+}
+.chatroom-input {
+  border: 0.5px solid $primary-color;
+  height: 10px;
+  width: 340px;
+}
+.chatroom-container-activity {
+  background-color: rgba(255,255,255, 0.7);
+  border-radius: 15px;
 }

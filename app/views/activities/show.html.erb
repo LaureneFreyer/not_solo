@@ -22,7 +22,9 @@
     <div class="first-row">
 
 <p><i class="fa-solid fa-calendar-days"></i> du <%= l(@activity.start_date, format: :short) %></p>
-<p>au <%= l(@activity.end_date, format: :short) %></p>
+  <% if @activity.end_date.present? %>
+    <p>au <%= l(@activity.end_date, format: :short) %></p>
+  <% end %>
 
       <p><i class="fa-solid fa-users"></i> <%= @activity.max_participants %></p>
     </div>
@@ -36,11 +38,11 @@
     </div>
   </div>
     <div class="annonce-btn-container">
-    <% if @activity.reservations.exists? && @activity.reservations.status == "acceptée" %>
-      <% unless @activity.chatroom.nil? %>
-        <%= button_to 'Joindre', activity_chatroom_path(@activity, @activity.chatroom), method: :get, class: 'btn-text btn-others' %>
-      <% end %>
-    <% end %>
+    <%# <% if @activity.reservations.exists? && reservation.status == "acceptée" %>
+      <%# <% unless @activity.chatroom.nil? %>
+        <%# <%= button_to 'Joindre', activity_chatroom_path(@activity, @activity.chatroom), method: :get, class: 'btn-text btn-others' %>
+      <%# <% end %>
+    <%# <% end %>
       <% unless current_user == @activity.user %>
         <%= button_to 'Réserver', activity_reservations_path(@activity), method: :post, class: 'btn-text btn-others' %>
       <% end %>
@@ -54,4 +56,3 @@
 <% else %>
   <% content_for :meta_image, 'URL image par défaut' %>
 <% end %>
-
