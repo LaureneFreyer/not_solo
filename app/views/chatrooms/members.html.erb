@@ -1,0 +1,24 @@
+<div class="profil-card">
+  <div class="btn-back btn-text">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
+  <div>
+    <h1><%= @activity.title %></h1>
+
+    <div class="members-organisateur">
+      <p><%= @organisateur.nickname %></p>
+      <img src="<%= @organisateur.photo.attached? ? cl_image_path(@organisateur.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= @organisateur.nickname %>" class="avatar">
+    </div>
+
+    <div class="members-participants">
+      <% @reservations.each do |reservation| %>
+        <div class="participant">
+          <img src="<%= reservation.user.photo.attached? ? cl_image_path(reservation.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= reservation.user.nickname %>" class="avatar-footer">
+          <%= link_to reservation.user.nickname, autres_path(reservation.user, params1: reservation.activity) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

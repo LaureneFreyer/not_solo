@@ -4,10 +4,13 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'profiles#show', as: 'profile'
   get 'profiles/:id', to: 'profiles#autres', as: 'autres'
-
+  resources :profiles, only: [:autres] do
+    resources :ratings, only: [:new, :create]
+  end
 
   resources :activities, except: [:show, :destroy] do
     resources :chatrooms, only: [:show] do
+      get "members", to: "chatrooms#members"
       resources :messages, only: [:create]
     end
     resources :reservations, only: [:new, :create]
@@ -21,7 +24,6 @@ Rails.application.routes.draw do
   resources :activities, only: [:show]
 
   resources :reservations, only: [:index, :edit, :update] do
-    resources :ratings, only: [:new, :create]
     member do
       patch :accept
       patch :reject
