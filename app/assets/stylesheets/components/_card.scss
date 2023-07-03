@@ -1,11 +1,4 @@
-.annonce-card{
-  background-color: rgba($color: white, $alpha: 0.5);
-  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
-  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
-  width: 360px;
-  height: fit-content;
-  color: $primary-color;
-}
+
 
 //----------------------------------------------------------------------------//
 // ------------------- Profil card css (show.html.erb) -----------------------//
@@ -81,7 +74,7 @@
 // ------------------- Resumé annonces cards  -----------------------//
 //----------------------------------------------------------------------------//
 
-.resum-annonce-card{
+.resum-annonce-card {
   background-color: rgba($color: white, $alpha: 0.5);
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
@@ -93,17 +86,21 @@
   margin-right: 20px;
   margin-left: 20px;
   margin-top: 20px;
+  display: flex; /* Ajout de display: flex */
+  align-items: center; /* Ajout de align-items: center */
 }
-.resum-annonce-card p{
-  display: flex;
+
+.resum-annonce-card p {
+  flex: 1; /* Pour permettre aux paragraphes de s'étendre sur toute la largeur disponible */
 }
+
 .resum-annonce-card .first-row {
   display: flex;
   flex-basis: 100%;
   justify-content: space-between;
 }
 
-.resum-annonce-card .first-row i{
+.resum-annonce-card .first-row i {
   margin-right: 5px;
 }
 
@@ -123,6 +120,7 @@
 
 
 //----------------------------------------------------------------------------//
+// ---------------------------- annonces cards  ------------------------------//
 //----------------------------------------------------------------------------//
 
 .annonce-card{
