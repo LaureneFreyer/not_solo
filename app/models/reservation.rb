@@ -4,8 +4,6 @@ class Reservation < ApplicationRecord
   belongs_to :user
 
   has_many :chatrooms
-  has_many :ratings
-
   enum status: { pending: "en attente", accepted: "confirmée", rejected: "refusée" }
 
   private
