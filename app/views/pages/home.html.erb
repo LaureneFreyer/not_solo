@@ -10,7 +10,7 @@
           <!-- Slides -->
           <div id="scroll-pane">
             <% @activities.sample(15).each_with_index do |activity, index| %>
-              <div id="scroll-pane img <%= 'active' if index == 0 %>">
+              <div class="scroll-pane <%= 'active' if index == 0 %>">
                 <%= link_to activity_path(activity) do %>
                   <% if activity.photo.attached? %>
                     <%= image_tag url_for(activity.photo), alt: activity.title %>
@@ -33,7 +33,7 @@
         <!-- Slides -->
         <div id="scroll-pane">
           <% @likes.each_with_index do |like, index| %>
-            <div id="scroll-pane img <%= 'active' if index == 0 %>">
+            <div class="scroll-pane <%= 'active' if index == 0 %>">
               <%= link_to activity_path(like.activity) do %>
                 <% if like.activity.photo.attached? %>
                   <%= image_tag url_for(like.activity.photo), alt: like.activity.title %>
