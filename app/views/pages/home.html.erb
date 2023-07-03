@@ -5,44 +5,35 @@
       <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= current_user.nickname %>" class="avatar">
     </div>
 
-    <div class="home-suggests">
-      <p class="title-home">Suggestions pour vous</p>
-      <div id="carouselSuggestions" class="carousel slide" data-bs-ride="carousel">
-        <!-- Slides -->
-        <div class="carousel-inner">
-          <% @activities.sample(6).each_with_index do |activity, index| %>
-            <div class="carousel-item <%= 'active' if index == 0 %>">
-              <%= link_to activity_path(activity) do %>
-                <% if activity.photo.attached? %>
-                  <%= image_tag url_for(activity.photo), alt: activity.title %>
-                <% else %>
-                  <!-- Image par défaut si aucune photo n'est attachée à l'activité -->
-                  <%= image_tag "https://images.unsplash.com/photo-1467139701929-18c0d27a7516?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", alt: activity.title %>
+<p class="title-home">Suggestions pour vous</p>
+  <div class="slider-container">
+          <!-- Slides -->
+          <div id="scroll-pane">
+            <% @activities.sample(15).each_with_index do |activity, index| %>
+              <div id="scroll-pane img <%= 'active' if index == 0 %>">
+                <%= link_to activity_path(activity) do %>
+                  <% if activity.photo.attached? %>
+                    <%= image_tag url_for(activity.photo), alt: activity.title %>
+                  <% else %>
+                    <!-- Image par défaut si aucune photo n'est attachée à l'activité -->
+                    <%= image_tag "https://images.unsplash.com/photo-1467139701929-18c0d27a7516?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", alt: activity.title %>
+                  <% end %>
+                  <h2><%= activity.category %></h2>
+                  <p><%= activity.title %></p>
                 <% end %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+              </div>
+            <% end %>
+          </div>
+  </div>
 
-        <!-- Contrôles -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSuggestions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Précédent</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselSuggestions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Suivant</span>
-        </button>
-      </div>
-    </div>
 
-    <div class="home-likes">
-      <p class="title-home">Vos favoris</p>
-      <div id="carouselFavorites" class="carousel slide" data-bs-ride="carousel">
+
+<p class="title-home">Vos favoris</p>
+  <div class="slider-container">
         <!-- Slides -->
-        <div class="carousel-inner">
+        <div id="scroll-pane">
           <% @likes.each_with_index do |like, index| %>
-            <div class="carousel-item <%= 'active' if index == 0 %>">
+            <div id="scroll-pane img <%= 'active' if index == 0 %>">
               <%= link_to activity_path(like.activity) do %>
                 <% if like.activity.photo.attached? %>
                   <%= image_tag url_for(like.activity.photo), alt: like.activity.title %>
@@ -50,21 +41,12 @@
                   <!-- Image par défaut si aucune photo n'est attachée à l'activité -->
                   <%= image_tag "https://images.unsplash.com/photo-1467139701929-18c0d27a7516?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", alt: like.activity.title %>
                 <% end %>
+                  <h2><%= like.activity.category %></h2>
+                  <p><%= like.activity.title %></p>
               <% end %>
             </div>
           <% end %>
         </div>
-
-        <!-- Contrôles -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselFavorites" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Précédent</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselFavorites" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Suivant</span>
-        </button>
-      </div>
     </div>
   <% else %>
     <h1>Not Solo</h1>

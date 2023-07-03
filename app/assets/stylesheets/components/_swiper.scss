@@ -15,14 +15,84 @@
 //   border-radius: 10px;
 // }
 
-.carousel-item img {
-  height: 100px;
-  width: 100px;
-  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
-  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
-  border-radius: 10px;
+.title-home{
+  margin-left:10px;
+  margin-top: 10px;
+}
+.slider-container {
+  display: inline-flex;
+  position: relative;
+  width: 390px;
+  background-color: rgba($color: #D2CDBB, $alpha: 0.5);
 }
 
-.carousel-inner {
-  padding-left: 100px;
+#scroll-pane {
+  /* position: relative; */
+  display: flex;
+
+  /* 📘 transition: doesnt affect snapping timing */
+  /* transition: all 3s linear; */
+  /* scroll-snap-type: x proximity; */
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+
+  width: 100%;
+  border-radius: 10px;
+}
+#scroll-pane h2{
+color: black;
+font-size: 12px;
+margin: 8px;
+}
+#scroll-pane p{
+  color: black;
+  font-size: 10px;
+  margin: 8px;
+  }
+
+#scroll-pane::-webkit-scrollbar {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  top: calc(50% - (48px / 2)); /* 50% - (half-length of the arrow icon) */
+
+  text-align: center;
+  line-height: 5;
+  background-color: black;
+  color: rgb(223, 223, 223);
+  border: 0px white;
+  box-shadow: 0 0 0px 10px rgb(113, 113, 113);
+
+  border-radius: 100%;
+  cursor: pointer;
+  z-index: 3;
+}
+.arrow-left {
+  left: 10px;
+}
+.arrow-right {
+  right: 10px;
+}
+
+#scroll-pane img {
+  margin: 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0px rgb(123, 123, 123);
+  height: 150px;
+  width: 150px;
+
+  scroll-snap-align: center; /* can be start | center | end */
+
+  /* user-drag: none; */
+  /* -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none; */
+
+  pointer-events: none;
 }
