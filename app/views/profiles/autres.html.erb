@@ -5,7 +5,24 @@
 
   <p><%= @user.points %> points</p>
 
-  <%= link_to "Noter", new_profile_rating_path(@user, act: params[:params1]) %>
+
+  <% if @sum == 5 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+  <% elsif @sum >= 4 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 3 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 2 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 1 %>
+    <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 0 %>
+    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% end %>
+
+<%= link_to new_profile_rating_path(@user, act: params[:params1]), class: "no-style" do %>
+  <i class="fa-solid fa-pencil"></i>
+<% end %>
 
   <div class="profil-content">
     <div class="first-row">

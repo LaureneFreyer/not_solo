@@ -10,6 +10,22 @@
   </div>
   <p><%= @user.points %>points</p>
 
+<% unless @sum.nil? %>
+  <% if @sum == 5 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+  <% elsif @sum >= 4 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 3 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 2 %>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 1 %>
+    <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% elsif @sum >= 0 %>
+    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  <% end %>
+<% end %>
+
 <%= link_to edit_user_registration_path, class: "no-style" do %>
   <i class="fa-solid fa-pencil"></i>
 <% end %>
