@@ -2,6 +2,8 @@ class ActivitiesController < ApplicationController
   before_action :set_user_address, only: :index
 
   def index
+    session[:current_page] = 'cherche'
+
     if params[:query].present?
       sql_query = <<~SQL
         activities.title ILIKE :query
