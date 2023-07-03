@@ -18,3 +18,47 @@
 .container-btn-category h1{
   color: $primary-color;
 }
+
+/////////////////////////////// SEPARATOR ///////////////////////////////
+
+.separator {
+  position: relative;
+  width: 200px;
+  height: 3px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.separator:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 0;
+  height: 3px;
+  background: transparent;
+  animation: separator-anim 8s linear infinite;
+}
+
+@keyframes separator-anim {
+  25% {
+    width: calc(100% + 6px);
+  }
+  38% {
+    width: calc(103% + 6px);
+  }
+  50% {
+    background: #000000;
+  }
+  62% {
+    background: #a9a9a9;
+  }
+  75% {
+    width: calc(103% + 6px);
+  }
+  88% {
+    left: auto;
+    right: -10px;
+    width: 0;
+  }
+}

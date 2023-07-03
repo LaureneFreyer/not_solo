@@ -9,7 +9,7 @@
     <h1><%= @chatroom.name %></h1>
     <div class="chatroom-card-activity">
       <p><i class="fa-solid fa-calendar-days"></i> <%= @chatroom.activity.start_date.strftime("%d/%m/%Y à %lh%M") %></p>
-      <p><i class="fa-solid fa-users"></i> <%= @chatroom.activity.max_participants %></p>
+      <p><i class="fa-solid fa-users"></i> <%= link_to @chatroom.activity.current_participants, activity_chatroom_members_path(@chatroom, @chatroom.activity) %></p>
     </div>
   </div>
   <div class="messages" data-chatroom-subscription-target="messages">

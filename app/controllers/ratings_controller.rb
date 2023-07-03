@@ -1,28 +1,23 @@
 class RatingsController < ApplicationController
 
-  def new
-    @rating = Rating.new
-    @reservation = Reservation.find(params[:reservations_id])
-    @user = User.find(params[:user_id])
-  end
-
   def create
+    raise
     @rating = Rating.new(rating_params)
-    @reservation = Reservation.find(params[:reservations_id])
-    @rating.reservation = @reservation
+    @activity = Activity.find(params[:act])
     @user = User.find(params[:user_id])
+    @rating.activity = @activity
     @rating.user = @user
-
     if @rating.save!
-      redirect_to reservation_path(@reservation), notice: 'Votre note a bien été ajoutée.'
+      redirect_to autres_path(@user), notice: 'Votre note a bien été ajoutée.'
     else
-      redirect_to reservation_path(@reservation), alert: 'Un problème est survenu lors de la notation.'
+      flash[:alert] = "Une erreur est survenue lors de l'ajout de votre note."
+      render :new
     end
   end
 
   private
 
   def rating_params
-    params.require(:rating).permit(:note)
+    params.require(:rating).permit(:note, :user_id, :activity_id)
   end
 end

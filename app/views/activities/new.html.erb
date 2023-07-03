@@ -1,22 +1,27 @@
+<link href="https://api.mapbox.com/mapbox-assembly/v1.3.0/assembly.min.css" rel="stylesheet">
+
 <div class="create-activity-card">
 
   <%= simple_form_for @activity do |f| %>
     <div class="form-create-title">
-      <%= f.input :title, label: false, placeholder: "Bowling", input_html: { class:"input-create-title" } %>
+      <%= f.input :title, label: "Nom de l'activitée", placeholder: "Bowling, Sortie au....", input_html: { class:"input-create-title" } %>
     </div>
     <div class="form-create-photo">
-      <%= f.input :photo, as: :file, label: false, input_html: { class: 'input-create-photo' } %>
+      <%= f.input :photo, as: :file, label: "Ajoutez une image d'illustration", input_html: { class: 'input-create-photo' } %>
     </div>
     <div class="form-create-dates">
-      <%= f.input :start_date, label: 'Début', as: :string, input_html: { data: { controller: "datepicker" }, class: "input-create-dates" }, placeholder: "28/03/2055" %>
+      <%= f.input :start_date, label: 'Début', as: :string, input_html: { data: { controller: "datepicker" }, class: "input-create-dates" }, placeholder: "28/07/2023" %>
       <%= f.input :end_date, label: 'Fin', as: :string, input_html: { data: { controller: "datepicker" }, class: "input-create-dates" } %>
     </div>
     <div class="form-create-address">
       <%= f.input :address, label: "Lieu de rendez-vous", input_html: {data: {address_autocomplete_target: "address"}, class:"d-none input-create-address"}, wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
     </div>
     <div class="form-create-category-participants">
-      <%= f.select :category, Activity::CATEGORIES, class: "input-create-category" %>
-      <%= f.input :max_participants, label: false, placeholder: "5", input_html: { class: "input-create-participants"} %>
+<%= f.input :category, as: :select, collection: Activity::CATEGORIES, label: "Catégorie", input_html: { class: "input-create-category" } %>
+    </div>
+    <div class="form-max-participants">
+      <%= f.input :max_participants, label: "Participants max.", placeholder: "ex: 5", input_html: { min: 1, class: "input-create-max-participants"} %>
+      <%= f.input :price_person, label: "Tarif à prévoir", placeholder: "Gratuit", input_html: { min: 0, class: "input-create-price"} %>
     </div>
     <div class="form-create-description">
       <%= f.input :content, label: false, placeholder: "Description: 20 caractères min.", input_html: { class: "input-create-description"} %>

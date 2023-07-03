@@ -40,5 +40,5 @@
       <p><%= @user.description %></p>
       </div>
     </div>
-  <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message btn-categorie-menu btn-text' %>
+<%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message btn-categorie-menu btn-text btn-logout' %>
 </div>
