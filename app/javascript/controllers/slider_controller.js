@@ -30,7 +30,7 @@ export default class extends Controller {
 //----------new slider---------------//
 //-----------------------------------//
 
-
+document.addEventListener('DOMContentLoaded', function() {
 
 
 const slider = document.getElementById('scroll-pane')
@@ -90,3 +90,4 @@ slider.addEventListener('scroll', function() {
       slider.scrollLeft = boundRight-20;
     }
 })
+});
