@@ -6,7 +6,7 @@
   </div>
   <h1><%= @user.nickname %></h1>
   <div class = "user-xp">
-  <img src="<%= @user.photo.attached? ? cl_imgage_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar">
+  <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar">
   </div>
   <p><%= @user.points %>points</p>
 
