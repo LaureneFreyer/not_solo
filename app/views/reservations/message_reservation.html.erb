@@ -16,7 +16,7 @@
       <% unless activity.chatroom.nil? %>
         <div class="chatroom-card-link">
           <i class="fa-regular fa-comments icon-messages"></i>
-          <p>Nouveaux messages dans le groupe <%= link_to activity.title, activity_chatroom_path(activity, activity.chatroom), class:"btn-text-messages" %></p>
+          <%= link_to activity.title, activity_chatroom_path(activity, activity.chatroom), class:"btn-text-messages" %>
         </div>
       <% end %>
     <% end %>

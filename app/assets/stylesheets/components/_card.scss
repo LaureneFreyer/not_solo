@@ -170,7 +170,9 @@
 
 
 .annonce-card .annonce-content .second-row {
+  display: flex;
   flex-basis: 100%;
+  justify-content: space-between;
 }
 
 .annonce-card .annonce-content .annonce-description{

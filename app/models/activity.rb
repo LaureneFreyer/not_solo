@@ -13,7 +13,7 @@ class Activity < ApplicationRecord
   validate :photo_size_validation
 
   def current_participants
-    reservations.where(status: "validée").count
+    reservations.where(status: "accepted").count
   end
 
   CATEGORIES = ["Evénement sportif", "Sport/Fitness", "Concert", "Sortie en ville", "Randonnée", "Gastronomie", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Bénévolat", "Vie quotidienne", "Cinéma", "Plein air", "Atelier"]
