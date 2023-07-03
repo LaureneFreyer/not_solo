@@ -1,30 +1,29 @@
 import { Controller } from "@hotwired/stimulus"
-import Swiper from 'swiper';
 
 // Connects to data-controller="slider"
 export default class extends Controller {
-  connect() {
-    console.log("connect test");
-    this.swiper = new Swiper('.slider-container', {
-      direction: 'horizontal',
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-    console.log("connect interne");
+  // connect() {
+  //   console.log("connect test");
+  //   this.swiper = new Swiper('.slider-container', {
+  //     direction: 'horizontal',
+  //     loop: true,
+  //     pagination: {
+  //       el: '.swiper-pagination',
+  //     },
+  //     navigation: {
+  //       nextEl: '.swiper-button-next',
+  //       prevEl: '.swiper-button-prev',
+  //     },
+  //   });
+  //   console.log("connect interne");
 
-  }
+  // }
 
-  disconnect() {
-    console.log("disconnect");
-    this.swiper.destroy();
-    this.swiper = null;
-  }
+  // disconnect() {
+  //   console.log("disconnect");
+  //   this.swiper.destroy();
+  //   this.swiper = null;
+  // }
 }
 
 //-----------------------------------//
@@ -49,13 +48,13 @@ function cloneSliderElements(slider) {
   console.log(sliderElms);
   console.log(sliderCopy);
 
-  for (elm of sliderCopy) {
+  for (var elm of sliderCopy) {
       sliderElms[sliderElms.length-1].insertAdjacentElement('afterend',  elm.cloneNode())
     }
 
   sliderCopy.reverse()
 
-  for (elm of sliderCopy) {
+  for (var elm of sliderCopy) {
       sliderElms[0].insertAdjacentElement('beforebegin',  elm.cloneNode())
     }
 }
