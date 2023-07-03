@@ -1,10 +1,17 @@
 class RatingsController < ApplicationController
 
+  def new
+    @rating = Rating.new
+    @user = User.find(params[:profile_id])
+    if params[:act]
+      @activity = Activity.find(params[:act])
+    end
+  end
+
   def create
-    raise
+    @user = User.find(params[:profile_id])
+    @activity = Activity.find_by(id: params[:rating][:activity_id].to_i)
     @rating = Rating.new(rating_params)
-    @activity = Activity.find(params[:act])
-    @user = User.find(params[:user_id])
     @rating.activity = @activity
     @rating.user = @user
     if @rating.save!
@@ -18,6 +25,6 @@ class RatingsController < ApplicationController
   private
 
   def rating_params
-    params.require(:rating).permit(:note, :user_id, :activity_id)
+    params.require(:rating).permit(:note, :activity_id)
   end
 end

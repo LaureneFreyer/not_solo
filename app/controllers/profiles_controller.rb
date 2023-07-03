@@ -6,6 +6,9 @@ class ProfilesController < ApplicationController
   def autres
     @user = User.find(params[:id])
     @rating = Rating.new
+    if params[:params1]
+      @activity = Activity.find(params[:params1])
+    end
   end
 
   def favorites

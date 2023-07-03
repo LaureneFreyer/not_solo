@@ -29,3 +29,4 @@ pin "@rails/actioncable", to: "https://cdn.jsdelivr.net/npm/@rails/actioncable@7
 pin "flatpickr", to: "https://ga.jspm.io/npm:flatpickr@4.6.13/dist/esm/index.js"
 pin "swiper", to: "https://ga.jspm.io/npm:swiper@9.4.1/swiper.esm.js"
 pin "ssr-window", to: "https://ga.jspm.io/npm:ssr-window@4.0.2/ssr-window.esm.js"
+pin "star-rating.js", to: "https://cdn.jsdelivr.net/npm/star-rating.js@4.3.0/dist/star-rating.esm.js"

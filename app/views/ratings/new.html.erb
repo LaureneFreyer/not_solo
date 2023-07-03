@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-xs-4">
       <%= simple_form_for([@user, Rating.new], method: :post, url: profile_ratings_path) do |f| %>
-        <%= f.input :note, collection: (1..5).to_a, label: "Notez votre expérience" %>
-        <%= f.submit label 'Envoyer ma note' %>
+        <%= f.hidden_field :activity_id, value: @activity.id %>
+        <%= f.input :note, collection: (1..5).to_a, label: "Notez votre expérience", input_html: {data: {controller: "star-rating"}} %>
+        <%= f.submit %>
       <% end %>
     </div>
   </div>
