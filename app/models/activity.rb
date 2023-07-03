@@ -21,6 +21,7 @@ class Activity < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true, length: { minimum: 20 }
   validates :start_date, presence: true
+  validates :max_participants, numericality: { greater_than: 0 }
 
 
   CATEGORY_ICONS =
