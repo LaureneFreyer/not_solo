@@ -14,6 +14,16 @@
   border: 2px solid $primary-color;
 }
 
+.user-xp{
 
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  border-radius: 50%;
+  background: linear-gradient(to right, #6A9696, #5D92B0, #D6D1A7, #D0CBC7);
+  border: 10px solid transparent;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 
-//
+}

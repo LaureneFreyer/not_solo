@@ -5,9 +5,9 @@
     <% end %>
   </div>
   <h1><%= @user.nickname %></h1>
-
-  <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar">
-
+  <div class = "user-xp">
+  <img src="<%= @user.photo.attached? ? cl_imgage_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar">
+  </div>
   <p><%= @user.points %>points</p>
 
 <%= link_to edit_user_registration_path, class: "no-style" do %>
@@ -39,5 +39,5 @@
       <p><%= @user.description %></p>
       </div>
     </div>
-  <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message btn-categorie-menu btn-text' %>
+<%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message btn-categorie-menu btn-text btn-logout' %>
 </div>
