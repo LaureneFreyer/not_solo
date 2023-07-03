@@ -1,6 +1,10 @@
-<h1>Donnez une note à l'organisateur</h1>
-
-<%= simple_form_for ([@reservation, @rating, @user]) do |f| %>
-  <%= f.select :rating %>
-  <%= f.submit label 'Envoyer ma note' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= simple_form_for([@user, Rating.new], method: :post, url: profile_ratings_path) do |f| %>
+        <%= f.input :note, collection: (1..5).to_a, label: "Notez votre expérience" %>
+        <%= f.submit label 'Envoyer ma note' %>
+      <% end %>
+    </div>
+  </div>
+</div>

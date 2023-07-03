@@ -5,6 +5,8 @@
 
   <p><%= @user.points %> points</p>
 
+  <%= link_to "Noter", new_profile_rating_path(@user, act: params[:params1]) %>
+
   <div class="profil-content">
     <div class="first-row">
       <p>

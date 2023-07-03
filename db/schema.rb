@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_29_202935) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_083013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,10 +95,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_202935) do
   create_table "ratings", force: :cascade do |t|
     t.float "note"
     t.bigint "user_id", null: false
-    t.bigint "reservation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["reservation_id"], name: "index_ratings_on_reservation_id"
+    t.bigint "activity_id", null: false
+    t.index ["activity_id"], name: "index_ratings_on_activity_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
@@ -153,7 +153,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_202935) do
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "ratings", "reservations"
+  add_foreign_key "ratings", "activities"
   add_foreign_key "ratings", "users"
   add_foreign_key "reservations", "activities"
   add_foreign_key "reservations", "users"
