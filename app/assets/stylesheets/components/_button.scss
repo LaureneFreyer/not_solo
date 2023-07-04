@@ -54,13 +54,15 @@
 }
 .btn-requests {
   border-radius: 36px;
-  height: 50px;
-  width: 100px;
+  height: 35px;
+  width: 35px;
+  margin: 3px;
   background-image: white;
   text-align: center;
   border: 1px solid $primary-color;
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+
 }
 .btn-chatroom {
   background-color: transparent;
