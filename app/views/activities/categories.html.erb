@@ -4,9 +4,10 @@
   <% next if category.nil? %>
 
   <button class='btn-categorie' style="background-image: url('<%= asset_path(Activity::CATEGORY_IMAGES[category]) %>');">
-    <%= link_to activities_by_category_path(category), class: 'btn-text' do  %>
+<%= link_to activities_by_category_path(category), class: 'btn-text' do  %>
+      <i class="<%= Activity::CATEGORY_ICONS[category] %>"></i><br>
+
       <span class="category-label"><%= category %></span>
-      <i class="<%= Activity::CATEGORY_ICONS[category] %>"></i>
     <% end %>
   </button>
 <% end %>
