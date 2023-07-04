@@ -15,21 +15,23 @@
 
   <p><%= @user.points %> points</p>
 
-<% unless @sum.nil? %>
-  <% if @sum == 5 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-  <% elsif @sum >= 4 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 3 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 2 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 1 %>
-    <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 0 %>
-    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% end %>
-<% end %>
+  <div class="ratings">
+    <% unless @sum.nil? %>
+      <% if @sum == 5 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-solid fa-star" style="color: #6A9674"></i><i class="fa-solid fa-star" style="color: #6A9696"></i><i class="fa-solid fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 4 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-solid fa-star" style="color: #6A9674"></i><i class="fa-solid fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 3 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-solid fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 2 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-regular fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 1 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-regular fa-star" style="color: $#83966A"></i><i class="fa-regular fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 0 %>
+        <i class="fa-regular fa-star" style="color: #A4B05D"></i><i class="fa-regular fa-star" style="color: #83966A"></i><i class="fa-regular fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% end %>
+    <% end %>
+  </div>
 
     <div class= "profil-content">
       <div class="first-row">
