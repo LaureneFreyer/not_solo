@@ -1,8 +1,25 @@
 <h1>Activités dans la catégorie : <%= @category %></h1>
 <% @activities.each do |activity| %>
-  <p><%= link_to activity.title, activity_path(activity) %></p>
-  <p><%= activity.address %></p>
-  <p><%= activity.start_date %></p>
-<% end %>
+        <div class="resum-annonce-card">
+          <%= link_to activity_path(activity) do %>
+          <div class="activity-card-left">
+            <% if activity.photo.attached? %>
+              <%= image_tag url_for(activity.photo), alt: activity.title, class:'img-event-small' %>
+            <% else %>
+                    <!-- Image par défaut si aucune photo n'est attachée à l'activité -->
+              <%= image_tag "https://images.unsplash.com/photo-1467139701929-18c0d27a7516?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", alt: activity.title %>
+            <% end %>
+            </div>
+            <div class="activity-card-center">
+            <p><%= activity.title %></p>
+            <p><i class="fa-solid fa-calendar-days"></i><%= activity.start_date.strftime("%d/%m/%y à %lh%M") %>
+            </div>
+            <div class="activity-card-right">
+            <i class="fa-solid fa-users"></i><%= activity.max_participants %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
 
 <%= link_to "Retour aux catégories", activity_categories_path, class: 'btn btn-primary' %>
