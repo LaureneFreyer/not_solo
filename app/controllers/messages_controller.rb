@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :set_message, only: [:update]
+
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @activity = Activity.find(params[:activity_id])
@@ -8,7 +10,7 @@ class MessagesController < ApplicationController
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "message", locals: {message: @message})
+        render_to_string(partial: "message", locals: { message: @message })
       )
       head :ok
     else
@@ -16,7 +18,16 @@ class MessagesController < ApplicationController
     end
   end
 
+  def update
+    @message.update!(read: true)
+    render json: { status: 'ok' }
+  end
+
   private
+
+  def set_message
+    @message = Message.find(params[:id])
+  end
 
   def message_params
     params.require(:message).permit(:content)

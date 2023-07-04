@@ -3,6 +3,7 @@ class ChatroomsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @chatroom.messages.where(read: false).update_all(read: true)
   end
 
   def members
@@ -12,4 +13,9 @@ class ChatroomsController < ApplicationController
     @reservations = @activity.reservations.each { |reservation| reservation }
   end
 
+  def mark_as_read
+    @chatroom = Chatroom.find(params[:id])
+    @chatroom.messages.where(read: false).update_all(read: true)
+    render json: { status: 'ok' }
+  end
 end
