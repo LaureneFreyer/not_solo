@@ -1,14 +1,19 @@
 <div class="profil-card">
-  <div class="btn-back btn-text">
-    <%= link_to :back do %>
-      <i class="fa-solid fa-xmark"></i>
-    <% end %>
+    <div class="btn-back btn-text">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </div>
+  <h1 class="nickname-profile"><%= @user.nickname %></h1>
+
+  <div class="big-photo-user">
+    <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar-annonce">
   </div>
-  <h1><%= @user.nickname %></h1>
+    <%= link_to edit_user_registration_path, class: "no-style icon-edit-profile" do %>
+      <i class="fa-solid fa-pencil"></i>
+    <% end %>
 
-  <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= @user.nickname %>" class="avatar">
-
-  <p><%= @user.points %>points</p>
+  <p><%= @user.points %> points</p>
 
 <% unless @sum.nil? %>
   <% if @sum == 5 %>
@@ -26,24 +31,21 @@
   <% end %>
 <% end %>
 
-<%= link_to edit_user_registration_path, class: "no-style" do %>
-  <i class="fa-solid fa-pencil"></i>
-<% end %>
     <div class= "profil-content">
       <div class="first-row">
-<p>
-  <i class="fa-solid fa-cake-candles" style="margin-right: 15px;"></i>
+<p style="color: #979dac">
+  <i class="fa-solid fa-cake-candles icon-user"></i>
   <% age_in_words = time_ago_in_words(@user.birthday, include_seconds: false) %>
   <%= age_in_words.gsub("plus de ", "") %>
 </p>
-        <p><i class="fa-solid fa-user"style="margin-right: 15px;"></i><%= @user.genre %></p>
+        <p style="color: #979dac"><i class="fa-solid fa-user icon-user"></i><%= @user.genre %></p>
       </div>
       <div class="second-row">
-        <span><p><i class="fa-solid fa-location-pin"style="margin-right: 15px;"></i><%= @user.address %></p></span>
+        <p style="color: #979dac"><i class="fa-solid fa-location-pin icon-user"></i><%= @user.address %></p>
       </div>
     <div class="third-row">
       <span>
-        <p><i class="fa-regular fa-face-smile-beam" style="margin-right: 15px;"></i>
+        <p style="color: #979dac"><i class="fa-regular fa-face-smile-beam icon-user"></i>
           <% @user.interests.each do |interest| %>
             <%= interest.name %>
             <% if interest != @user.interests.last %>, <% end %>
@@ -52,8 +54,12 @@
       </span>
     </div>
       <div class="profil-description">
-      <p><%= @user.description %></p>
+      <p style="color: #979dac"><%= @user.description %></p>
       </div>
     </div>
-<%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class:'deconnection-message btn-categorie-menu btn-text btn-logout' %>
+    <div class="logout">
+      <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class:'logout-text' do %>
+        <i class="fa-solid fa-user-slash"></i> Se déconnecter
+      <% end %>
+    </div>
 </div>
