@@ -11,3 +11,22 @@
   font-size: 18px; /* Ajustez la taille du texte */
   padding: 10px 20px; /* Ajustez les valeurs de remplissage selon vos besoins */
 }
+.logout {
+  padding-top: 30px;
+  padding-left: 14px;
+  display: flex;
+  justify-content: start;
+  .logout-text {
+    font-size: 10px;
+  }
+}
+.icon-edit-profile {
+  position: absolute;
+  margin-left: 35px;
+  margin-top: 60px;
+  font-size: 25px;
+}
+.icon-user {
+  margin-right: 15px;
+  color: $primary-color;
+}
