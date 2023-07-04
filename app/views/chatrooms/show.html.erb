@@ -25,7 +25,7 @@
     <%= f.input :content,
       input_html: { class: "chatroom-input"},
       label: false,
-      placeholder: "Message au groupe #{@chatroom.name}",
+      placeholder: "#{@chatroom.name}",
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= button_tag(class: "btn-chatroom") do %><i class="fa-regular fa-paper-plane btn-tag-icon"></i><% end %>
