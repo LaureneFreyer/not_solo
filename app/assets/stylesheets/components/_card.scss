@@ -75,7 +75,7 @@
 //----------------------------------------------------------------------------//
 
 .resum-annonce-card {
-  background-color: rgba($color: white, $alpha: 0.5);
+  background-color: rgba($color: rgb(255, 255, 255), $alpha: 0.5);
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
   border-radius: 10px;
@@ -86,31 +86,31 @@
   margin-right: 20px;
   margin-left: 20px;
   margin-top: 20px;
-  display: flex; /* Ajout de display: flex */
-  align-items: center; /* Ajout de align-items: center */
+a { display: flex;
+}
+}
+.activity-card-left{
+}
+.activity-card-center{
+  width: 75%;
+  padding-left: 15px;
+  i{margin-right: 10px;}
+
 }
 
-.resum-annonce-card p {
-  flex: 1; /* Pour permettre aux paragraphes de s'étendre sur toute la largeur disponible */
+.activity-card-right{
+  width: 25%;
+  padding-left: 15px;
+  i{margin-right: 10px;}
+  margin-top: 20px ;
 }
-
-.resum-annonce-card .first-row {
-  display: flex;
-  flex-basis: 100%;
-  justify-content: space-between;
-}
-
-.resum-annonce-card .first-row i {
-  margin-right: 5px;
-}
-
 
 //----------------------------------------------------------------------------//
 //----------------------------------------------------------------------------//
 
 
 .resum-message-card{
-  background-color: rgba($color: white, $alpha: 0.5);
+  background-color: rgba($color: rgb(255, 255, 255), $alpha: 0.5);
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
   width: 360px;
