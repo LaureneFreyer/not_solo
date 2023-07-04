@@ -7,7 +7,7 @@
   </button>
 </div>
 
-<div class="chatrooms-container">
+<div class="chatrooms-container" data-controller="new-messages">
     <% @activities.each do |activity| %>
       <% unless activity.chatroom.nil? %>
         <div class="chatroom-card-link">
