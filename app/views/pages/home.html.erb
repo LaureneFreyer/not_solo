@@ -4,7 +4,9 @@
   <% if user_signed_in? %>
     <div class="home-user">
       <h3 class="nickname-home"><%= current_user.nickname %></h3>
-      <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= current_user.nickname %>" class="avatar">
+      <div class="big-photo-user">
+      <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= current_user.nickname %>" class="avatar-annonce">
+      </div>
     </div>
 
 <p class="title-home">Suggestions pour vous</p>

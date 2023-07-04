@@ -19,8 +19,8 @@
 img.avatar-annonce{
   height: 100%;
   min-width: auto;
-
 }
+
 .user-xp{
 
   padding: 10px;
@@ -66,3 +66,12 @@ border: 1px solid #6A9696;
 
 //----------------------------------------------------------------------------//
 //----------------------------------------------------------------------------//
+
+.big-photo-user{
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  border: 1px solid #6A9696;
+  margin-left: auto;
+  margin-right: auto;
+  }
