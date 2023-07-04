@@ -8,6 +8,7 @@
 require_relative 'seeds_data/cities' # Chargement de la liste des villes
 
 # db/seeds.rb
+Rating.destroy_all
 Message.destroy_all
 Chatroom.destroy_all
 Reservation.destroy_all
