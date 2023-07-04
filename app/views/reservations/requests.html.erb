@@ -1,37 +1,46 @@
 <div class="container-reservations">
+  <div class="btn-back btn-text">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
+
   <h1>Mes demandes de participation</h1>
 
 <div class="requests-container">
   <% @requests.each do |request| %>
     <div class="requests-card">
       <div class="requests-infos-user">
-        <img src="<%= request.user.photo.attached? ? cl_image_path(request.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= request.user.nickname %>" class="avatar-footer">
-        <p><%= request.user.nickname %></p>
+        <img src="<%= request.user.photo.attached? ? cl_image_path(request.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= request.user.nickname %>" class="avatar-annonce">
       </div>
-      <h2><%= link_to request.activity.title, activity_path(request.activity), class: "btn-text-messages" %></h2>
-    <p><%=
-        if request.status == "pending"
-          ""
-        elsif
-            request.status == "accepted"
-            "confirmé"
-          else
-            "rejeté"
-        end
-      %></p>
+      <div class="requests-infos-activity">
+        <h2><%= link_to request.activity.title, activity_path(request.activity), class: "btn-text-messages" %></h2>
+        <p><%= request.activity.start_date.strftime("%d/%m/%y à %lh%M") %></p>
+      </div>
+      <% if request.status == "pending" %>
+          <%= "" %>
+      <% elsif request.status == "accepted" %>
+        <i class='fa-solid fa-check icon'></i>
+      <% else %>
+        <i class="fa-solid fa-xmark icon"></i>
+      <% end %>
+
       <div class="requests-accept-reject">
         <% if request.status == "pending" %>
           <button class='btn-requests'>
-            <%= link_to 'Accepter', accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn-text-messages' %>
+            <%= link_to accept_reservation_path(request), data: { turbo_method: :patch }, class: 'btn-text-messages' do %>
+              <i class='fa-solid fa-check icon'></i>
+            <% end %>
           </button>
           <button class='btn-requests'>
-            <%= link_to 'Refuser', reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn-text-messages' %>
+            <%= link_to reject_reservation_path(request), data: { turbo_method: :patch }, class: 'btn-text-messages' do %>
+              <i class="fa-solid fa-xmark icon"></i>
+              <% end %>
           </button>
         <% end %>
       </div>
     </div>
   <% end %>
 
-  <%= link_to "retour", message_reservation_path, class: "footer-link" %>
   </div>
 </div>

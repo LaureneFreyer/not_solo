@@ -6,13 +6,17 @@
   align-items: center;
   border-radius: 10px;
   border: 1px solid $bg-2rd;
-  padding: 10px;
+  padding: 15px;
   color: $primary-color;
-  font-size: 17px;
+  font-size: 13px;
   h2 {
     font-weight: bold;
   }
 }
 .resquests-container {
   margin-top: 60px;
+}
+.requests-accept-reject {
+  display: flex;
+  flex-direction: column;
 }
