@@ -1,5 +1,6 @@
 
 <div class="activities-container">
+<h1>Autours de vous</h1>
 
   <div class="wrap-search">
       <%= form_with url: activities_path, method: 'get', class: "d-flex" do %>
@@ -23,7 +24,7 @@
     </div>
 
   </div>
-</div>
+
 
 
       <% @activities.each do |activity| %>
@@ -48,3 +49,4 @@
           <% end %>
         </div>
       <% end %>
+</div>

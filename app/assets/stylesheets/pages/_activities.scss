@@ -5,6 +5,7 @@
   text-align: center;
   color: $primary-color;
   margin-top: 50px;
+  margin: auto;
   display: flex;
   flex-direction: column;
 }
@@ -49,3 +50,9 @@ height: 350px;
 //----------------resum-annonce-card (carte unique)
 //----------------------------------------------------------------------------//
 //----------------------------------------------------------------------------//
+
+
+.pages-container{
+  margin: auto;
+  text-align: center;
+}

@@ -1,5 +1,5 @@
+<div class="pages-container">
 <h1>Mes activités</h1>
-
 <% @activities.each do |activity| %>
         <div class="resum-annonce-card">
           <%= link_to activity_path(activity) do %>
@@ -21,3 +21,4 @@
           <% end %>
         </div>
       <% end %>
+</div>
