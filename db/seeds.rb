@@ -288,10 +288,10 @@ puts "Création des activitées..."
     )
   end
 
+
 end
+
 puts "Création des likes..."
-
-
 
 # Génération de likes aléatoires pour l'admin
 activities = Activity.all
@@ -300,8 +300,24 @@ admin_likes.each do |activity|
   Like.create(user: admin, activity: activity)
 end
 
+puts "Création des ratings..."
+
+# création de ratings aléatoires pour l'admin
+admin_ratings = activities.sample(rand(1..5))
+admin_ratings.each do |activity|
+  Rating.create(user: admin, activity: activity, note: rand(0..5))
+end
+
 # Génération d'une demande de réservation pour l'admin
 user = User.where.not(id: admin.id).sample
 activity = Activity.where.not(user_id: admin.id).sample
 Reservation.create(user: user, activity: activity, status: "en attente")
 puts "Terminé ! Merci de ta patience :)"
+
+30.times do
+  user = User.where.not(id: admin.id).sample
+  user_ratings = activities.sample(rand(1..5))
+  user_ratings.each do
+    Rating.create(user: user, activity: activity, note: rand(0..5))
+  end
+end
