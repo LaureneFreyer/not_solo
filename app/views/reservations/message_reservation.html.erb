@@ -7,14 +7,15 @@
   </button>
 </div>
 
-<div class="chatrooms-container" data-controller="new-messages">
-    <% @activities.each do |activity| %>
-      <% unless activity.chatroom.nil? %>
-        <div class="chatroom-card-link" data-action="click->new-messages#toggle" data-new-messages-target="toggleRead">
-          <i class="fa-regular fa-comments icon-messages"></i>
-          <%= link_to activity.title, activity_chatroom_path(activity, activity.chatroom), class:"btn-text-messages" %>
-        </div>
-      <% end %>
-    <% end %>
+<div class="chatrooms-container">
+<% @activities.each do |activity| %>
+  <% unless activity.chatroom.nil? %>
+    <div class="chatroom-card-link <%= 'unread' unless activity.chatroom.messages.all?(&:read) %>" data-action="click->new-messages#toggle" data-new-messages-target="toggleRead" data-chatroom-id="<%= activity.chatroom.id %>">
+      <i class="fa-regular fa-comments icon-messages"></i>
+      <%= link_to activity.title, activity_chatroom_path(activity, activity.chatroom), class:"btn-text-messages" %>
+    </div>
+  <% end %>
+<% end %>
+
   </div>
 </div>

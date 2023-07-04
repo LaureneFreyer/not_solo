@@ -34,6 +34,14 @@
   padding-right: 20px;
   padding-left: 5px;
 }
-.read {
-  opacity: 0.7;
+
+.unread {
+  opacity: 1;
+  a {
+    color: $active-color;
+  }
+  i {
+    color: $active-color;
+  }
+  border-color: $active-color;
 }

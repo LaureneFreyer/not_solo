@@ -40,4 +40,11 @@ Rails.application.routes.draw do
   get 'reservations/message', to: 'reservations#message_reservation', as: 'message_reservation'
   get 'reservations/requests', to: 'reservations#requests', as: 'reservations_requests'
 
+  resources :chatrooms do
+    member do
+      patch :mark_as_read
+    end
+  end
+
+
 end
