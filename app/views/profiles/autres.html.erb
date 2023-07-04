@@ -6,19 +6,23 @@
   <p><%= @user.points %> points</p>
 
 
-  <% if @sum == 5 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-  <% elsif @sum >= 4 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 3 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 2 %>
-    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 1 %>
-    <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% elsif @sum >= 0 %>
-    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-  <% end %>
+  <div class="ratings">
+    <% unless @sum.nil? %>
+      <% if @sum == 5 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-solid fa-star" style="color: #6A9674"></i><i class="fa-solid fa-star" style="color: #6A9696"></i><i class="fa-solid fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 4 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-solid fa-star" style="color: #6A9674"></i><i class="fa-solid fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 3 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-solid fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 2 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-regular fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 1 %>
+        <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-regular fa-star" style="color: $#83966A"></i><i class="fa-regular fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% elsif @sum >= 0 %>
+        <i class="fa-regular fa-star" style="color: #A4B05D"></i><i class="fa-regular fa-star" style="color: #83966A"></i><i class="fa-regular fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
+      <% end %>
+    <% end %>
+  </div>
 
 <%= link_to new_profile_rating_path(@user, act: params[:params1]), class: "no-style" do %>
   <i class="fa-solid fa-pencil"></i>
