@@ -94,7 +94,7 @@ class ActivitiesController < ApplicationController
   end
 
   def current_participants
-    reservations.where(status: "accepted").count
+    reservations.where(status: "accepted").count + 1
   end
 
 

@@ -43,12 +43,14 @@ footer::after {
 .footer-link:hover {
   text-decoration: underline;
 }
+
 .icon-footer {
   color: $primary-color;
   font-size: 28px;
   width: 28px;
   height: 28px;
 }
+
 .icon-footer-size-plus {
   text-align: center;
   font-size: 20px;
@@ -60,13 +62,22 @@ footer::after {
 }
 
 .logo-actif {
-  filter: none;
+  font-weight: bold;
+  // filter: invert(100%) hue-rotate(130deg);
+  color: #1A5252;
 }
 
 .logo-inactif {
+  filter: none;
 }
 
-.logo-footer {
-  width: 30px;
-  height: 30px;
+.add-new {
+  color: #1A5252;
+  text-align: center;
+  font-size: 20px;
+  border: 3px solid #1A5252;
+  border-radius: 5px;
+  width: 28px;
+  height: 28px;
+  padding: 2px;
 }

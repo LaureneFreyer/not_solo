@@ -2,8 +2,10 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
     @ratings = Rating.where(user: @user)
-    if @ratings.size <= 1
+    if @ratings.size < 1
       @sum = 0
+    elsif @ratings.size == 1
+      @sum = @ratings.pluck(:note).sum
     else
       @sum = @ratings.pluck(:note).sum / @ratings.size
     end
@@ -16,8 +18,10 @@ class ProfilesController < ApplicationController
       @activity = Activity.find(params[:params1])
     end
     @ratings = Rating.where(user: @user)
-    if @ratings.size <= 1
+    if @ratings.size < 1
       @sum = 0
+    elsif @ratings.size == 1
+      @sum = @ratings.pluck(:note).sum
     else
       @sum = @ratings.pluck(:note).sum / @ratings.size
     end
