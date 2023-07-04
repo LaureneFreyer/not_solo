@@ -51,10 +51,10 @@ admin = User.create!(
   first_name: "Laurène",
   last_name: "Freyer",
   genre: "Femme",
-  address: "Rennes",
-  points: 55,
-  birthday: Date.new(1997, 3, 16),
-  description: "Koukou c'est moi lauréne et je suis trop cool. J'aime les chiens et les licornes. Appellé moi Lolo",
+  address: "44 rue Francin, Bordeaux",
+  points: 75,
+  birthday: Date.new(1997, 3, 18),
+  description: "Bonjour à tous, je m'appelle Lauréne. Je viens d'être mutée à Bordeaux et je suis donc à la recherche de nouvelles rencontres. J'adore les chiens et les licornes."
 )
 admin_interest_names = ["Cuisine", "Sport", "Voyage"]
 admin_interests = admin_interest_names.map { |name| Interest.find_by(name: name) }
@@ -66,16 +66,15 @@ admin_photo = File.open(Rails.root.join("app", "assets", "images", "lolodu35.png
 admin.photo.attach(io: admin_photo, filename: "admin.png", content_type: "image/png")
 admin.save!
 
-admin_activity_photo = URI.open("https://images.unsplash.com/photo-1606474226448-4aa808468efc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1990&q=80")
+admin_activity_photo = URI.open("https://images.unsplash.com/photo-1531932768276-eb8b0770c5af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80")
 admin_activity = Activity.create!(
   category: "Randonnée",
-  title: "Randonnée en forêt",
+  title: "Promenade dans les vignes",
   price_person: 0,
-  content: "Promenade en forêt de 2h",
-  address: "Chantepie, France",
+  content: "Petite promenade degustative dans les vignes du château margaux. Durée prévu environ 2h, à adapter selon les personnes qui sont intéressées.",
+  address: "Château Margaux, Margaux-Cantenac, France",
   max_participants: rand(5..10),
   start_date: DateTime.now + 7.days,
-  end_date: DateTime.now + 8.days,
   user: admin
 )
 
@@ -91,10 +90,12 @@ admin_activity.photo.attach(io: admin_activity_photo, filename: "admin_activity.
 
 # Génération des utilisateurs
 puts "Création des utilisateurs..."
+puts "   / \\__"
 
+last_names = ["Dubois", "Durand", "Leroy", "Moreau", "Simon", "Laurent", "Lefebvre", "Michel", "Garcia", "Rodriguez"]
 
-first_names = ["Bob", "Charlie", "Alice", "John", "Jane", "Emma", "Lucas", "Liam", "Oliver", "Amelia"]
-last_names = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson"]
+first_names_masculin = ["Thomas", "Nicolas", "Maxime", "Alexandre", "Antoine", "Lucas", "Hugo", "Romain", "Julien", "Rémi"]
+first_names_feminin = ["Sarah", "Julie", "Camille", "Léa", "Manon", "Chloé", "Emma", "Anaïs", "Émilie", "Sophie"]
 
 descriptions = [
   "J'adore les activités en plein air et rencontrer de nouvelles personnes.",
@@ -112,6 +113,7 @@ descriptions = [
 genders = ["Homme", "Femme", "Non binaire", "Autre"]
 
 users = []
+
 3.times do |i|
   genre = genders.sample
   photo_url = case genre
@@ -123,13 +125,22 @@ users = []
                 ["https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80", "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"].sample
               end
 
+  case genre
+  when "Homme"
+    first_name = first_names_masculin.sample
+  when "Femme"
+    first_name = first_names_feminin.sample
+  else
+    first_name = [first_names_masculin.sample, first_names_feminin.sample].sample
+  end
+
   user = User.create!(
     email: "user#{i + 1}@example.com",
     password: "password",
-    nickname: "#{first_names.sample}#{i + 1}",
-    first_name: first_names.sample,
+    nickname: "#{first_name}#{i + 1}",
+    first_name: first_name,
     last_name: last_names.sample,
-    address: CITIES.sample,
+    address: CITIES_BORDEAUX.sample,
     points: rand(0..100),
     birthday: Date.today - rand(18..50).years,
     description: descriptions.sample,
@@ -137,7 +148,7 @@ users = []
   )
   users << user
 
-  user_interest_names = USER_INTERESTS.sample(rand(1..3)) # Choix d'un à trois intérêts aléatoires
+  user_interest_names = USER_INTERESTS.sample(rand(2..3)) # Choix deux à trois intérêts aléatoires
   user_interests = user_interest_names.map { |name| Interest.find_by(name: name) }
 
   user.interests << user_interests
@@ -146,19 +157,204 @@ users = []
   user.photo.attach(io: user_photo, filename: "user#{i + 1}.png", content_type: "image/png")
   user.save!
 end
-
-
-
-puts "Création des activitées..."
+# Génération des activités
+puts " (    @\\___    Rennes en cours..... 10 minutes restantes"
 
 # Génération des activités
-50.times do |i|
+5.times do |i|
+  user = users.sample
+  category = ACTIVITY_CATEGORIES.sample
+  # puts "Activité #{i + 1} générée"
+
+  title_prefix = case category
+  when "Evénement sportif"
+    ["Evénement Sportif", "Championnat local", "Course de rue"].sample
+  when "Sport/Fitness"
+    ["Session Fitness", "Cours de Yoga", "Entraînement de crossfit"].sample
+  when "Concert"
+    ["Concert de Jazz", "Concert de Rock", "Concert Classique"].sample
+  when "Sortie en ville"
+    ["Visite du centre-ville", "Découverte des monuments", "Balade en ville"].sample
+  when "Randonnée"
+    ["Randonnée en montagne", "Balade en forêt", "Découverte de sentiers"].sample
+  when "Gastronomie"
+    ["Dégustation Gastronomique", "Atelier de cuisine", "Découverte culinaire"].sample
+  when "Voyage"
+    ["Voyage à la mer", "Excursion à la montagne", "Voyage en ville"].sample
+  when "Visite"
+    ["Visite Guidée du musée", "Tour de la ville", "Découverte historique"].sample
+  when "Jeux"
+    ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
+  when "Sortie culturelle"
+    ["Visite Culturelle", "Exposition d'art", "Découverte historique"].sample
+  when "Bénévolat"
+    ["Mission Bénévolat", "Aide communautaire", "Projet de volontariat"].sample
+  when "Vie quotidienne"
+    ["Activité Quotidienne", "Cours de bricolage", "Atelier de jardinage"].sample
+  when "Cinéma"
+    ["Projection de film", "Festival du film", "Ciné-club"].sample
+  when "Plein air"
+    ["Activité en Plein Air", "Pique-nique au parc", "Journée à la plage"].sample
+  when "Atelier"
+    ["Atelier de peinture", "Cours de sculpture", "Atelier de bricolage"].sample
+  else
+    ["Activité", "Événement", "Réunion"].sample
+  end
+
+  content = case category
+  when "Evénement sportif"
+    ["Venez participer à un événement sportif passionnant.", "Rejoignez-nous pour une compétition sportive divertissante.", "Participez à notre événement sportif et montrez vos compétences."].sample
+  when "Sport/Fitness"
+    ["Participez à notre session de fitness pour rester en forme.", "Venez pour un entraînement intense.", "Rejoignez-nous pour une séance de fitness dynamique."].sample
+  when "Concert"
+    ["Profitez d'un concert de musique en direct.", "Venez écouter de la musique live à notre concert.", "Assistez à notre concert et appréciez la musique live."].sample
+  when "Sortie en ville"
+    ["Découvrez la beauté de notre ville.", "Venez explorer la ville avec nous.", "Rejoignez-nous pour une visite guidée de la ville."].sample
+  when "Randonnée"
+    ["Venez pour une randonnée revigorante.", "Profitez de la nature lors de notre randonnée.", "Rejoignez-nous pour une aventure en randonnée."].sample
+  when "Gastronomie"
+    ["Venez déguster de délicieuses spécialités.", "Rejoignez-nous pour un atelier culinaire.", "Découvrez la cuisine locale lors de notre dégustation gastronomique."].sample
+  when "Voyage"
+    ["Participez à un voyage inoubliable.", "Venez découvrir de nouveaux horizons.", "Rejoignez-nous pour une escapade mémorable."].sample
+  when "Visite"
+    ["Découvrez l'histoire de notre région.", "Venez pour une visite guidée.", "Rejoignez-nous pour une visite culturelle."].sample
+  when "Jeux"
+    ["Venez pour une soirée de jeux divertissants.", "Participez à notre tournoi de jeux.", "Rejoignez-nous pour une soirée de jeux de société."].sample
+  when "Sortie culturelle"
+    ["Découvrez l'art et la culture locaux.", "Venez pour une visite culturelle.", "Rejoignez-nous pour une sortie culturelle."].sample
+  when "Bénévolat"
+    ["Venez aider la communauté.", "Participez à notre mission de bénévolat.", "Rejoignez-nous pour un projet de volontariat."].sample
+  when "Vie quotidienne"
+    ["Participez à notre atelier quotidien.", "Venez pour un cours de bricolage.", "Rejoignez-nous pour un atelier de jardinage."].sample
+  when "Cinéma"
+    ["Venez pour une projection de film.", "Participez à notre festival du film.", "Rejoignez-nous pour une soirée cinéma."].sample
+  when "Plein air"
+    ["Venez pour une activité en plein air.", "Participez à notre pique-nique au parc.", "Rejoignez-nous pour une journée à la plage."].sample
+  when "Atelier"
+    ["Venez pour un atelier de peinture.", "Participez à notre cours de sculpture.", "Rejoignez-nous pour un atelier de bricolage."].sample
+  else
+    ["Venez pour une activité divertissante.", "Participez à notre événement.", "Rejoignez-nous pour une réunion intéressante."].sample
+  end
+
+  address = case category
+  when "Evénement sportif"
+    "111 Rue de Lorient, 35000 Rennes"
+  when "Sport/Fitness"
+    "8 Rue de la Donelière, 35000 Rennes"
+  when "Concert"
+    "1 Esplanade Charles de Gaulle, 35000 Rennes"
+  when "Sortie en ville"
+    "Rennes"
+  when "Randonnée"
+    "Place Saint-Mélaine, 35000 Rennes"
+  when "Gastronomie"
+    "2 Rue des Carmes, 35000 Rennes"
+  when "Voyage"
+    "6 Rue Pierre Martin, 35000 Rennes"
+  when "Visite"
+    "20 Quai Emile Zola, 35000 Rennes"
+  when "Jeux"
+    "11 Boulevard Magenta, 35000 Rennes"
+  when "Sortie culturelle"
+    "Place de la Mairie, 35000 Rennes"
+  when "Bénévolat"
+    "10 Rue Louis Guilloux, 35000 Rennes"
+  when "Vie quotidienne"
+    "2 Rue du Pré du Bois, 35000 Rennes"
+  when "Cinéma"
+    "12 Rue Yvonne Jean-Haffen, 35000 Rennes"
+  when "Plein air"
+    "4 Avenue des Gayeulles, 35700 Rennes"
+  when "Atelier"
+    "24 Rue Hoche, 35000 Rennes"
+  else
+    "Rennes"
+  end
+
+  coordinates = Geocoder.coordinates(address)
+
+  photo_url = case category
+              when "Randonnée"
+                "https://images.unsplash.com/photo-1486179814561-91c2d61316b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Evénement sportif"
+                "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Sport/Fitness"
+                "https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Concert"
+                "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Sortie en ville"
+                "https://images.unsplash.com/photo-1485872299829-c673f5194813?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1460&q=80"
+              when "Gastronomie"
+                "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Voyage"
+                "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80"
+              when "Visite"
+                "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+              when "Jeux"
+                "https://images.unsplash.com/photo-1561034645-e6f28dfddd2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Sortie culturelle"
+                "https://images.unsplash.com/photo-1526817609938-a708708cf90f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+              when "Bénévolat"
+                "https://images.unsplash.com/photo-1565803974275-dccd2f933cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80"
+              when "Vie quotidienne"
+                "https://images.unsplash.com/photo-1611843467160-25afb8df1074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Cinéma"
+                "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Plein air"
+                "https://images.unsplash.com/photo-1578359968130-76b59bb5af13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+              when "Atelier"
+                "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+              else
+                "https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80"
+              end
+
+  activity_photo = URI.open(photo_url)
+
+  start_date = DateTime.now + rand(1..30).days
+  end_date = start_date + rand(1..6).hours
+
+Activity.create!(
+  category: category,
+  title: "#{title_prefix}",
+  price_person: rand(0..100),
+  content: content,
+  address: address,
+  latitude: coordinates[0],
+  longitude: coordinates[1],
+  max_participants: rand(1..20),
+  start_date: start_date,
+  end_date: end_date,
+  user: user
+  ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
+rescue => e
+  puts "Erreur lors de la création de l'activité #{title_prefix} #{i+1}: #{e.message}"
+  puts "Adresse: #{address}"
+  next
+
+print_progress_bar(i + 1, activities_data.length)
+
+  Activity.all.each do |activity|
+    Chatroom.create!(
+      activity: activity,
+      name: activity.title
+    )
+  end
+end
+
+
+puts "  /         O    Nan je deconne, Bordeaux en cours....  "
+
+
+
+# puts "Création des activitées..."
+
+# Génération des activités
+5.times do |i|
   user = users.sample
   address = CITIES.sample
   coordinates = Geocoder.coordinates(address)
 
   category = ACTIVITY_CATEGORIES.sample
-  puts "Activité #{i + 1} générée"
 
   title_prefix = case category
   when "Evénement sportif"
@@ -267,18 +463,21 @@ puts "Création des activitées..."
 
   activity_photo = URI.open(photo_url)
 
-  Activity.create!(
-    category: category,
-    title: "#{title_prefix}",
-    price_person: rand(0..100),
-    content: content,
-    address: address,
-    latitude: coordinates[0],
-    longitude: coordinates[1],
-    max_participants: rand(1..20),
-    start_date: DateTime.now + rand(1..30).days,
-    end_date: DateTime.now + rand(31..60).days,
-    user: user
+  start_date = DateTime.now + rand(1..30).days
+  end_date = start_date + rand(1..6).hours
+
+Activity.create!(
+  category: category,
+  title: "#{title_prefix}",
+  price_person: rand(0..100),
+  content: content,
+  address: address,
+  latitude: coordinates[0],
+  longitude: coordinates[1],
+  max_participants: rand(1..20),
+  start_date: start_date,
+  end_date: end_date,
+  user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
 
   Activity.all.each do |activity|
@@ -291,33 +490,217 @@ puts "Création des activitées..."
 
 end
 
-puts "Création des likes..."
+# Génération des activités
+5.times do |i|
+  user = users.sample
+  category = ACTIVITY_CATEGORIES.sample
+  # puts "Activité #{i + 1} générée"
+
+  title_prefix = case category
+  when "Evénement sportif"
+    ["Evénement Sportif", "Championnat local", "Course de rue"].sample
+  when "Sport/Fitness"
+    ["Session Fitness", "Cours de Yoga", "Entraînement de crossfit"].sample
+  when "Concert"
+    ["Concert de Jazz", "Concert de Rock", "Concert Classique"].sample
+  when "Sortie en ville"
+    ["Visite du centre-ville", "Découverte des monuments", "Balade en ville"].sample
+  when "Randonnée"
+    ["Randonnée en montagne", "Balade en forêt", "Découverte de sentiers"].sample
+  when "Gastronomie"
+    ["Dégustation Gastronomique", "Atelier de cuisine", "Découverte culinaire"].sample
+  when "Voyage"
+    ["Voyage à la mer", "Excursion à la montagne", "Voyage en ville"].sample
+  when "Visite"
+    ["Visite Guidée du musée", "Tour de la ville", "Découverte historique"].sample
+  when "Jeux"
+    ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
+  when "Sortie culturelle"
+    ["Visite Culturelle", "Exposition d'art", "Découverte historique"].sample
+  when "Bénévolat"
+    ["Mission Bénévolat", "Aide communautaire", "Projet de volontariat"].sample
+  when "Vie quotidienne"
+    ["Activité Quotidienne", "Cours de bricolage", "Atelier de jardinage"].sample
+  when "Cinéma"
+    ["Projection de film", "Festival du film", "Ciné-club"].sample
+  when "Plein air"
+    ["Activité en Plein Air", "Pique-nique au parc", "Journée à la plage"].sample
+  when "Atelier"
+    ["Atelier de peinture", "Cours de sculpture", "Atelier de bricolage"].sample
+  else
+    ["Activité", "Événement", "Réunion"].sample
+  end
+
+  content = case category
+  when "Evénement sportif"
+    ["Venez participer à un événement sportif passionnant.", "Rejoignez-nous pour une compétition sportive divertissante.", "Participez à notre événement sportif et montrez vos compétences."].sample
+  when "Sport/Fitness"
+    ["Participez à notre session de fitness pour rester en forme.", "Venez pour un entraînement intense.", "Rejoignez-nous pour une séance de fitness dynamique."].sample
+  when "Concert"
+    ["Profitez d'un concert de musique en direct.", "Venez écouter de la musique live à notre concert.", "Assistez à notre concert et appréciez la musique live."].sample
+  when "Sortie en ville"
+    ["Découvrez la beauté de notre ville.", "Venez explorer la ville avec nous.", "Rejoignez-nous pour une visite guidée de la ville."].sample
+  when "Randonnée"
+    ["Venez pour une randonnée revigorante.", "Profitez de la nature lors de notre randonnée.", "Rejoignez-nous pour une aventure en randonnée."].sample
+  when "Gastronomie"
+    ["Venez déguster de délicieuses spécialités.", "Rejoignez-nous pour un atelier culinaire.", "Découvrez la cuisine locale lors de notre dégustation gastronomique."].sample
+  when "Voyage"
+    ["Participez à un voyage inoubliable.", "Venez découvrir de nouveaux horizons.", "Rejoignez-nous pour une escapade mémorable."].sample
+  when "Visite"
+    ["Découvrez l'histoire de notre région.", "Venez pour une visite guidée.", "Rejoignez-nous pour une visite culturelle."].sample
+  when "Jeux"
+    ["Venez pour une soirée de jeux divertissants.", "Participez à notre tournoi de jeux.", "Rejoignez-nous pour une soirée de jeux de société."].sample
+  when "Sortie culturelle"
+    ["Découvrez l'art et la culture locaux.", "Venez pour une visite culturelle.", "Rejoignez-nous pour une sortie culturelle."].sample
+  when "Bénévolat"
+    ["Venez aider la communauté.", "Participez à notre mission de bénévolat.", "Rejoignez-nous pour un projet de volontariat."].sample
+  when "Vie quotidienne"
+    ["Participez à notre atelier quotidien.", "Venez pour un cours de bricolage.", "Rejoignez-nous pour un atelier de jardinage."].sample
+  when "Cinéma"
+    ["Venez pour une projection de film.", "Participez à notre festival du film.", "Rejoignez-nous pour une soirée cinéma."].sample
+  when "Plein air"
+    ["Venez pour une activité en plein air.", "Participez à notre pique-nique au parc.", "Rejoignez-nous pour une journée à la plage."].sample
+  when "Atelier"
+    ["Venez pour un atelier de peinture.", "Participez à notre cours de sculpture.", "Rejoignez-nous pour un atelier de bricolage."].sample
+  else
+    ["Venez pour une activité divertissante.", "Participez à notre événement.", "Rejoignez-nous pour une réunion intéressante."].sample
+  end
+
+  address = case category
+  when "Evénement sportif"
+    "Cours Jules Ladoumegue, 33300 Bordeaux"
+  when "Sport/Fitness"
+    "9 Rue Fondaudège, 33000 Bordeaux"
+  when "Concert"
+    "Rue Jean Samazeuilh, 33300 Bordeaux"
+  when "Sortie en ville"
+    "Bordeaux"
+  when "Randonnée"
+    "1679 Route de Bordeaux, 40460 Sanguinet"
+  when "Gastronomie"
+    "Place de la Comédie, 33000 Bordeaux"
+  when "Voyage"
+    "La Teste-de-Buch"
+  when "Visite"
+    "20 Cours Pasteur, 33000 Bordeaux"
+  when "Jeux"
+    "14 Rue Saint-Sernin, 33000 Bordeaux"
+  when "Sortie culturelle"
+    "13 Rue Thiac, 33000 Bordeaux"
+  when "Bénévolat"
+    "43 Rue Deyries, 33000 Bordeaux"
+  when "Vie quotidienne"
+    "73 Rue Camille Sauvageau, 33800 Bordeaux"
+  when "Cinéma"
+    "15 Rue Georges Bonnac, 33000 Bordeaux"
+  when "Plein air"
+    "Rue du Bocage, 33000 Bordeaux"
+  when "Atelier"
+    "73 Rue Camille Sauvageau, 33800 Bordeaux"
+  else
+    "Bordeaux"
+  end
+
+  coordinates = Geocoder.coordinates(address)
+
+  photo_url = case category
+              when "Randonnée"
+                "https://images.unsplash.com/photo-1486179814561-91c2d61316b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Evénement sportif"
+                "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Sport/Fitness"
+                "https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Concert"
+                "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Sortie en ville"
+                "https://images.unsplash.com/photo-1485872299829-c673f5194813?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1460&q=80"
+              when "Gastronomie"
+                "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Voyage"
+                "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80"
+              when "Visite"
+                "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+              when "Jeux"
+                "https://images.unsplash.com/photo-1561034645-e6f28dfddd2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Sortie culturelle"
+                "https://images.unsplash.com/photo-1526817609938-a708708cf90f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
+              when "Bénévolat"
+                "https://images.unsplash.com/photo-1565803974275-dccd2f933cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80"
+              when "Vie quotidienne"
+                "https://images.unsplash.com/photo-1611843467160-25afb8df1074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Cinéma"
+                "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when "Plein air"
+                "https://images.unsplash.com/photo-1578359968130-76b59bb5af13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+              when "Atelier"
+                "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+              else
+                "https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80"
+              end
+
+  activity_photo = URI.open(photo_url)
+
+  start_date = DateTime.now + rand(1..30).days
+  end_date = start_date + rand(1..6).hours
+
+Activity.create!(
+  category: category,
+  title: "#{title_prefix}",
+  price_person: rand(0..100),
+  content: content,
+  address: address,
+  latitude: coordinates[0],
+  longitude: coordinates[1],
+  max_participants: rand(1..20),
+  start_date: start_date,
+  end_date: end_date,
+  user: user
+  ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
+rescue => e
+  puts "Erreur lors de la création de l'activité #{title_prefix} #{i+1}: #{e.message}"
+  puts "Adresse: #{address}"
+  next
+
+print_progress_bar(i + 1, activities_data.length)
+
+  Activity.all.each do |activity|
+    Chatroom.create!(
+      activity: activity,
+      name: activity.title
+    )
+  end
+end
+
+
+puts " /   (_____/     les activités sont générées ! Place aux likes... "
+
 
 # Génération de likes aléatoires pour l'admin
 activities = Activity.all
-admin_likes = activities.sample(rand(1..5)) # Génère entre 1 et 5 likes aléatoires
+admin_likes = activities.sample(rand(4..6)) # Génère d likes aléatoires
 admin_likes.each do |activity|
   Like.create(user: admin, activity: activity)
 end
 
-puts "Création des ratings..."
+# puts "Création des ratings..."
 
 # création de ratings aléatoires pour l'admin
-admin_ratings = activities.sample(rand(1..5))
+admin_ratings = activities.sample(rand(3..5))
 admin_ratings.each do |activity|
-  Rating.create(user: admin, activity: activity, note: rand(0..5))
+  Rating.create(user: admin, activity: activity, note: rand(3..5))
 end
+puts "/_____/   U    une reservation est en cours..."
 
 # Génération d'une demande de réservation pour l'admin
 user = User.where.not(id: admin.id).sample
 activity = Activity.where.not(user_id: admin.id).sample
 Reservation.create(user: user, activity: activity, status: "en attente")
-puts "Terminé ! Merci de ta patience :)"
 
 30.times do
   user = User.where.not(id: admin.id).sample
   user_ratings = activities.sample(rand(1..5))
   user_ratings.each do
-    Rating.create(user: user, activity: activity, note: rand(0..5))
+    Rating.create(user: user, activity: activity, note: rand(3..5))
   end
 end
+puts "Terminé ! Merci de ta patience :)"

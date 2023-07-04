@@ -15,7 +15,8 @@
     <% end %>
   </div>
 
-  <img class="img-event-large" src="https://images.unsplash.com/photo-1589652717406-1c69efaf1ff8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">
+  <%# <img class="img-event-large" src="https://images.unsplash.com/photo-1589652717406-1c69efaf1ff8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"> %>
+<%= image_tag url_for(@activity.photo), class: "img-event-large", alt: @activity.title %>
 
   <div class= "annonce-content">
 
