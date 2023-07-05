@@ -10,7 +10,7 @@
     <div class="chatroom-card-activity">
       <p><i class="fa-solid fa-calendar-days"></i> <%= @chatroom.activity.start_date.strftime("%d/%m/%Y à %lh%M") %></p>
       <%= link_to activity_chatroom_members_path(@chatroom, @chatroom.activity) do %>
-      <i class="fa-solid fa-users"></i><%= @chatroom.activity.current_participants %>
+      <i class="fa-solid fa-users"></i> <%= @chatroom.activity.current_participants %>
       <% end %>
     </div>
   </div>
