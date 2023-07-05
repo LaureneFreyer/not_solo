@@ -14,6 +14,7 @@
   margin: 5px;
   width: 225px;
 }
+
 .chatroom {
   background: transparent;
   height: calc(100vh - 75px);
@@ -34,6 +35,10 @@
   .messages {
     height: 100%;
     padding: 1rem;
+    overflow: scroll;
+  }
+  i {
+    font-size: x-small;
   }
 }
 .chatroom-card-activity {
@@ -57,4 +62,43 @@
   border-radius: 15px;
   padding: 10px;
   border: 2px solid white;
+}
+
+
+
+
+///////
+.message-row {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+// To style the message itself
+// .sender-style, .receiver-style {
+//   width: 70%;
+//   max-width: 400px;
+//   border-radius: 4px;
+//   padding: 8px;
+//   min-height: 80px;
+// }
+
+.sender-style {
+  color: white;
+  border-radius: 15px;
+  background-image: $blue-gradient;
+  padding: 8px;
+  margin: 5px;
+  width: 248px;}
+
+.receiver-style {
+  color: black;
+  border-radius: 15px;
+  background-color : $bg-3rd;
+  padding: 8px;
+  margin: 5px;
+  width: 248px;
+}
+
+.droitouille {
+  margin-left: 14%;
 }

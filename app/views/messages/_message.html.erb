@@ -1,28 +1,11 @@
-<% if message.user == current_user %>
+    <div class="d-flex">
 
-  <div class="d-flex justify-content-end">
-    <div id="chatroom-message-current-user" >
-      <div>
+  <div id="message-<%= message.id %>">
         <small>
           <strong><%= message.user.nickname %></strong>
-          <i><%= message.created_at.strftime("%d/%m/%y à %lh%M") %></i>
-          </small>
-          <p><%= message.content %></p>
-      </div>
-    </div>
-      <img src="<%= message.user.photo.attached? ? cl_image_path(message.user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= message.user.nickname %>" class="avatar-footer">
-  </div>
-
-<% else %>
-
-  <div class="d-flex justify-content-start">
-    <img src="<%= message.user.photo.attached? ? cl_image_path(message.user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= message.user.nickname %>" class="avatar-footer">
-    <div id="chatroom-message-user">
-      <small>
-      <strong><%= message.user.nickname %></strong>
-      <i><%= message.created_at.strftime("%d/%m/%y à %lh%M") %></i>
-      </small>
-      <p><%= message.content %></p>
-    </div>
-  </div>
-<% end %>
+            <i><%= message.created_at.strftime("%d/%m/%y à %lh%M") %></i>
+            </small>
+            <p><%= message.content %></p>
+          </div>
+      <img src="<%= message.user.photo.attached? ? cl_image_path(message.user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= message.user.nickname %>" class="avatar-footer droitouille">
+          </div>
