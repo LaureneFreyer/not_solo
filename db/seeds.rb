@@ -182,7 +182,7 @@ puts " (    @\\___    Rennes en cours..... 10 minutes restantes"
   when "Voyage"
     ["Voyage à la mer", "Voyage en montagne", "Voyage en ville"].sample
   when "Visite"
-    ["Visite Guidée", "Tour de la ville", "Découverte historique"].sample
+    ["Visite Guidée", "Tour de la ville", "Monuments phares"].sample
   when "Jeux"
     ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
   when "Sortie culturelle"
@@ -372,7 +372,7 @@ puts "  /         O    Nan je deconne, Bordeaux en cours....  "
   when "Voyage"
     ["Voyage à la mer", "Voyage en montagne", "Voyage en ville"].sample
   when "Visite"
-    ["Visite Guidée", "Tour de la ville", "Découverte historique"].sample
+    ["Visite Guidée", "Tour de la ville", "Monuments phares"].sample
   when "Jeux"
     ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
   when "Sortie culturelle"
@@ -512,7 +512,7 @@ end
   when "Voyage"
     ["Voyage à la mer", "Voyage en montagne", "Voyage en ville"].sample
   when "Visite"
-    ["Visite Guidée", "Tour de la ville", "Découverte historique"].sample
+    ["Visite Guidée", "Tour de la ville", "Monuments phares"].sample
   when "Jeux"
     ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
   when "Sortie culturelle"
