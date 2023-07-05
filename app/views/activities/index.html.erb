@@ -1,6 +1,11 @@
 
 <div class="activities-container">
-<h1>Autours de vous</h1>
+  <div class="btn-back btn-text">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
+  <h1 class="headers">Autour de vous</h1>
 
   <div class="wrap-search">
       <%= form_with url: activities_path, method: 'get', class: "d-flex" do %>

@@ -1,6 +1,11 @@
-<div class="pages-container">
-<h1>Mes activités</h1>
-<% @activities.each do |activity| %>
+<div class="annonces-container">
+  <div class="btn-back btn-text">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
+  <h1 class="headers">Mes annonces</h1>
+  <% @activities.each do |activity| %>
         <div class="resum-annonce-card">
           <%= link_to activity_path(activity) do %>
           <div class="activity-card-left">

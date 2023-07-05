@@ -5,13 +5,15 @@
     <% end %>
   </div>
 
-  <h1>Mes activités</h1>
+  <h1 class="headers">Mes réservations</h1>
 
 <div class="requests-container">
   <% @reservations.each do |reservation| %>
     <div class="requests-card">
       <div class="requests-infos-user">
-        <img src="<%= reservation.activity.user.photo.attached? ? cl_image_path(reservation.activity.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= reservation.activity.user.nickname %>" class="avatar-annonce">
+
+          <img src="<%= reservation.activity.user.photo.attached? ? cl_image_path(reservation.activity.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= reservation.activity.user.nickname %>" class="avatar-annonce">
+
       </div>
       <div class="requests-infos-activity">
         <h2><%= link_to reservation.activity.title, activity_path(reservation.activity), class:"btn-text-messages" %></h2>
@@ -19,7 +21,7 @@
       </div>
       <div>
       <% if reservation.status == "pending" %>
-          <i class="fa-regular fa-clock"></i>
+          <i class="fa-regular fa-clock icon-pending"></i>
       <% elsif reservation.status == "accepted" %>
         <% unless reservation.activity.chatroom.nil? %>
           <button class='btn-requests'>

@@ -1,5 +1,10 @@
 <div class="favoris-container">
-<h1>Mes Favoris</h1>
+  <div class="btn-back btn-text">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
+  <h1 class="headers">Mes Favoris</h1>
 
 <% @favorites.each do |activity| %>
         <div class="resum-annonce-card">
