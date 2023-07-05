@@ -12,8 +12,8 @@
   font-size: 16px;
 }
 .btn-back{
-  margin-top: -8px;
-  margin-left: 95%;
+
+  margin-left: 85%;
   position: absolute;
   color: $primary-color;
   text-decoration: none !important;
@@ -83,10 +83,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 50px;
+  margin: auto;
 
   .btn-categorie {
     margin: 10px;
