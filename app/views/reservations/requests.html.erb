@@ -1,9 +1,10 @@
+<div class="btn-back-custom btn-text">
+  <%= link_to message_reservation_path do %>
+    <i class="fa-solid fa-xmark"></i>
+  <% end %>
+</div>
+
 <div class="container-reservations">
-  <div class="btn-back btn-text">
-    <%= link_to message_reservation_path do %>
-      <i class="fa-solid fa-xmark"></i>
-    <% end %>
-  </div>
 
   <h1 class="headers">Mes demandes reçues</h1>
 
@@ -11,7 +12,9 @@
   <% @requests.each do |request| %>
     <div class="requests-card">
       <div class="requests-infos-user">
-        <img src="<%= request.user.photo.attached? ? cl_image_path(request.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= request.user.nickname %>" class="avatar-annonce">
+        <%= link_to autres_path(request.user) do %>
+          <img src="<%= request.user.photo.attached? ? cl_image_path(request.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= request.user.nickname %>" class="avatar-annonce">
+        <% end %>
       </div>
       <div class="requests-infos-activity">
         <h2><%= link_to request.activity.title, activity_path(request.activity), class: "btn-text-messages" %></h2>
@@ -20,9 +23,9 @@
       <% if request.status == "pending" %>
           <%= "" %>
       <% elsif request.status == "accepted" %>
-        <i class='fa-solid fa-check icon'></i>
+        <i class='fa-solid fa-check icon-pending'></i>
       <% else %>
-        <i class="fa-solid fa-xmark icon"></i>
+        <i class="fa-solid fa-xmark icon-pending"></i>
       <% end %>
 
       <div class="requests-accept-reject">
