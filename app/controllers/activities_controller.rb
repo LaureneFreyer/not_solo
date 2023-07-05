@@ -99,7 +99,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:category, :latitude, :longitude, :title, :price_person, :content, :address, :start_date, :end_date)
+    params.require(:activity).permit(:category, :latitude, :longitude, :title, :price_person, :content, :address, :start_date, :end_date, :max_participants)
   end
 
 end

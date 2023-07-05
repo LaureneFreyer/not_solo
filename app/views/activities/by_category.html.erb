@@ -4,8 +4,8 @@
     <% end %>
   </div>
 <div>
-<h1 class="headers">Catégorie "<%= @category %>"</h1>
-<% @activities.each do |activity| %>
+<h1 class="headers"><%= @category %></h1>
+<% @activities.where.not(user: current_user).each do |activity| %>
         <div class="resum-annonce-card">
           <%= link_to activity_path(activity) do %>
           <div class="activity-card-left">

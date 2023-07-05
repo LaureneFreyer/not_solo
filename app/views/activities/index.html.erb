@@ -7,6 +7,7 @@
   </div>
   <h1 class="headers">Autour de vous</h1>
 
+  <div class="sticky-top container-map">
   <div class="wrap-search">
       <%= form_with url: activities_path, method: 'get', class: "d-flex" do %>
         <%= text_field_tag :query,
@@ -19,7 +20,7 @@
       <% end %>
   </div>
 
-  <div class="map-container sticky-top">
+  <div class="map-container">
 
     <div style="width: 100%; height: 100%; border-radius: 10px;"
       data-controller="map"
@@ -27,12 +28,12 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       data-map-user-coordinates-value="<%= @user_coordinates.to_json %>">
     </div>
-
+  </div>
   </div>
 
 
 
-      <% @activities.each do |activity| %>
+      <% @activities.where.not(user: current_user).each do |activity| %>
 
         <div class="resum-annonce-card">
           <%= link_to activity_path(activity) do %>
