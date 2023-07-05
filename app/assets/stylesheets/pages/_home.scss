@@ -1,11 +1,20 @@
 // Specific CSS for your home-page
+
+
 .home {
   margin: 0 auto;
   color: $primary-color;
 }
 .home-user {
-  text-align: center;
-  padding: 40px;
+  margin-top: 30px;
+  p{
+    text-align: center;
+    font-size: 18px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+    color: grey;
+  }
 }
 .home-likes {
   padding-top: 30px;
@@ -18,11 +27,69 @@
   color: white;
 }
 .nickname-home {
-  font-size: 25px;
+  margin-left: 15px;
+  font-size: 18px;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  color: grey;
 }
 .title-home {
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 15px;
+  font-weight: bold;
+  margin-left:10px;
+  color:$primary-color;
 }
 .buttons-home {
 padding-top: 70px;
+}
+
+.home-annonce {
+  width: 100%;
+  height: 280px;
+  background-image: url("https://zupimages.net/up/23/27/od0v.jpg");
+  background-size: cover;
+  margin-bottom: 40px;
+  z-index: 1;
+  position: fixed;
+  transition: height 0.3s;
+}
+
+.home-annonce.scroll-down {
+  height: 220px;
+}
+
+.home .home-user {
+  position: relative;
+}
+
+.home .home-user .announcement-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+.home-meet{
+  border-radius: 10px;
+  margin: auto;
+  width: 370px;
+  height: 280px;
+  background-image: url("https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80");
+  background-size: cover;
+  .txt-notsolo{
+    padding-bottom:10px ;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    p{
+      margin: 15px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 15px;
+      color:white;
+    }
+  }
 }

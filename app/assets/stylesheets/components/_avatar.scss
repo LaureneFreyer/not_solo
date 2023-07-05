@@ -76,11 +76,19 @@ border: 1px solid #6A9696;
   margin-right: auto;
   }
 
-  .small-photo-user{
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 1px solid #6A9696;
-    margin-left: auto;
-    margin-right: auto;
-    }
+.medium-photo-user{
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  margin-left: 15px;
+}
+
+.small-photo-user{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #6A9696;
+  margin-left: auto;
+  margin-right: auto;
+}
