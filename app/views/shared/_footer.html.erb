@@ -11,7 +11,7 @@
     </li>
     <li>
       <%= link_to cherche_path, action: 'index', class: "footer-link" do %>
-        <% if request.path_info == cherche_path %>
+        <% if request.path_info == cherche_path || request.path_info == activities_path || request.path_info == activity_categories_path || request.path_info == profile_favorites_path || request.path_info ==  my_activities_path || request.path_info == reservations_path %>
         <i class="fa-solid fa-magnifying-glass icon-footer logo-actif"></i>
         <% else %>
         <i class="fa-solid fa-magnifying-glass icon-footer logo-inactif"></i>
@@ -29,7 +29,7 @@
     </li>
     <li>
       <%= link_to message_reservation_path, class: "footer-link" do %>
-        <% if request.path_info == message_reservation_path %>
+        <% if request.path_info == message_reservation_path || request.path_info == reservations_requests_path || params[:controller] == "chatrooms" %>
                   <i class="fa-regular fa-comment icon-footer logo-actif"></i>
         <% else %>
                   <i class="fa-regular fa-comment icon-footer logo-inactif"></i>
