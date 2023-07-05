@@ -1,16 +1,17 @@
 <div class="category-container">
 
-<h1 class="headers">Choisissez une catégorie</h1>
-<% @categories.each do |category| %>
-  <% next if category.nil? %>
+  <h1 class="headers">Choisissez une catégorie</h1>
+  <% @categories.each do |category| %>
+    <% next if category.nil? %>
 
-  <button class='btn-categorie' style="background-image: url('<%= asset_path(Activity::CATEGORY_IMAGES[category]) %>');">
-<%= link_to activities_by_category_path(category), class: 'btn-text' do  %>
-      <i class="<%= Activity::CATEGORY_ICONS[category] %>"></i><br>
+    <button class='btn-categorie' style="background-image: url('<%= asset_path(Activity::CATEGORY_IMAGES[category]) %>');">
+  <%= link_to activities_by_category_path(category), class: 'btn-text' do  %>
+        <i class="<%= Activity::CATEGORY_ICONS[category] %>"></i><br>
 
-      <span class="category-label"><%= category %></span>
-    <% end %>
-  </button>
-<% end %>
+        <span class="category-label"><%= category %></span>
+      <% end %>
+    </button>
+  <% end %>
+  </div>
+  <div class="empty-div"><p></p></div>
 </div>
-<div class="empty-div"><p></p></div>
