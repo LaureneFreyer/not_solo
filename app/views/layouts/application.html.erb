@@ -10,7 +10,7 @@
     <meta property="og:title" content="<%= content_for?(:meta_title) ? yield(:meta_title) : DEFAULT_META["title"] %>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:image" content="<%= meta_image %>" />
+<meta property="og:image" content="<%= DEFAULT_META["image"] %>" />
     <meta property="og:description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : DEFAULT_META["description"] %>" />
     <meta property="og:site_name" content="<%= content_for?(:meta_title) ? yield(:meta_title) : DEFAULT_META["title"] %>" />
 
