@@ -18,15 +18,20 @@ export default class extends Controller {
     // Get the search icon element
     this.searchIcon = this.element.querySelector(".mapboxgl-ctrl-geocoder--icon-search");
 
-    // Hide the search icon initially
+    // Get the pin-right element
+    this.pinRightElement = this.element.querySelector(".mapboxgl-ctrl-geocoder--pin-right");
+
+    // Hide the search icon and pin-right element initially
     this.#toggleSearchIcon(false);
+    this.#togglePinRightElement(false);
 
     // Listen for input events on the search input
     const inputElement = this.element.querySelector('.mapboxgl-ctrl-geocoder--input');
     inputElement.addEventListener('input', (event) => {
       const hasText = !!event.target.value;
-      // Show or hide the search icon depending on whether the input has text
+      // Show or hide the search icon and pin-right element depending on whether the input has text
       this.#toggleSearchIcon(!hasText);
+      this.#togglePinRightElement(hasText);
     });
   }
 
@@ -41,6 +46,11 @@ export default class extends Controller {
   #toggleSearchIcon(show) {
     // Change the visibility of the search icon based on the 'show' argument
     this.searchIcon.style.display = show ? 'block' : 'none';
+  }
+
+  #togglePinRightElement(show) {
+    // Change the visibility of the pin-right element based on the 'show' argument
+    this.pinRightElement.style.display = show ? 'block' : 'none';
   }
 
   disconnect() {

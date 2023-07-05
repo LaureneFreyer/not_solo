@@ -8,6 +8,8 @@
   margin: auto;
   display: flex;
   flex-direction: column;
+  flex-grow: 1; /* Permet à la section de prendre tout l'espace vertical disponible */
+  padding-bottom: 100px;
 }
 
 //----------------------------------------------------------------------------//
