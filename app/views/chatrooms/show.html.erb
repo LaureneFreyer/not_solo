@@ -22,14 +22,15 @@
 </div>
 
 <div class="chatroom-form-message d-flex justify-content-center">
-  <%= simple_form_for [@activity, @chatroom, @message],
-    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+  <%= simple_form_for [@activity, @chatroom, @message], html: { class: "d-flex" } do |f| %>
     <%= f.input :content,
-      input_html: { class: "chatroom-input"},
+      input_html: { class: "chatroom-input" },
       label: false,
       placeholder: "Envoyer un message",
-      wrapper_html: {class: "flex-grow-1"}
+      wrapper_html: { class: "flex-grow-1" }
     %>
-    <%= button_tag(class: "btn-chatroom") do %><i class="fa-regular fa-paper-plane btn-tag-icon"></i><% end %>
+    <%= button_tag(type: "submit", class: "btn-chatroom", formaction: message_reservation_path) do %>
+      <i class="fa-regular fa-paper-plane btn-tag-icon"></i>
+    <% end %>
   <% end %>
 </div>
