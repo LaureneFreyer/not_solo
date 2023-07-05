@@ -1,11 +1,11 @@
 <div class="container-reservations">
   <div class="btn-back btn-text">
-    <%= link_to :back do %>
+    <%= link_to message_reservation_path do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
   </div>
 
-  <h1>Mes demandes de participation</h1>
+  <h1 class="headers">Mes demandes reçues</h1>
 
 <div class="requests-container">
   <% @requests.each do |request| %>

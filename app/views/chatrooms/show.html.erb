@@ -2,14 +2,16 @@
 
   <div class="chatroom-container-activity sticky-top">
   <div class="btn-back btn-text">
-    <%= link_to :back do %>
+    <%= link_to message_reservation_path do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
   </div>
-    <h1><%= @chatroom.name %></h1>
+    <h1><%= link_to @chatroom.name, activity_path(@chatroom.activity)  %></h1>
     <div class="chatroom-card-activity">
       <p><i class="fa-solid fa-calendar-days"></i> <%= @chatroom.activity.start_date.strftime("%d/%m/%Y à %lh%M") %></p>
-      <p><i class="fa-solid fa-users"></i> <%= link_to @chatroom.activity.current_participants, activity_chatroom_members_path(@chatroom, @chatroom.activity) %></p>
+      <%= link_to activity_chatroom_members_path(@chatroom, @chatroom.activity) do %>
+      <i class="fa-solid fa-users"></i><%= @chatroom.activity.current_participants %>
+      <% end %>
     </div>
   </div>
   <div class="messages" data-chatroom-subscription-target="messages">
@@ -25,7 +27,7 @@
     <%= f.input :content,
       input_html: { class: "chatroom-input"},
       label: false,
-      placeholder: "#{@chatroom.name}",
+      placeholder: "Envoyer un message",
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= button_tag(class: "btn-chatroom") do %><i class="fa-regular fa-paper-plane btn-tag-icon"></i><% end %>

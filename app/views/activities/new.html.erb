@@ -3,6 +3,11 @@
   <body class="create-activity-page">
 
   <div class="create-activity-card">
+    <div class="btn-back btn-text">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </div>
 
     <%= simple_form_for @activity do |f| %>
       <div class="form-create-title">
