@@ -5,4 +5,8 @@ class Message < ApplicationRecord
   def read?
     read
   end
+
+  def sender?(a_user)
+    user.id == a_user.id
+  end
 end

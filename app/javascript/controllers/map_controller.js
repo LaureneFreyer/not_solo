@@ -42,12 +42,13 @@ export default class extends Controller {
   }
 
   fitMapToMarkers() {
+    console.log(this.markersValue)
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
 
-    if (this.userCoordinatesValue) {
-      bounds.extend(this.userCoordinatesValue)
-    }
+    // if (this.userCoordinatesValue) {
+    //   bounds.extend(this.userCoordinatesValue)
+    // }
 
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
