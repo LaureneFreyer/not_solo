@@ -18,8 +18,12 @@ export default class extends Controller {
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
-  resetForm(event) {
-    event.target.reset()
+  resetForm() {
+    const formElement = this.element.querySelector("form");
+    formElement.reset();
+
+    // Actualiser la page
+    window.location.reload();
   }
 
   disconnect() {
