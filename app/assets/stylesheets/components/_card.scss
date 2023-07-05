@@ -7,6 +7,9 @@
 .profil-card{
   font-family: Verdana, sans-serif;
   background-color: rgba($color: white, $alpha: 0.5);
+  background-image: url("https://zupimages.net/up/23/27/od0v.jpg");
+  background-repeat: no-repeat;
+  background-size:contain;
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
   width: 350px;
@@ -66,6 +69,10 @@
   border-radius: 10px;
   border-color: $primary-color;
   border: 1px solid;
+}
+
+.user-points{
+  margin-top: 10px;
 }
 
 //----------------------------------------------------------------------------//
