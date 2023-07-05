@@ -8,10 +8,10 @@
         <i class="fa-solid fa-xmark"></i>
       <% end %>
     </div>
-
+    <br>
     <%= simple_form_for @activity do |f| %>
       <div class="form-create-title">
-        <%= f.input :title, label: "Nom de l'activitée", placeholder: "Bowling, Sortie au....", input_html: { class:"input-create-title" } %>
+        <%= f.input :title, label: "Nom de l'activitée", placeholder: "Bowling, pique-nique", input_html: { class:"input-create-title" } %>
       </div>
       <div class="form-create-photo">
         <%= f.input :photo, as: :file, label: "Ajoutez une image d'illustration", input_html: { class: 'input-create-photo' } %>

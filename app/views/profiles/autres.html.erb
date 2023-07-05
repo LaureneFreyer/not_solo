@@ -1,7 +1,7 @@
 <div class="profil-card">
-  <h1><%= @user.nickname %></h1>
+  <h1 class="headers"><%= @user.nickname %></h1>
   <div class="big-photo-user">
-  <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= @user.nickname %>" class="avatar-annonce">
+    <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= @user.nickname %>" class="avatar-annonce">
   </div>
   <p><%= @user.points %> points</p>
 
@@ -22,11 +22,11 @@
         <i class="fa-regular fa-star" style="color: #A4B05D"></i><i class="fa-regular fa-star" style="color: #83966A"></i><i class="fa-regular fa-star" style="color: #6A9674"></i><i class="fa-regular fa-star" style="color: #6A9696"></i><i class="fa-regular fa-star" style="color: #5D92B0"></i>
       <% end %>
     <% end %>
+      <%= link_to new_profile_rating_path(@user, act: params[:params1]), class: "no-style" do %>
+        <i class="fa-solid fa-wand-magic-sparkles rating-icon"></i>
+      <% end %>
   </div>
 
-<%= link_to new_profile_rating_path(@user, act: params[:params1]), class: "no-style" do %>
-  <i class="fa-solid fa-pencil"></i>
-<% end %>
 
   <div class="profil-content">
     <div class="first-row">
