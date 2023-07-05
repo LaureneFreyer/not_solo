@@ -51,10 +51,10 @@ admin = User.create!(
   first_name: "Laurène",
   last_name: "Freyer",
   genre: "Femme",
-  address: "44 rue Francin, Bordeaux",
+  address: "Bordeaux",
   points: 75,
   birthday: Date.new(1997, 3, 18),
-  description: "Bonjour à tous, je m'appelle Lauréne. Je viens d'être mutée à Bordeaux et je suis donc à la recherche de nouvelles rencontres. J'adore les chiens et les licornes."
+  description: "Bonjour à tous, je m'appelle Laurène. Je viens d'être mutée à Bordeaux et je suis donc à la recherche de nouvelles rencontres. J'adore les chiens et les licornes."
 )
 admin_interest_names = ["Cuisine", "Sport", "Voyage"]
 admin_interests = admin_interest_names.map { |name| Interest.find_by(name: name) }
@@ -69,7 +69,7 @@ admin.save!
 admin_activity_photo = URI.open("https://images.unsplash.com/photo-1531932768276-eb8b0770c5af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80")
 admin_activity = Activity.create!(
   category: "Randonnée",
-  title: "Promenade dans les vignes",
+  title: "Dans les vignes",
   price_person: 0,
   content: "Petite promenade degustative dans les vignes du château margaux. Durée prévu environ 2h, à adapter selon les personnes qui sont intéressées.",
   address: "Château Margaux, Margaux-Cantenac, France",
@@ -170,33 +170,33 @@ puts " (    @\\___    Rennes en cours..... 10 minutes restantes"
   when "Evénement sportif"
     ["Evénement Sportif", "Championnat local", "Course de rue"].sample
   when "Sport/Fitness"
-    ["Session Fitness", "Cours de Yoga", "Entraînement de crossfit"].sample
+    ["Session Fitness", "Cours de Yoga", "Crossfit"].sample
   when "Concert"
     ["Concert de Jazz", "Concert de Rock", "Concert Classique"].sample
   when "Sortie en ville"
-    ["Visite du centre-ville", "Découverte des monuments", "Balade en ville"].sample
+    ["Visite du centre", "Visite de monuments", "Balade en ville"].sample
   when "Randonnée"
-    ["Randonnée en montagne", "Balade en forêt", "Découverte de sentiers"].sample
+    ["Sortie en montagne", "Balade en forêt", "Balade sur sentiers"].sample
   when "Gastronomie"
-    ["Dégustation Gastronomique", "Atelier de cuisine", "Découverte culinaire"].sample
+    ["Dégustation Gastro", "Atelier de cuisine", "Découverte culinaire"].sample
   when "Voyage"
-    ["Voyage à la mer", "Excursion à la montagne", "Voyage en ville"].sample
+    ["Voyage à la mer", "Voyage en montagne", "Voyage en ville"].sample
   when "Visite"
-    ["Visite Guidée du musée", "Tour de la ville", "Découverte historique"].sample
+    ["Visite Guidée", "Tour de la ville", "Découverte historique"].sample
   when "Jeux"
     ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
   when "Sortie culturelle"
-    ["Visite Culturelle", "Exposition d'art", "Découverte historique"].sample
+    ["Visite Culturelle", "Exposition d'art", "Sortie au musée"].sample
   when "Bénévolat"
-    ["Mission Bénévolat", "Aide communautaire", "Projet de volontariat"].sample
+    ["Mission Bénévolat", "Aide communautaire", "Projet volontariat"].sample
   when "Vie quotidienne"
-    ["Activité Quotidienne", "Cours de bricolage", "Atelier de jardinage"].sample
+    ["Activité Quotidienne", "Cours bricolage", "Atelier jardinage"].sample
   when "Cinéma"
     ["Projection de film", "Festival du film", "Ciné-club"].sample
   when "Plein air"
-    ["Activité en Plein Air", "Pique-nique au parc", "Journée à la plage"].sample
+    ["Activité Plein Air", "Pique-nique", "Journée plage"].sample
   when "Atelier"
-    ["Atelier de peinture", "Cours de sculpture", "Atelier de bricolage"].sample
+    ["Atelier peinture", "Cours sculpture", "Atelier bricolage"].sample
   else
     ["Activité", "Événement", "Réunion"].sample
   end
@@ -360,33 +360,33 @@ puts "  /         O    Nan je deconne, Bordeaux en cours....  "
   when "Evénement sportif"
     ["Evénement Sportif", "Championnat local", "Course de rue"].sample
   when "Sport/Fitness"
-    ["Session Fitness", "Cours de Yoga", "Entraînement de crossfit"].sample
+    ["Session Fitness", "Cours de Yoga", "Crossfit"].sample
   when "Concert"
     ["Concert de Jazz", "Concert de Rock", "Concert Classique"].sample
   when "Sortie en ville"
-    ["Visite du centre-ville", "Découverte des monuments", "Balade en ville"].sample
+    ["Visite du centre", "Visite de monuments", "Balade en ville"].sample
   when "Randonnée"
-    ["Randonnée en montagne", "Balade en forêt", "Découverte de sentiers"].sample
+    ["Sortie en montagne", "Balade en forêt", "Balade sur sentiers"].sample
   when "Gastronomie"
-    ["Dégustation Gastronomique", "Atelier de cuisine", "Découverte culinaire"].sample
+    ["Dégustation Gastro", "Atelier de cuisine", "Découverte culinaire"].sample
   when "Voyage"
-    ["Voyage à la mer", "Excursion à la montagne", "Voyage en ville"].sample
+    ["Voyage à la mer", "Voyage en montagne", "Voyage en ville"].sample
   when "Visite"
-    ["Visite Guidée du musée", "Tour de la ville", "Découverte historique"].sample
+    ["Visite Guidée", "Tour de la ville", "Découverte historique"].sample
   when "Jeux"
     ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
   when "Sortie culturelle"
-    ["Visite Culturelle", "Exposition d'art", "Découverte historique"].sample
+    ["Visite Culturelle", "Exposition d'art", "Sortie au musée"].sample
   when "Bénévolat"
-    ["Mission Bénévolat", "Aide communautaire", "Projet de volontariat"].sample
+    ["Mission Bénévolat", "Aide communautaire", "Projet volontariat"].sample
   when "Vie quotidienne"
-    ["Activité Quotidienne", "Cours de bricolage", "Atelier de jardinage"].sample
+    ["Activité Quotidienne", "Cours bricolage", "Atelier jardinage"].sample
   when "Cinéma"
     ["Projection de film", "Festival du film", "Ciné-club"].sample
   when "Plein air"
-    ["Activité en Plein Air", "Pique-nique au parc", "Journée à la plage"].sample
+    ["Activité Plein Air", "Pique-nique", "Journée plage"].sample
   when "Atelier"
-    ["Atelier de peinture", "Cours de sculpture", "Atelier de bricolage"].sample
+    ["Atelier peinture", "Cours sculpture", "Atelier bricolage"].sample
   else
     ["Activité", "Événement", "Réunion"].sample
   end
@@ -500,33 +500,33 @@ end
   when "Evénement sportif"
     ["Evénement Sportif", "Championnat local", "Course de rue"].sample
   when "Sport/Fitness"
-    ["Session Fitness", "Cours de Yoga", "Entraînement de crossfit"].sample
+    ["Session Fitness", "Cours de Yoga", "Crossfit"].sample
   when "Concert"
     ["Concert de Jazz", "Concert de Rock", "Concert Classique"].sample
   when "Sortie en ville"
-    ["Visite du centre-ville", "Découverte des monuments", "Balade en ville"].sample
+    ["Visite du centre", "Visite de monuments", "Balade en ville"].sample
   when "Randonnée"
-    ["Randonnée en montagne", "Balade en forêt", "Découverte de sentiers"].sample
+    ["Sortie en montagne", "Balade en forêt", "Balade sur sentiers"].sample
   when "Gastronomie"
-    ["Dégustation Gastronomique", "Atelier de cuisine", "Découverte culinaire"].sample
+    ["Dégustation Gastro", "Atelier de cuisine", "Découverte culinaire"].sample
   when "Voyage"
-    ["Voyage à la mer", "Excursion à la montagne", "Voyage en ville"].sample
+    ["Voyage à la mer", "Voyage en montagne", "Voyage en ville"].sample
   when "Visite"
-    ["Visite Guidée du musée", "Tour de la ville", "Découverte historique"].sample
+    ["Visite Guidée", "Tour de la ville", "Découverte historique"].sample
   when "Jeux"
     ["Soirée Jeux", "Tournoi de cartes", "Jeux de société"].sample
   when "Sortie culturelle"
-    ["Visite Culturelle", "Exposition d'art", "Découverte historique"].sample
+    ["Visite Culturelle", "Exposition d'art", "Sortie au musée"].sample
   when "Bénévolat"
-    ["Mission Bénévolat", "Aide communautaire", "Projet de volontariat"].sample
+    ["Mission Bénévolat", "Aide communautaire", "Projet volontariat"].sample
   when "Vie quotidienne"
-    ["Activité Quotidienne", "Cours de bricolage", "Atelier de jardinage"].sample
+    ["Activité Quotidienne", "Cours bricolage", "Atelier jardinage"].sample
   when "Cinéma"
     ["Projection de film", "Festival du film", "Ciné-club"].sample
   when "Plein air"
-    ["Activité en Plein Air", "Pique-nique au parc", "Journée à la plage"].sample
+    ["Activité Plein Air", "Pique-nique", "Journée plage"].sample
   when "Atelier"
-    ["Atelier de peinture", "Cours de sculpture", "Atelier de bricolage"].sample
+    ["Atelier peinture", "Cours sculpture", "Atelier bricolage"].sample
   else
     ["Activité", "Événement", "Réunion"].sample
   end

@@ -19,7 +19,7 @@ class Activity < ApplicationRecord
   CATEGORIES = ["Evénement sportif", "Sport/Fitness", "Concert", "Sortie en ville", "Randonnée", "Gastronomie", "Voyage", "Visite", "Jeux", "Sortie culturelle", "Bénévolat", "Vie quotidienne", "Cinéma", "Plein air", "Atelier"]
   validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :address, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 20 }
   validates :content, presence: true, length: { minimum: 20 }
   validates :start_date, presence: true
 

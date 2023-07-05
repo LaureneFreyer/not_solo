@@ -42,3 +42,6 @@ a:hover {
   color: inherit; /* Change la couleur du lien lorsque la souris est dessus pour correspondre à la couleur du texte environnant */
   text-decoration: none; /* Supprime le soulignement lorsque la souris est dessus */
 }
+.headers {
+  font-family: $headers-font;
+}
