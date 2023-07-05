@@ -15,14 +15,17 @@
     <% end %>
   </div>
 
-  <%# <img class="img-event-large" src="https://images.unsplash.com/photo-1589652717406-1c69efaf1ff8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"> %>
-<%= image_tag url_for(@activity.photo), class: "img-event-large", alt: @activity.title %>
+  <% if @activity.photo.present? %>
+    <%= image_tag url_for(@activity.photo), class: "img-event-large", alt: @activity.title %>
+  <% else %>
+    <img class="img-event-large" src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+  <% end %>
 
   <div class= "annonce-content">
 
     <div class="first-row">
 
-<p><i class="fa-solid fa-calendar-days"></i> du <%= l(@activity.start_date, format: :short) %></p>
+<p><i class="fa-solid fa-calendar-days"></i> <%= l(@activity.start_date, format: :short) %></p>
   <% if @activity.end_date.present? %>
     <p>au <%= l(@activity.end_date, format: :short) %></p>
   <% end %>

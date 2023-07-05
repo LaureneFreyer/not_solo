@@ -38,15 +38,15 @@
     </li>
     <li>
       <%= link_to profile_path, action: 'show', class: 'footer-link' do %>
-              <% if request.path_info == profile_path %>
-        <div class="small-photo-user">
-        <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar-annonce">
-        </div>
+        <% if request.path_info == profile_path %>
+          <div class="small-photo-user">
+            <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar-annonce-logo-actif">
+          </div>
         <% else %>
-        <div class="small-photo-user">
-                <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar-annonce">
-        </div>
-      <% end %>
+          <div class="small-photo-user">
+            <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg" %>" alt="<%= current_user.nickname %>" class="avatar-annonce">
+          </div>
+        <% end %>
       <% end %>
     </li>
   </ul>

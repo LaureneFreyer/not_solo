@@ -27,7 +27,7 @@
   <div class="slider-container">
           <!-- Slides -->
           <div id="scroll-pane">
-            <% @activities.sample(15).each_with_index do |activity, index| %>
+            <% @activities.where.not(user: current_user).sample(15).each_with_index do |activity, index| %>
               <div class="scroll-pane <%= 'active' if index == 0 %>">
                 <%= link_to activity_path(activity) do %>
                   <% if activity.photo.attached? %>

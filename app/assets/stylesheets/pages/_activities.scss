@@ -2,7 +2,6 @@
 //----------------------------------------------------------------------------//
 
 .activities-container{
-  text-align: center;
   color: $primary-color;
   margin-top: 50px;
   margin: auto;
@@ -11,12 +10,18 @@
   flex-grow: 1; /* Permet à la section de prendre tout l'espace vertical disponible */
   padding-bottom: 100px;
 }
+.container-map {
+  background-color: white;
+  height: 450px;
+  margin-top: 10px;
+  border-radius: 25px;
+}
 
 //----------------------------------------------------------------------------//
 
 .input-search{
   width: 310px;
-  border: 1px solid #dedede;
+  border: 1px solid $primary-color;
   border-right: none;
   padding: 5px;
   height: 45px;
@@ -26,7 +31,7 @@
 .search-button {
   width: 40px;
   height: 45px;
-  border: 1px solid #dedede;
+  border: 1px solid $primary-color;
   background: #ffffff;
   border-left: none;
   text-align: center;

@@ -349,7 +349,7 @@ puts "  /         O    Nan je deconne, Bordeaux en cours....  "
 # puts "Création des activitées..."
 
 # Génération des activités
-5.times do |i|
+10.times do |i|
   user = users.sample
   address = CITIES.sample
   coordinates = Geocoder.coordinates(address)
@@ -491,7 +491,7 @@ Activity.create!(
 end
 
 # Génération des activités
-5.times do |i|
+10.times do |i|
   user = users.sample
   category = ACTIVITY_CATEGORIES.sample
   # puts "Activité #{i + 1} générée"
