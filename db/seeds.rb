@@ -97,20 +97,23 @@ last_names = ["Dubois", "Durand", "Leroy", "Moreau", "Simon", "Laurent", "Lefebv
 first_names_masculin = ["Thomas", "Nicolas", "Maxime", "Alexandre", "Antoine", "Lucas", "Hugo", "Romain", "Julien", "Rémi"]
 first_names_feminin = ["Sarah", "Julie", "Camille", "Léa", "Manon", "Chloé", "Emma", "Anaïs", "Émilie", "Sophie"]
 
-descriptions = [
+descriptions_masculin = [
   "J'adore les activités en plein air et rencontrer de nouvelles personnes.",
   "Un grand amateur de livres et de cinéma, toujours prêt à découvrir de nouvelles choses.",
   "Passionné par la technologie et les jeux vidéo. J'aime aussi la randonnée et le camping.",
   "Fervent amateur de cuisine, toujours prêt à essayer de nouvelles recettes.",
-  "Je suis un passionné de musique et je joue de plusieurs instruments.",
-  "J'aime voyager et découvrir de nouvelles cultures.",
-  "Amateur de sport, j'aime aussi passer du temps à lire et à me détendre.",
-  "Je suis un amoureux des animaux et j'adore passer du temps dans la nature.",
-  "J'aime les activités artistiques et créatives, comme la peinture et le dessin.",
-  "Passionné de photographie, j'aime capturer les beaux moments de la vie."
+  "Je suis un passionné de musique et je joue de plusieurs instruments."
 ]
 
-genders = ["Homme", "Femme", "Non binaire", "Autre"]
+descriptions_feminin = [
+  "J'adore les activités en plein air et rencontrer de nouvelles personnes.",
+  "Une grande amatrice de livres et de cinéma, toujours prête à découvrir de nouvelles choses.",
+  "Passionnée par la technologie et les jeux vidéo. J'aime aussi la randonnée et le camping.",
+  "Fervente amatrice de cuisine, toujours prête à essayer de nouvelles recettes.",
+  "Je suis une passionnée de musique et je joue de plusieurs instruments."
+]
+
+genders = ["Homme", "Femme"]
 
 users = []
 
@@ -118,34 +121,35 @@ users = []
   genre = genders.sample
   photo_url = case genre
               when "Homme"
-                ["https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80"].sample
+                ["https://images.unsplash.com/photo-1590086782957-93c06ef21604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80", "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2352&q=80", "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80"].sample
               when "Femme"
-                ["https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"].sample
-              else
-                ["https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80", "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"].sample
+                ["https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80","https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80","https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"].sample
               end
+
 
   case genre
   when "Homme"
     first_name = first_names_masculin.sample
+    description = descriptions_masculin.sample
+
   when "Femme"
     first_name = first_names_feminin.sample
-  else
-    first_name = [first_names_masculin.sample, first_names_feminin.sample].sample
+    description = descriptions_feminin.sample
   end
 
   user = User.create!(
     email: "user#{i + 1}@example.com",
     password: "password",
-    nickname: "#{first_name}#{i + 1}",
+    nickname: "#{first_name} #{last_names.sample[0].capitalize}",
     first_name: first_name,
     last_name: last_names.sample,
     address: CITIES_BORDEAUX.sample,
     points: rand(0..100),
-    birthday: Date.today - rand(18..50).years,
-    description: descriptions.sample,
+    birthday: Date.today - rand(21..34).years,
+    description: description,
     genre: genre
   )
+
   users << user
 
   user_interest_names = USER_INTERESTS.sample(rand(2..3)) # Choix deux à trois intérêts aléatoires
@@ -311,6 +315,8 @@ puts " (    @\\___    Rennes en cours..... 10 minutes restantes"
   activity_photo = URI.open(photo_url)
 
   start_date = DateTime.now + rand(1..30).days
+  start_date = start_date.change(min: (start_date.min / 15).round * 15)
+
   end_date = start_date + rand(1..6).hours
 
 Activity.create!(
@@ -464,6 +470,8 @@ puts "  /         O    Nan je deconne, Bordeaux en cours....  "
   activity_photo = URI.open(photo_url)
 
   start_date = DateTime.now + rand(1..30).days
+  start_date = start_date.change(min: (start_date.min / 15).round * 15)
+
   end_date = start_date + rand(1..6).hours
 
 Activity.create!(
@@ -641,6 +649,8 @@ end
   activity_photo = URI.open(photo_url)
 
   start_date = DateTime.now + rand(1..30).days
+  start_date = start_date.change(min: (start_date.min / 15).round * 15)
+
   end_date = start_date + rand(1..6).hours
 
 Activity.create!(
@@ -677,9 +687,17 @@ puts " /   (_____/     les activités sont générées ! Place aux likes... "
 
 # Génération de likes aléatoires pour l'admin
 activities = Activity.all
-admin_likes = activities.sample(rand(4..6)) # Génère d likes aléatoires
+admin_likes = activities.sample(rand(5..6)).reject { |activity| activity.user == admin } # Génère d likes aléatoires en excluant les activités de l'admin
 admin_likes.each do |activity|
   Like.create(user: admin, activity: activity)
+end
+
+# Pour les autres utilisateurs
+users.each do |user|
+  likes = activities.sample(rand(5..6)).reject { |activity| activity.user == user } # Génère d likes aléatoires en excluant les activités de l'utilisateur actuel
+  likes.each do |activity|
+    Like.create(user: user, activity: activity)
+  end
 end
 
 # puts "Création des ratings..."
