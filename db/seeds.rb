@@ -708,7 +708,7 @@ end
 # création de ratings aléatoires pour l'admin
 admin_ratings = activities.sample(rand(3..5))
 admin_ratings.each do |activity|
-  Rating.create(user: admin, activity: activity, note: rand(3..5))
+  Rating.create(user: admin, activity: activity, note: 5)
 end
 puts "/_____/   U    une reservation est en cours..."
 
