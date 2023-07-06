@@ -11,8 +11,7 @@
   background-image: url("https://zupimages.net/up/23/27/od0v.jpg");
   background-repeat: no-repeat;
   background-size:contain;
-  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
-  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+  border: 0.5px solid lightgrey;
   width: 350px;
   height: 90%;
   color: $primary-color;
@@ -82,8 +81,7 @@
 
 .resum-annonce-card {
   background-color: rgba($color: rgb(255, 255, 255), $alpha: 0.5);
-  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
-  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+  border: 0.5px solid lightgrey;
   border-radius: 10px;
   width: 350px;
   height: 90px;
@@ -134,8 +132,7 @@ a { display: flex;
   position: relative;
   font-family: Verdana, sans-serif;
   background-color: rgba($color: white, $alpha: 0.5);
-  -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.74);
-  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.4);
+  border: 0.5px solid lightgrey;
   width: 350px;
   height: 90%;
   color: $primary-color;
