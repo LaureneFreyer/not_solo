@@ -7,6 +7,7 @@
   </div>
   <h1 class = "headers" ><%= @activity.title %></h1>
 <div class= 'photo-content'>
+<% unless @activity.user == current_user %>
   <div class="fav-btn">
     <% unless current_user.likes.exists?(activity: @activity) %>
       <%= button_to like_activity_path(@activity), method: :post, class: 'btn-fav' do %>
@@ -14,6 +15,7 @@
       <% end %>
     <% end %>
   </div>
+<% end %>
 <div>
   <% if @activity.photo.present? %>
     <%= image_tag url_for(@activity.photo), class: "img-event-large", alt: @activity.title %>
