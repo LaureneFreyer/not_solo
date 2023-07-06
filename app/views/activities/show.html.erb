@@ -29,22 +29,22 @@
 
     <div class="first-row">
       <div class = "left-post">
-        <span><i class="fa-solid fa-calendar-days"></i> <%= l(@activity.start_date, format: :short) %></span>
+        <span style="color: #979dac"><i class="fa-solid fa-calendar-days" style="color: #6A9696"></i> <%= l(@activity.start_date, format: :short) %></span>
         <% if @activity.end_date.present? %>
-          <p>au <%= l(@activity.end_date, format: :short) %></p>
+          <p style="color: #979dac">au <%= l(@activity.end_date, format: :short) %></p>
         <% end %>
       </div>
       <div class = "right-post">
-        <p><i class="fa-solid fa-users"></i> <%= @activity.current_participants %>/<%= @activity.max_participants %></p>
+        <p style="color: #979dac"><i class="fa-solid fa-users" style="color: #6A9696"></i> <%= @activity.current_participants %>/<%= @activity.max_participants %></p>
       </div>
     </div>
 
     <div class="second-row">
-      <p><i class="fa-solid fa-location-pin"style="margin-right: 15px;"></i><%= @activity.address %></p>
+      <p style="color: #979dac"><i class="fa-solid fa-location-pin" style="color: #6A9696"></i> <%= @activity.address %></p>
     </div>
 
     <div class="annonce-description">
-      <p><%= @activity.content %></p>
+      <p style="color: #979dac"><%= @activity.content %></p>
     </div>
   </div>
 
