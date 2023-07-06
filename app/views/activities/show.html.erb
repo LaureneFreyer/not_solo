@@ -46,6 +46,7 @@
     </div>
   </div>
 
+<% unless @activity.user == current_user %>
   <div class="resa-user">
       <br>
       <p>Cette activité vous est proposée par</p>
@@ -70,6 +71,7 @@
         </div>
     </div>
   </div>
+  <% end %>
 
   <% content_for :meta_title, @activity.title %>
 
