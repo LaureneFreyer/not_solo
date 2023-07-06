@@ -15,7 +15,7 @@
 
   <p class="user-points"><%= @user.points %> points</p>
 
-  <div class="ratings">
+  <div class="ratings mt-4 mb-4">
     <% unless @sum.nil? %>
       <% if @sum == 5 %>
         <i class="fa-solid fa-star" style="color: #A4B05D"></i><i class="fa-solid fa-star" style="color: #83966A"></i><i class="fa-solid fa-star" style="color: #6A9674"></i><i class="fa-solid fa-star" style="color: #6A9696"></i><i class="fa-solid fa-star" style="color: #5D92B0"></i>
@@ -32,22 +32,21 @@
       <% end %>
     <% end %>
   </div>
-
     <div class= "profil-content">
       <div class="first-row">
 <p style="color: #979dac">
-  <i class="fa-solid fa-cake-candles icon-user"></i>
+  <i class="fa-solid fa-cake-candles icon-user" style="margin-right: 7px;"></i>
   <% age_in_words = time_ago_in_words(@user.birthday, include_seconds: false) %>
   <%= age_in_words.gsub("plus de ", "") %>
 </p>
-        <p style="color: #979dac"><i class="fa-solid fa-user icon-user"></i><%= @user.genre %></p>
+        <p style="color: #979dac"><i class="fa-solid fa-user icon-user" style="margin-right: 11px;"></i><%= @user.genre %></p>
       </div>
       <div class="second-row">
-        <p style="color: #979dac"><i class="fa-solid fa-location-pin icon-user"></i><%= @user.address %></p>
+        <p style="color: #979dac"><i class="fa-solid fa-location-pin icon-user" style="margin-right: 15px;"></i><%= @user.address %></p>
       </div>
     <div class="third-row">
       <span>
-        <p style="color: #979dac"><i class="fa-regular fa-face-smile-beam icon-user"></i>
+        <p style="color: #979dac"><i class="fa-regular fa-face-smile-beam icon-user" style="margin-right: 6px;"></i>
           <% @user.interests.each do |interest| %>
             <%= interest.name %>
             <% if interest != @user.interests.last %>, <% end %>
