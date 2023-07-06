@@ -1,4 +1,10 @@
+
 <div class="category-container">
+ <div class="btn-back btn-text">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
 
   <h1 class="headers">Choisissez une catégorie</h1>
   <% @categories.each do |category| %>
