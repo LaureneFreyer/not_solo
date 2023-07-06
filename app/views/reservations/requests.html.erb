@@ -18,7 +18,7 @@
       </div>
       <div class="requests-infos-activity">
         <h2><%= link_to request.activity.title, activity_path(request.activity), class: "btn-text-messages" %></h2>
-        <p><%= request.activity.start_date.strftime("%d/%m/%y à %lh%M") %></p>
+        <p><%= request.activity.start_date.strftime("%d/%m/%y à %kh%M") %></p>
       </div>
       <% if request.status == "pending" %>
           <%= "" %>
