@@ -1,11 +1,11 @@
-<div class="profil-card">
+<div class="annonce-card">
   <div class="btn-back btn-text">
     <%= link_to :back do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
   </div>
   <div>
-    <h1><%= @activity.title %></h1>
+    <h1 class="headers"><%= @activity.title %></h1>
 
     <div class="members-organisateur">
       <p><%= @organisateur.nickname %></p>
