@@ -45,24 +45,24 @@ puts "Création admin..."
 
 # def seed pour l'admin :
 admin = User.create!(
-  email: "lolodu35@gmail.com",
+  email: "henri33@gmail.com",
   password: "123456",
-  nickname: "LoloDu35",
-  first_name: "Laurène",
-  last_name: "Freyer",
-  genre: "Femme",
+  nickname: "Henri",
+  first_name: "Henri",
+  last_name: "Le Borgne",
+  genre: "Homme",
   address: "Bordeaux",
   points: 75,
-  birthday: Date.new(1997, 3, 18),
-  description: "Bonjour à tous, je m'appelle Laurène. Je viens d'être mutée à Bordeaux et je suis donc à la recherche de nouvelles rencontres. J'adore les chiens et les licornes."
+  birthday: Date.new(1983, 3, 18),
+  description: "Je me présente, je m'appelle Henri. J'aimerais bien réussir ma vie, être aimé, être beau, gagner de l'argent, mais surtout être intelligent. Et me faire pleins de nouveaux amis."
 )
-admin_interest_names = ["Cuisine", "Sport", "Voyage"]
+admin_interest_names = ["Musique", "Nature", "Voyage"]
 admin_interests = admin_interest_names.map { |name| Interest.find_by(name: name) }
 
 admin.interests << admin_interests
 # Génération d'une activité liée à l'utilisateur de test
 
-admin_photo = File.open(Rails.root.join("app", "assets", "images", "lolodu35.png"))
+admin_photo = File.open(Rails.root.join("app", "assets", "images", "daniel.jpg"))
 admin.photo.attach(io: admin_photo, filename: "admin.png", content_type: "image/png")
 admin.save!
 
@@ -97,6 +97,7 @@ last_names = ["Dubois", "Durand", "Leroy", "Moreau", "Simon", "Laurent", "Lefebv
 first_names_masculin = ["Thomas", "Nicolas", "Maxime", "Alexandre", "Antoine", "Lucas", "Hugo", "Romain", "Julien", "Rémi"]
 first_names_feminin = ["Sarah", "Julie", "Camille", "Léa", "Manon", "Chloé", "Emma", "Anaïs", "Émilie", "Sophie"]
 
+
 descriptions_masculin = [
   "J'adore les activités en plein air et rencontrer de nouvelles personnes.",
   "Un grand amateur de livres et de cinéma, toujours prêt à découvrir de nouvelles choses.",
@@ -113,11 +114,12 @@ descriptions_feminin = [
   "Je suis une passionnée de musique et je joue de plusieurs instruments."
 ]
 
+
 genders = ["Homme", "Femme"]
 
 users = []
 
-3.times do |i|
+4.times do |i|
   genre = genders.sample
   photo_url = case genre
               when "Homme"
