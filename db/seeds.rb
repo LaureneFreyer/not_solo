@@ -720,7 +720,7 @@ Reservation.create(user: user, activity: activity, status: "en attente")
   user = User.where.not(id: admin.id).sample
   user_ratings = activities.sample(rand(1..5))
   user_ratings.each do
-    Rating.create(user: user, activity: activity, note: rand(3..5))
+    Rating.create(user: user, activity: activity, note: rand(4..5))
   end
 end
 puts "Terminé ! Merci de ta patience :)"
