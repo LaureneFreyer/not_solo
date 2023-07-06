@@ -1,4 +1,9 @@
 <div class="profil-card">
+  <div class="btn-back btn-text">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </div>
   <h1 class="headers"><%= @user.nickname %></h1>
   <div class="big-photo-user">
     <img src="<%= @user.photo.attached? ? cl_image_path(@user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= @user.nickname %>" class="avatar-annonce">
@@ -33,7 +38,7 @@
       <p style="color: #979dac">
         <i class="fa-solid fa-cake-candles icon-user" style="margin-right: 7px;"></i>
         <% age_in_words = time_ago_in_words(@user.birthday, include_seconds: false) %>
-        <%= age_in_words.gsub("plus de ", "") %>
+        <%= age_in_words.gsub("environ ", "") %>
       </p>
       <p style="color: #979dac"><i class="fa-solid fa-user icon-user" style="margin-right: 11px;"></i><%= @user.genre %></p>
     </div>

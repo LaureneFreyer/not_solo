@@ -45,24 +45,24 @@ puts "Création admin..."
 
 # def seed pour l'admin :
 admin = User.create!(
-  email: "lolodu35@gmail.com",
+  email: "henri33@gmail.com",
   password: "123456",
-  nickname: "LoloDu35",
-  first_name: "Laurène",
-  last_name: "Freyer",
-  genre: "Femme",
+  nickname: "Henri",
+  first_name: "Henri",
+  last_name: "Le Borgne",
+  genre: "Homme",
   address: "Bordeaux",
   points: 75,
-  birthday: Date.new(1997, 3, 18),
-  description: "Bonjour à tous, je m'appelle Laurène. Je viens d'être mutée à Bordeaux et je suis donc à la recherche de nouvelles rencontres. J'adore les chiens et les licornes."
+  birthday: Date.new(1983, 3, 18),
+  description: "Je me présente, je m'appelle Henri. J'aimerais bien réussir ma vie, être aimé, être beau, gagner de l'argent, mais surtout être intelligent. Et me faire pleins de nouveaux amis."
 )
-admin_interest_names = ["Cuisine", "Sport", "Voyage"]
+admin_interest_names = ["Musique", "Nature", "Voyage"]
 admin_interests = admin_interest_names.map { |name| Interest.find_by(name: name) }
 
 admin.interests << admin_interests
 # Génération d'une activité liée à l'utilisateur de test
 
-admin_photo = File.open(Rails.root.join("app", "assets", "images", "lolodu35.png"))
+admin_photo = File.open(Rails.root.join("app", "assets", "images", "daniel.jpg"))
 admin.photo.attach(io: admin_photo, filename: "admin.png", content_type: "image/png")
 admin.save!
 
@@ -98,31 +98,24 @@ first_names_masculin = ["Thomas", "Nicolas", "Maxime", "Alexandre", "Antoine", "
 first_names_feminin = ["Sarah", "Julie", "Camille", "Léa", "Manon", "Chloé", "Emma", "Anaïs", "Émilie", "Sophie"]
 
 descriptions = [
-  "J'adore les activités en plein air et rencontrer de nouvelles personnes.",
-  "Un grand amateur de livres et de cinéma, toujours prêt à découvrir de nouvelles choses.",
-  "Passionné par la technologie et les jeux vidéo. J'aime aussi la randonnée et le camping.",
-  "Fervent amateur de cuisine, toujours prêt à essayer de nouvelles recettes.",
-  "Je suis un passionné de musique et je joue de plusieurs instruments.",
-  "J'aime voyager et découvrir de nouvelles cultures.",
-  "Amateur de sport, j'aime aussi passer du temps à lire et à me détendre.",
-  "Je suis un amoureux des animaux et j'adore passer du temps dans la nature.",
-  "J'aime les activités artistiques et créatives, comme la peinture et le dessin.",
-  "Passionné de photographie, j'aime capturer les beaux moments de la vie."
+  "Dingue de technologie et jeux vidéo. J'aime aussi la randonnée et le camping.",
+  "Toujours ready à essayer de nouvelles recettes, en cuisine je suis dans mon élément!",
+  "J'adore les animaux et j'aime passer du temps dans la nature. J'adore les activités en plein air et rencontrer de nouvelles personnes.",
+  "J'aime les activités artistiques et créatives, comme la peinture et le dessin. J'ai une passion pour la musique et je joue de plusieurs instruments.",
+  "La photographie me passionne, j'aime capturer les beaux moments de la vie. J'aime voyager et découvrir de nouvelles cultures."
 ]
 
-genders = ["Homme", "Femme", "Non binaire", "Autre"]
+genders = ["Homme", "Femme"]
 
 users = []
 
-3.times do |i|
+4.times do |i|
   genre = genders.sample
   photo_url = case genre
               when "Homme"
                 ["https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80"].sample
               when "Femme"
                 ["https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"].sample
-              else
-                ["https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80", "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80", "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"].sample
               end
 
   case genre
@@ -130,19 +123,17 @@ users = []
     first_name = first_names_masculin.sample
   when "Femme"
     first_name = first_names_feminin.sample
-  else
-    first_name = [first_names_masculin.sample, first_names_feminin.sample].sample
   end
 
   user = User.create!(
     email: "user#{i + 1}@example.com",
     password: "password",
-    nickname: "#{first_name}#{i + 1}",
+    nickname: "#{first_name}",
     first_name: first_name,
     last_name: last_names.sample,
     address: CITIES_BORDEAUX.sample,
     points: rand(0..100),
-    birthday: Date.today - rand(18..50).years,
+    birthday: Date.today - rand(18..40).years,
     description: descriptions.sample,
     genre: genre
   )
