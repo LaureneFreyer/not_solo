@@ -5,64 +5,82 @@
       <i class="fa-solid fa-xmark"></i>
     <% end %>
   </div>
-  <h1><%= @activity.title %></h1>
-
+  <h1 class = "headers" ><%= @activity.title %></h1>
+<div class= 'photo-content'>
+<% unless @activity.user == current_user %>
   <div class="fav-btn">
     <% unless current_user.likes.exists?(activity: @activity) %>
-      <%= button_to like_activity_path(@activity), method: :post, class: 'btn-text btn-fav' do %>
-        <i class="fa-regular fa-heart"></i>
+      <%= button_to like_activity_path(@activity), method: :post, class: 'btn-fav' do %>
+        <i class="fa-solid fa-heart"></i>
       <% end %>
     <% end %>
   </div>
-
+<% end %>
+<div>
   <% if @activity.photo.present? %>
     <%= image_tag url_for(@activity.photo), class: "img-event-large", alt: @activity.title %>
   <% else %>
     <img class="img-event-large" src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
   <% end %>
+</div>
+</div>
 
   <div class= "annonce-content">
 
     <div class="first-row">
-
-<p><i class="fa-solid fa-calendar-days"></i> <%= l(@activity.start_date, format: :short) %></p>
-  <% if @activity.end_date.present? %>
-    <p>au <%= l(@activity.end_date, format: :short) %></p>
-  <% end %>
-
-  <p><i class="fa-solid fa-users"></i> <%= @activity.current_participants %>/<%= @activity.max_participants %></p>
+      <div class = "left-post">
+        <span style="color: #979dac"><i class="fa-solid fa-calendar-days" style="color: #6A9696"></i> <%= l(@activity.start_date, format: :short) %></span>
+        <% if @activity.end_date.present? %>
+          <p style="color: #979dac">au <%= l(@activity.end_date, format: :short) %></p>
+        <% end %>
+      </div>
+      <div class = "right-post">
+        <p style="color: #979dac"><i class="fa-solid fa-users" style="color: #6A9696"></i> <%= @activity.current_participants %>/<%= @activity.max_participants %></p>
+      </div>
     </div>
 
     <div class="second-row">
-      <p><i class="fa-solid fa-location-pin"style="margin-right: 15px;"></i><%= @activity.address %></p>
-    <%= link_to autres_path(@activity.user), class: "no-style" do %>
-      <p><%= @activity.user.nickname %>
-      <div class="small-photo-user">
-      <img src="<%= @activity.user.photo.attached? ? cl_image_path(@activity.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= @activity.user.nickname %>" class="avatar-annonce"></p>
-      </div>
-    <% end %>
+      <p style="color: #979dac"><i class="fa-solid fa-location-pin" style="color: #6A9696"></i> <%= @activity.address %></p>
     </div>
 
     <div class="annonce-description">
-      <p><%= @activity.content %></p>
+      <p style="color: #979dac"><%= @activity.content %></p>
     </div>
   </div>
-    <div class="annonce-btn-container">
-    <%# <% if @activity.reservations.exists? && reservation.status == "acceptée" %>
-      <%# <% unless @activity.chatroom.nil? %>
-        <%# <%= button_to 'Joindre', activity_chatroom_path(@activity, @activity.chatroom), method: :get, class: 'btn-text btn-others' %>
-      <%# <% end %>
-    <%# <% end %>
-      <% unless current_user == @activity.user %>
-        <%= button_to 'Réserver', activity_reservations_path(@activity), method: :post, class: 'btn-text btn-others' %>
-      <% end %>
+
+<% unless @activity.user == current_user %>
+  <div class="resa-user">
+      <br>
+      <p>Cette activité vous est proposée par</p>
+    <div class = "resa">
+      <div class = "left-side">
+        <%= link_to autres_path(@activity.user), class: "no-style align-img" do %>
+          <div class="medium-photo-user">
+          <img src="<%= @activity.user.photo.attached? ? cl_image_path(@activity.user.photo.key) : 'https://st3.depositphotos.com/1767687/17621/v/600/depositphotos_176214104-stock-illustration-default-avatar-profile-icon.jpg' %>" alt="<%= @activity.user.nickname %>" class="avatar-annonce"></p>
+          </div>
+        <% end %>
+        <%= @activity.user.nickname %>
+      </div>
+        <div class="right-side">
+              <%# <% if @activity.reservations.exists? && reservation.status == "acceptée" %>
+              <%# <% unless @activity.chatroom.nil? %>
+              <%# <%= button_to 'Joindre', activity_chatroom_path(@activity, @activity.chatroom), method: :get, class: 'btn-text btn-others' %>
+              <%# <% end %>
+              <%# <% end %>
+          <% unless current_user == @activity.user %>
+            <%= button_to 'Réserver', activity_reservations_path(@activity), method: :post, class: 'btn-text btn-others add-margin' %>
+          <% end %>
+        </div>
     </div>
+  </div>
+  <% end %>
 
   <% content_for :meta_title, @activity.title %>
 
-<% content_for :meta_description, @activity.content %>
-<% if @activity.photo.attached? %>
-  <% content_for :meta_image, url_for(@activity.photo) %>
-<% else %>
-  <% content_for :meta_image, 'URL image par défaut' %>
-<% end %>
+  <% content_for :meta_description, @activity.content %>
+  <% if @activity.photo.attached? %>
+    <% content_for :meta_image, url_for(@activity.photo) %>
+  <% else %>
+    <% content_for :meta_image, 'URL image par défaut' %>
+  <% end %>
+</div>

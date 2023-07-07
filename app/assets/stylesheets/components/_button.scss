@@ -12,18 +12,15 @@
   font-size: 16px;
 }
 .btn-back{
-  margin-left: 85%;
   position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 5px;
+  margin-right: 10px;
   color: $primary-color;
   text-decoration: none !important;
 }
-.btn-back-custom {
-  position: absolute;
-  color: $primary-color;
-  position: absolute;
-  margin-top: 20px;
-  margin-left: 90%;
-}
+
 .btn-categorie-menu{
   border-radius: 36px;
   height: 50px;
@@ -90,6 +87,7 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+  margin-bottom: 50px;
 
   .btn-categorie {
     margin: 10px;

@@ -1,0 +1,52 @@
+.left-post{
+  width: 75%;
+  .fa-calendar-days{
+    margin-right: 5px;
+  }
+}
+.right-post{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.resa-user{
+
+  font-family: 'Fira Sans';
+  background-image: url("https://zupimages.net/up/23/27/od0v.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 280px;
+  color: white;
+
+  .resa{
+  display: flex;
+
+    .left-side{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    }
+
+    .right-side{
+      display: flex;
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+  }
+}
+.align-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -15px;
+  margin-top: 16px;
+}
+
+.add-margin{
+margin-top: -5px;
+}

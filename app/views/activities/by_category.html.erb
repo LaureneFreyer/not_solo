@@ -1,4 +1,4 @@
-<div class="btn-text btn-back-custom">
+<div class="btn-text btn-back">
     <%= link_to activity_categories_path do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
@@ -18,7 +18,7 @@
             </div>
             <div class="activity-card-center">
             <p><%= activity.title %></p>
-            <p><i class="fa-solid fa-calendar-days"></i><%= activity.start_date.strftime("%d/%m/%y à %lh%M") %>
+            <p><i class="fa-solid fa-calendar-days"></i><%= activity.start_date.strftime("%d/%m/%y à %kh%M") %>
             </div>
             <div class="activity-card-right">
             <i class="fa-solid fa-users"></i><%= activity.max_participants %></p>

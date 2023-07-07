@@ -9,7 +9,7 @@
   </div>
     <h1 class="headers"><%= link_to @chatroom.name, activity_path(@chatroom.activity) %></h1>
     <div class="chatroom-card-activity">
-      <p><i class="fa-solid fa-calendar-days icon"></i> <%= @chatroom.activity.start_date.strftime("%d/%m/%Y à %lh%M") %></p>
+      <p><i class="fa-solid fa-calendar-days icon"></i> <%= @chatroom.activity.start_date.strftime("%d/%m/%Y à %kh%M") %></p>
       <%= link_to activity_chatroom_members_path(@chatroom, @chatroom.activity) do %>
       <i class="fa-solid fa-users icon"></i> <%= @chatroom.activity.current_participants %>
       <% end %>

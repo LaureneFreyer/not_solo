@@ -23,7 +23,7 @@ interests = [
   "Cuisine", "Sport", "Danse", "Voyage", "Art", "Cinéma", "Musique", "Animaux",
   "Technologie", "Méditation", "Jeux de société", "Jeux vidéo", "Nature",
   "Photographie", "Bricolage", "Lecture", "Mode", "Sciences", "Sorties",
-  "Automobile", "Jardinage", "Services", "Randonnées", "Découvertes",
+  "Automobile", "Jardinage", "Services", "Randonnée", "Découvertes",
   "Séries", "Nourriture", "Autres"
 ]
 
@@ -36,7 +36,7 @@ USER_INTERESTS = [
   "Cuisine", "Sport", "Danse", "Voyage", "Art", "Cinéma", "Musique", "Animaux",
   "Technologie", "Méditation", "Jeux de société", "Jeux vidéo", "Nature",
   "Photographie", "Bricolage", "Lecture", "Mode", "Sciences", "Sorties",
-  "Automobile", "Jardinage", "Services", "Randonnées", "Découvertes",
+  "Automobile", "Jardinage", "Services", "Randonnée", "Découvertes",
   "Séries", "Nourriture", "Autres"
 ]
 
@@ -66,6 +66,8 @@ admin_photo = File.open(Rails.root.join("app", "assets", "images", "daniel.jpg")
 admin.photo.attach(io: admin_photo, filename: "admin.png", content_type: "image/png")
 admin.save!
 
+start_date_admin = DateTime.now + 7.days
+start_date_admin = start_date_admin.change(min: (start_date_admin.min / 15).round * 15) + 1
 admin_activity_photo = URI.open("https://images.unsplash.com/photo-1531932768276-eb8b0770c5af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80")
 admin_activity = Activity.create!(
   category: "Randonnée",
@@ -74,12 +76,11 @@ admin_activity = Activity.create!(
   content: "Petite promenade degustative dans les vignes du château margaux. Durée prévu environ 2h, à adapter selon les personnes qui sont intéressées.",
   address: "Château Margaux, Margaux-Cantenac, France",
   max_participants: rand(5..10),
-  start_date: DateTime.now + 7.days,
+  start_date: start_date_admin,
   user: admin
 )
 
 admin_activity.photo.attach(io: admin_activity_photo, filename: "admin_activity.jpg", content_type: "image/jpeg")
-
 
 
 
@@ -584,7 +585,7 @@ end
   when "Sport/Fitness"
     "9 Rue Fondaudège, 33000 Bordeaux"
   when "Concert"
-    "Rue Jean Samazeuilh, 33300 Bordeaux"
+    "Rue de Grassi, 33300 Bordeaux"
   when "Sortie en ville"
     "Bordeaux"
   when "Randonnée"
@@ -812,7 +813,7 @@ end
 # création de ratings aléatoires pour l'admin
 admin_ratings = activities.sample(rand(3..5))
 admin_ratings.each do |activity|
-  Rating.create(user: admin, activity: activity, note: rand(3..5))
+  Rating.create(user: admin, activity: activity, note: 5)
 end
 puts "/_____/   U    une reservation est en cours..."
 
@@ -825,7 +826,7 @@ Reservation.create(user: user, activity: activity, status: "en attente")
   user = User.where.not(id: admin.id).sample
   user_ratings = activities.sample(rand(1..5))
   user_ratings.each do
-    Rating.create(user: user, activity: activity, note: rand(3..5))
+    Rating.create(user: user, activity: activity, note: rand(4..5))
   end
 end
 puts "Terminé ! Merci de ta patience :)"

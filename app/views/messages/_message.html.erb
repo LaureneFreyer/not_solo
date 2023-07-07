@@ -3,7 +3,7 @@
   <div id="message-<%= message.id %>">
         <small>
           <strong><%= message.user.nickname %></strong>
-            <i><%= message.created_at.strftime("%d/%m/%y à %lh%M") %></i>
+            <i><%= message.created_at.strftime("%d/%m/%y à %kh%M") %></i>
             </small>
             <p><%= message.content %></p>
           </div>
