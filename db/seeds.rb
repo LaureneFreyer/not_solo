@@ -332,7 +332,7 @@ Activity.create!(
   latitude: coordinates[0],
   longitude: coordinates[1],
   max_participants: rand(2..20),
-  start_date: start_date + rand(0..6).hours + minutes.minutes,
+  start_date: start_date + rand(0..2).hours + minutes.minutes,
   end_date: end_date,
   user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
@@ -488,7 +488,7 @@ Activity.create!(
   latitude: coordinates[0],
   longitude: coordinates[1],
   max_participants: rand(2..20),
-  start_date: start_date + rand(0..6).hours + minutes.minutes,
+  start_date: start_date + rand(0..2).hours + minutes.minutes,
   end_date: end_date,
   user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
@@ -668,7 +668,7 @@ Activity.create!(
   latitude: coordinates[0],
   longitude: coordinates[1],
   max_participants: rand(2..20),
-  start_date: start_date + rand(0..6).hours + minutes.minutes,
+  start_date: start_date + rand(0..2).hours + minutes.minutes,
   end_date: end_date,
   user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
@@ -734,7 +734,7 @@ plein_air_titles = [
     latitude: coordinates[0],
     longitude: coordinates[1],
     max_participants: rand(2..20),
-    start_date: start_date + rand(0..6).hours,
+    start_date: start_date + rand(0..2).hours + minutes.minutes,
     end_date: end_date,
   ).photo.attach(io: URI.open(photo_url), filename: "activity#{i + 99}.png", content_type: "image/png")
 end
@@ -791,7 +791,7 @@ title_sport = ["Tournoi de football",
     latitude: coordinates[0],
     longitude: coordinates[1],
     max_participants: rand(2..20),
-    start_date: start_date + rand(0..6).hours,
+    start_date: start_date + rand(0..2).hours + minutes.minutes,
     end_date: end_date,
   ).photo.attach(io: URI.open(photo_url), filename: "activity#{i + 1}.png", content_type: "image/png")
 end
