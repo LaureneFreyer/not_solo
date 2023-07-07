@@ -321,6 +321,7 @@ puts " (    @\\___    Rennes en cours..... 10 minutes restantes"
   start_date = start_date.change(min: (start_date.min / 15).round * 15)
 
   end_date = start_date + rand(1..6).hours
+  minutes = (rand(0..3) * 15)
 
 Activity.create!(
   category: category,
@@ -330,8 +331,8 @@ Activity.create!(
   address: address,
   latitude: coordinates[0],
   longitude: coordinates[1],
-  max_participants: rand(1..20),
-  start_date: start_date,
+  max_participants: rand(2..20),
+  start_date: start_date + rand(0..6).hours + minutes.minutes,
   end_date: end_date,
   user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
@@ -476,6 +477,7 @@ puts "  /         O    Nan je deconne, Bordeaux en cours....  "
   start_date = start_date.change(min: (start_date.min / 15).round * 15)
 
   end_date = start_date + rand(1..6).hours
+  minutes = (rand(0..3) * 15)
 
 Activity.create!(
   category: category,
@@ -485,8 +487,8 @@ Activity.create!(
   address: address,
   latitude: coordinates[0],
   longitude: coordinates[1],
-  max_participants: rand(1..20),
-  start_date: start_date,
+  max_participants: rand(2..20),
+  start_date: start_date + rand(0..6).hours + minutes.minutes,
   end_date: end_date,
   user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
@@ -655,6 +657,7 @@ end
   start_date = start_date.change(min: (start_date.min / 15).round * 15)
 
   end_date = start_date + rand(1..6).hours
+  minutes = (rand(0..3) * 15)
 
 Activity.create!(
   category: category,
@@ -665,7 +668,7 @@ Activity.create!(
   latitude: coordinates[0],
   longitude: coordinates[1],
   max_participants: rand(2..20),
-  start_date: start_date,
+  start_date: start_date + rand(0..6).hours + minutes.minutes,
   end_date: end_date,
   user: user
   ).photo.attach(io: activity_photo, filename: "activity#{i + 1}.jpg", content_type: "image/jpeg")
@@ -682,6 +685,108 @@ print_progress_bar(i + 1, activities_data.length)
       name: activity.title
     )
   end
+end
+
+# //////// nouvelles activity pour le DemoDay ////////
+
+# Génération des activités plein air
+plein_air_titles = [
+  "Randonnée en forêt",
+  "Balade à vélo",
+  "Journée barbecue",
+  "Escalade outdoor",
+  "Pique-nique"
+]
+
+5.times do |i|
+  user = users.sample
+  address = CITIES.sample
+  coordinates = Geocoder.coordinates(address)
+
+  category = "Plein air"
+  title = plein_air_titles[i]
+  description = "Une activité en plein air pour profiter de la nature et se détendre."
+
+  photo_url = case i
+              when 0
+                "https://plus.unsplash.com/premium_photo-1663013023375-0cd892c02306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when 1
+                "https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when 2
+                "https://images.unsplash.com/photo-1579405317876-9340f1d26061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+              when 3
+                "https://images.unsplash.com/photo-1485975638457-e191693003d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+              when 4
+                "https://images.unsplash.com/photo-1618031312993-f93038f30365?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80"
+              end
+
+  start_date = DateTime.now + rand(1..30).days
+  start_date = start_date.change(min: (start_date.min / 15).round * 15)
+  end_date = start_date + rand(1..6).hours
+  minutes = (rand(0..3) * 15)
+
+  Activity.create!(
+    title: title,
+    content: description,
+    category: category,
+    user: user,
+    address: address,
+    latitude: coordinates[0],
+    longitude: coordinates[1],
+    max_participants: rand(2..20),
+    start_date: start_date + rand(0..6).hours + minutes.minutes,
+    end_date: end_date,
+  ).photo.attach(io: URI.open(photo_url), filename: "activity#{i + 99}.png", content_type: "image/png")
+end
+
+# Génération des activités plein air
+title_sport = ["Tournoi de football",
+  "Match de tennis",
+  "Course de marathon",
+  "Match de basket",
+  "Match de rugby"]
+
+
+5.times do |i|
+  user = users.sample
+  address = CITIES.sample
+  coordinates = Geocoder.coordinates(address)
+
+  category = "Evénement sportif"
+  title = title_sport[i]
+  description = "Un événement sportif passionnant pour les amateurs de sport."
+
+  photo_url = case i
+              when 0
+                "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80"
+              when 1
+                "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              when 2
+                "https://images.unsplash.com/photo-1551927336-09d50efd69cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2352&q=80"
+              when 3
+                "https://images.unsplash.com/photo-1562519819-016930ada31b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+              when 4
+                "https://images.unsplash.com/photo-1512299286776-c18be8ed6a1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+              end
+
+  start_date = DateTime.now + rand(1..30).days
+  start_date = start_date.change(min: (start_date.min / 15).round * 15)
+  end_date = start_date + rand(1..6).hours
+  minutes = (rand(0..3) * 15)
+
+
+  Activity.create!(
+    title: title,
+    content: description,
+    category: category,
+    user: user,
+    address: address,
+    latitude: coordinates[0],
+    longitude: coordinates[1],
+    max_participants: rand(2..20),
+    start_date: start_date + rand(0..6).hours + minutes.minutes,
+    end_date: end_date,
+  ).photo.attach(io: URI.open(photo_url), filename: "activity#{i + 1}.png", content_type: "image/png")
 end
 
 
