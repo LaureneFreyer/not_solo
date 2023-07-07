@@ -361,7 +361,7 @@ puts "  /         O    Nan je deconne, Bordeaux en cours....  "
 # Génération des activités
 10.times do |i|
   user = users.sample
-  address = CITIES.sample
+  address = CITIES_BORDEAUX.sample
   coordinates = Geocoder.coordinates(address)
 
   category = ACTIVITY_CATEGORIES.sample
@@ -756,7 +756,7 @@ title_sport = ["Tournoi de football",
 
 5.times do |i|
   user = users.sample
-  address = CITIES.sample
+  address = CITIES_BORDEAUX.sample
   coordinates = Geocoder.coordinates(address)
 
   category = "Evénement sportif"
@@ -791,7 +791,7 @@ title_sport = ["Tournoi de football",
     latitude: coordinates[0],
     longitude: coordinates[1],
     max_participants: rand(2..20),
-    start_date: start_date + rand(0..6).hours + minutes.minutes,
+    start_date: start_date + rand(0..6).hours,
     end_date: end_date,
   ).photo.attach(io: URI.open(photo_url), filename: "activity#{i + 1}.png", content_type: "image/png")
 end
