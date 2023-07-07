@@ -700,7 +700,7 @@ plein_air_titles = [
 
 5.times do |i|
   user = users.sample
-  address = CITIES.sample
+  address = CITIES_BORDEAUX.sample
   coordinates = Geocoder.coordinates(address)
 
   category = "Plein air"
@@ -734,9 +734,16 @@ plein_air_titles = [
     latitude: coordinates[0],
     longitude: coordinates[1],
     max_participants: rand(2..20),
-    start_date: start_date + rand(0..6).hours + minutes.minutes,
+    start_date: start_date + rand(0..6).hours,
     end_date: end_date,
   ).photo.attach(io: URI.open(photo_url), filename: "activity#{i + 99}.png", content_type: "image/png")
+end
+
+Activity.all.each do |activity|
+  Chatroom.create!(
+    activity: activity,
+    name: activity.title
+  )
 end
 
 # Génération des activités plein air
